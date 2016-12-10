@@ -1,0 +1,38 @@
+apply plugin: 'maven'
+
+def getReleaseRepositoryUrl() {
+    return "http://192.168.1.128:8081/nexus/content/repositories/android-releases/"
+}
+
+def getSnapshotRepositoryUrl() {
+    return "http://192.168.1.128:8081/nexus/content/repositories/android-snapshots/"
+}
+
+def getRepositoryUsername() {
+    return 'admin'
+}
+
+def getRepositoryPassword() {
+    return 'xiaokap-0p-0p-0'
+}
+
+//  develop 分支提交的时候打包的aar
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: uri('../repo'))
+//            repository(url: getReleaseRepositoryUrl()) {
+//                authentication(userName: getRepositoryUsername(), password: getRepositoryPassword())
+//            }
+//            snapshotRepository(url: getSnapshotRepositoryUrl()) {
+//                authentication(userName: getRepositoryUsername(), password: getRepositoryPassword())
+//            }
+            pom.groupId = "com.gradle.learn"
+            pom.artifactId = "plugin"
+            pom.version = '1.0.1'
+            pom.name = "plugin"
+            pom.packaging = 'aar'
+        }
+    }
+}

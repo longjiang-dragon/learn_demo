@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <com.hujiang.mytest.widget.TestMeasure
+        android:id="@+id/test_measure"
+        android:layout_width="match_parent"
+        android:layout_height="100px"/>
+    <com.hujiang.mytest.widget.TestMeasureTextView
+        android:layout_width="wrap_content"
+        android:text="哈全哈哈哈合全"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="1、在两个控件不能充满整个屏莫时，后面一个控件跟随前面一个控件\n2、当两个控件超出一个屏幕宽度时，第一个控件末尾省略"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </android.support.v7.widget.RecyclerView>
+</LinearLayout>

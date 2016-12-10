@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest
+    package="com.hujiang.mytest.fragment.aidlFragment"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/Theme.DesignDemo">
+        <activity
+            android:name="com.hujiang.mytest.MainActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data
+                    android:host="scheme"
+                    android:scheme="test"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="com.hujiang.mytest.fragment.CreditActivity"/>
+
+        <service
+            android:name=".MessengerService"
+            android:process=":messengerRemote"/>
+
+    </application>
+
+</manifest>

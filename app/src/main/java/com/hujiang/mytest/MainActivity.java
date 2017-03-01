@@ -24,7 +24,9 @@ import com.hujiang.mytest.fragment.ThreadLocalFragment;
 import com.hujiang.mytest.fragment.TransparentCircleFragment;
 import com.hujiang.mytest.fragment.aidlFragment.AidlFragment;
 import com.hujiang.mytest.fragment.aidlFragment.R;
+import com.hujiang.mytest.fragment.drag.helper.fragment.LearnViewDragHelperFragment;
 import com.hujiang.mytest.fragment.fixHeigth.FixHeightRecyclerViewFragment;
+import com.hujiang.mytest.fragment.open.udid.fragment.OpenUDIDFragment;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -51,10 +53,13 @@ public class MainActivity extends AppCompatActivity {
         initActionBar();
         initViewPagerAndTipView();
         setupDrawerContent();
-
     }
 
+
     private void initFragment() {
+        mFragments.put("learnDragHelperView", new LearnViewDragHelperFragment());
+
+        mFragments.put("openUDIDFragemnt", new OpenUDIDFragment());
         mFragments.put("hook", new HookFragment());
 
         //晚上增加一个属性动画
@@ -96,8 +101,8 @@ public class MainActivity extends AppCompatActivity {
         final ActionBar ab = getSupportActionBar();
         ab.setHomeAsUpIndicator(R.drawable.ic_menu);
         ab.setDisplayHomeAsUpEnabled(true);
-    }
 
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

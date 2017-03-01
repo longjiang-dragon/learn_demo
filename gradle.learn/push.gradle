@@ -30,7 +30,7 @@ uploadArchives {
 //            }
             pom.groupId = "com.gradle.learn"
             pom.artifactId = "plugin"
-            pom.version = '1.0.1'
+            pom.version = '1.0.4'
             pom.name = "plugin"
             pom.packaging = 'aar'
         }

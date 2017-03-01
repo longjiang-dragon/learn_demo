@@ -4,6 +4,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
 
     <application
@@ -33,6 +35,12 @@
         <service
             android:name=".MessengerService"
             android:process=":messengerRemote"/>
+
+        <service android:name="com.hujiang.mytest.fragment.open.udid.fragment.OpenUDID_service">
+            <intent-filter>
+                <action android:name="org.openudid.GETUDID"/>
+            </intent-filter>
+        </service>
 
     </application>
 

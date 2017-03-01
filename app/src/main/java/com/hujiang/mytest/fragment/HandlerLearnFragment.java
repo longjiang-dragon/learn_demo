@@ -72,6 +72,8 @@ public class HandlerLearnFragment extends Fragment {
     @OnClick(R.id.button)
     public void onClick(View pView) {
         Message _message = Message.obtain();
-        mHandler.sendMessage(_message);
+//        _message.sendToTarget();
+        mHandler.sendEmptyMessage(1);
+//        mHandler.sendMessage(_message);
     }
 }

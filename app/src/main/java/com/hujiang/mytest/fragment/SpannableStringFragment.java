@@ -119,8 +119,8 @@ public class SpannableStringFragment extends Fragment {
 
         //设置字体大小(像素)
         pSpannableString.setSpan(new AbsoluteSizeSpan(20), 4, 6, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        //单位 dip
-        pSpannableString.setSpan(new AbsoluteSizeSpan(20, true), 6, 8, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        //单位 dip  表示第 7和8两的字符(从7开始8结束)
+        pSpannableString.setSpan(new AbsoluteSizeSpan(30, true), 6, 8, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         pSpannableString.setSpan(new RelativeSizeSpan(0.5f), 8, 10, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         pSpannableString.setSpan(new RelativeSizeSpan(2.0f), 10, 12, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);

@@ -3,12 +3,13 @@
 buildscript {
     repositories {
         maven {
-            url uri('../analyse-plugin/repo')
+            url uri('/Users/yuefeng/workSpace/demo/myDemo/repo')
         }
         jcenter()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.2.2'
+        classpath 'com.gradle.learn:plugin:1.0.4'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -18,7 +19,7 @@ buildscript {
 allprojects {
     repositories {
         maven {
-            url uri('../analyse-plugin/repo')
+            url uri('/Users/yuefeng/workSpace/demo/myDemo/repo')
         }
         jcenter()
     }

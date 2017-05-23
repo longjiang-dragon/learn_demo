@@ -18,6 +18,7 @@ import com.hujiang.mytest.fragment.CustomDrawableFragment;
 import com.hujiang.mytest.fragment.CustomViewDrawTextBaseLineFragment;
 import com.hujiang.mytest.fragment.HandlerLearnFragment;
 import com.hujiang.mytest.fragment.HookFragment;
+import com.hujiang.mytest.fragment.JNIFragment;
 import com.hujiang.mytest.fragment.SlidingConflictsFragment;
 import com.hujiang.mytest.fragment.SpannableStringFragment;
 import com.hujiang.mytest.fragment.ThreadLocalFragment;
@@ -35,13 +36,13 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
-    @Bind(R.id.toolbar)
+    @Bind (R.id.toolbar)
     Toolbar mToolbar;
-    @Bind(R.id.dl_main_drawer)
+    @Bind (R.id.dl_main_drawer)
     DrawerLayout mDrawerLayout;
-    @Bind(R.id.viewpager)
+    @Bind (R.id.viewpager)
     ViewPager mViewPager;
-    @Bind(R.id.tabs)
+    @Bind (R.id.tabs)
     TabLayout mTabLayout;
     LinkedHashMap<String, Fragment> mFragments = new LinkedHashMap<>();
 
@@ -57,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void initFragment() {
+        mFragments.put("jni", new JNIFragment());
+        mFragments.put("Paint 文字居中", new CustomViewDrawTextBaseLineFragment());
         mFragments.put("learnDragHelperView", new LearnViewDragHelperFragment());
 
         mFragments.put("openUDIDFragemnt", new OpenUDIDFragment());
@@ -64,7 +67,6 @@ public class MainActivity extends AppCompatActivity {
 
         //晚上增加一个属性动画
         mFragments.put("尾部跟随", new AfterFollowFragment());
-        mFragments.put("Paint 文字居中", new CustomViewDrawTextBaseLineFragment());
         mFragments.put("handler", new HandlerLearnFragment());
         mFragments.put("thread_local", new ThreadLocalFragment());
         mFragments.put("custom_drawable", new CustomDrawableFragment());

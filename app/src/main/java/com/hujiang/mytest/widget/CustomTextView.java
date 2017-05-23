@@ -7,6 +7,7 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
+import android.support.v4.content.ContextCompat;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -21,7 +22,8 @@ import com.hujiang.mytest.fragment.aidlFragment.R;
  * @date 15/11/30
  */
 public class CustomTextView extends View {
-    String[] datas = new String[]{"字体占用像素=="};
+    String[] datas = new String[]{"字体占用宽度像素=="};
+    private static final String TEXT_CONTENT = "字体占用宽度像素";
     private TextPaint mPaint;
 
     public CustomTextView(Context context, AttributeSet attrs) {
@@ -32,6 +34,8 @@ public class CustomTextView extends View {
     protected void onDraw(Canvas pCanvas) {
         super.onDraw(pCanvas);
         pCanvas.drawColor(Color.LTGRAY);
+        drawDeformityText(pCanvas);
+        drawNormalText(pCanvas);
         Log.i("info", getMeasuredHeight() + "   " + getMeasuredWidth());
         mPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
         mPaint.density = getResources().getDisplayMetrics().density;
@@ -70,9 +74,43 @@ public class CustomTextView extends View {
         mPaint.setTextAlign(Paint.Align.CENTER);
         pCanvas.drawText(datas[0] + mPaint.measureText(datas[0])
                 , _rectF.centerX(), _baseLine, mPaint);
-//            pCanvas.drawText(datas[0], 0, getMeasuredHeight(), mPaint);
+//            pCanvas.drawText(TEXT_CONTENT, 0, getMeasuredHeight(), mPaint);
 
         test(pCanvas);
+    }
+
+    private void drawNormalText(Canvas canvas) {
+        canvas.save();
+        canvas.translate(100, 900);
+        Rect targetRect = new Rect(0, 0, 800, 200);
+        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        paint.setColor(ContextCompat.getColor(getContext(), android.R.color.holo_blue_bright));
+        //background
+        canvas.drawRect(targetRect, paint);
+        paint.setColor(ContextCompat.getColor(getContext(), android.R.color.white));
+        paint.setTextSize(80);
+        paint.setStrokeWidth(3);
+        Paint.FontMetricsInt fontMetrics = paint.getFontMetricsInt();
+        int baseLine = targetRect.centerY() - (fontMetrics.bottom + (-fontMetrics.top)) / 2 + (-fontMetrics.top);
+        paint.setTextAlign(Paint.Align.CENTER);
+        canvas.drawText(TEXT_CONTENT, targetRect.centerX(), baseLine, paint);
+        canvas.restore();
+    }
+
+    private void drawDeformityText(Canvas canvas) {
+        canvas.save();
+        canvas.translate(100, 600);
+        Rect targetRect = new Rect(0, 0, 800, 200);
+        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        paint.setColor(ContextCompat.getColor(getContext(), android.R.color.holo_blue_bright));
+        //background
+        canvas.drawRect(targetRect, paint);
+
+        paint.setColor(ContextCompat.getColor(getContext(), android.R.color.white));
+        paint.setTextSize(80);
+        paint.setStrokeWidth(3);
+        canvas.drawText(TEXT_CONTENT, targetRect.left, targetRect.centerY(), paint);
+        canvas.restore();
     }
 
     /**
@@ -131,7 +169,7 @@ public class CustomTextView extends View {
         pCanvas.translate(_x, _y);
         pCanvas.drawRect(_bound2, _paint);
         pCanvas.restore();
-//baseline
+        //baseline
         _paint.setColor(Color.RED);
         pCanvas.drawLine(_x, _y, 1024, _y, _paint);
         //ascent()
@@ -147,10 +185,6 @@ public class CustomTextView extends View {
         //bottom
         _paint.setColor(Color.GREEN);
         pCanvas.drawLine(_x, _y + _fontMetricsInt.bottom, 1024, _y + _fontMetricsInt.bottom, _paint);
-        /**
-         * 得出计算baseLine公式
-         *
-         */
 
     }
 

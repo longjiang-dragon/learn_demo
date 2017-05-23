@@ -58,7 +58,7 @@ public class DragChildLinearLayout extends LinearLayout {
         }
         @Override
         public int clampViewPositionHorizontal(View child, int left, int dx) {
-            Log.d("DragLayout","clampViewPositionHorizontal " + left + "," + dx);
+            Log.d("DragLayout","clampViewPositionHorizontal " + left + "," + dx+"   "+child.getLeft());
             final int leftBound =getPaddingLeft();
             final int rightBound = getWidth() -mDragView1.getWidth();
             final int newLeft =Math.min(Math.max(left, leftBound), rightBound);

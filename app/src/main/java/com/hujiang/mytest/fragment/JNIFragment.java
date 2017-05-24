@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.hujiang.mytest.fragment.aidlFragment.R;
 
@@ -17,16 +18,36 @@ import com.hujiang.mytest.fragment.aidlFragment.R;
  * @date 2017/5/23
  */
 public class JNIFragment extends Fragment {
+    private TextView mTextView;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_jni_layout, container, false);
+        View view = inflater.inflate(R.layout.fragment_jni_layout, container, false);
+        initView(view);
+        setDataToView();
+        runTestCode();
+        return view;
     }
 
-    public native String  stringFromJNI();
+    private void initView(View view) {
+        mTextView = (TextView) view.findViewById(R.id.tv);
+    }
+
+
+    private void setDataToView() {
+        mTextView.setText(stringFromJNI());
+        javaToNative(JNIFragment.class.getSimpleName());
+    }
+
+    public native String stringFromJNI();
+
+    public native void javaToNative(String className);
+
+    public native void runTestCode();
 
     static {
-        System.loadLibrary("jni_frist_test");
+        System.loadLibrary("jni_first_test");
     }
 
 }

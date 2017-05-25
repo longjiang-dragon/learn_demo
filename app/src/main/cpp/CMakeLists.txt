@@ -6,7 +6,8 @@ add_library(jni_first_test SHARED
            jni_first_test.cpp
            PrintLog.cpp
            Book.cpp
-           BookManager.cpp)
+           BookManager.cpp
+           TemplateDemo.h)
 
 # Include libraries needed for hello-jni lib
 target_link_libraries(jni_first_test

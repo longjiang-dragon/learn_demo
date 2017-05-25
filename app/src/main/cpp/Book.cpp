@@ -3,7 +3,9 @@
 //
 #include "Book.h"
 
-Book::Book() {}
+Book::Book() {
+    Book("default book");
+}
 
 Book::Book(string bookName) {
     mBookName = bookName;
@@ -15,6 +17,14 @@ string Book::getBookName() {
 
 void Book::modificationBookName(string newBookName) {
     mBookName = newBookName;
+}
+
+int Book::getBookPrice() const {
+    return mBookPrice;
+}
+
+void Book::setBookPrice(int bookPrice) {
+    mBookPrice = bookPrice;
 }
 
 

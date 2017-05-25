@@ -4,11 +4,14 @@
 
 #include <string>
 #include <jni.h>
-#include "PrintLog.h"
+#include "BookManager.h"
+
 
 using namespace std;
 
-PrintLog *test;
+PrintLog *printLog;
+BookManager *bookManager;
+
 
 extern "C" JNIEXPORT jstring JNICALL
 Java_com_hujiang_mytest_fragment_JNIFragment_stringFromJNI(JNIEnv *env, jobject thiz) {
@@ -21,12 +24,13 @@ Java_com_hujiang_mytest_fragment_JNIFragment_javaToNative(JNIEnv *env, jobject t
                                                           jstring className) {
 
     const char *utf8 = env->GetStringUTFChars(className, NULL);
-    test->printMeg(utf8);
+    printLog->printMeg(utf8);
 }
 
 
 extern "C" JNIEXPORT void JNICALL
-Java_com_hujiang_mytest_fragment_JNIFragment_runTestCode(JNIEnv *env, jobject thiz,
-                                                         jstring className) {
+Java_com_hujiang_mytest_fragment_JNIFragment_runTestCode(JNIEnv *env, jobject thiz) {
+    bookManager = new BookManager();
+    bookManager->start();
 
 }

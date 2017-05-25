@@ -16,6 +16,10 @@ public:
 
     string getBookName();
 
+    int getBookPrice() const ;
+
+    void setBookPrice(int bookPrice);
+
 private:
     string mBookName;
     int mBookPrice;

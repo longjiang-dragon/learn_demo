@@ -9,6 +9,9 @@
 #include <android/log.h>
 #include <iostream>
 
+using namespace std;
+
+
 
 //fprintf  用于打印内容到文件
 /**
@@ -20,4 +23,15 @@
 void PrintLog::printMeg(string msgContent) {
     LOGV("%s", msgContent.data());
     cout << msgContent << endl;
+}
+
+void PrintLog::printMeg(int msg) {
+    printMeg(to_string(msg));
+}
+
+
+string PrintLog::to_string(int _Val) {
+    char _Buf[256];
+    sprintf(_Buf, "%d", _Val);
+    return (string(_Buf));
 }

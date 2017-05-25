@@ -9,9 +9,13 @@
 
 #include <string>
 
-using namespace std;
 
 class PrintLog {
 public:
-    void printMeg(string msgContent);
+    void printMeg(std::string msgContent);
+
+    void printMeg(int msg);
+
+private:
+    std::string to_string(int _Val);
 };

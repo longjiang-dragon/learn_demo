@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.hujiang.mytest.MainTwoActivity;
 import com.hujiang.mytest.fragment.aidlFragment.R;
 
 
@@ -17,7 +18,7 @@ import com.hujiang.mytest.fragment.aidlFragment.R;
  * @desc
  * @date 2017/5/23
  */
-public class JNIFragment extends Fragment {
+public class JNIFragment extends Fragment implements View.OnClickListener {
     private TextView mTextView;
 
     @Nullable
@@ -32,6 +33,7 @@ public class JNIFragment extends Fragment {
 
     private void initView(View view) {
         mTextView = (TextView) view.findViewById(R.id.tv);
+        mTextView.setOnClickListener(this);
     }
 
 
@@ -50,4 +52,9 @@ public class JNIFragment extends Fragment {
         System.loadLibrary("jni_first_test");
     }
 
+    @Override
+    public void onClick(View v) {
+        //作测试excludeFromRecents用
+        MainTwoActivity.launch(getActivity());
+    }
 }

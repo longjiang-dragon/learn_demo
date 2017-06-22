@@ -30,7 +30,11 @@ BookManager::BookManager() {
     myBook3 = new Book("C_PLUS");
     myBook3->setBookPrice(300);
 
+    myBook4 = new Book("JS");
+    myBook4->setBookPrice(400);
+
     printLog = new PrintLog();
+
 }
 
 void BookManager::start() {
@@ -49,6 +53,11 @@ void BookManager::start() {
     }
     printLog->printMeg(bookList.find("C_PLUS")->second.getBookPrice());//查找一个元素
 
+    printLog->printMeg(bookList.size());
+    bookList.erase(bookList.begin());//删除一个item
+    printLog->printMeg(bookList.size());
+
+
     //迭代器操作
     map<string, Book>::iterator aa = bookList.begin();
     while (aa != bookList.end()) {
@@ -59,6 +68,7 @@ void BookManager::start() {
     auto first_item_add = bookList.begin();//是一个指向pair地址的引用
     printLog->printMeg(first_item_add->first);
 
+
 }
 
 void BookManager::testStack() {
@@ -67,5 +77,6 @@ void BookManager::testStack() {
     bookStack1.push(*myBook2);
     bookStack1.push(*myBook3);
     printLog->printMeg(bookStack1.top().getBookName());
+
 
 }

@@ -21,6 +21,7 @@ private:
     Book *myBook1;
     Book *myBook2;
     Book *myBook3;
+    Book *myBook4;
 
     PrintLog *printLog;
 };

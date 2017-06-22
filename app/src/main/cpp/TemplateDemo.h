@@ -24,6 +24,10 @@ public:
 
     T top() const;
 
+    //__user宏简单告诉编译器（通过 noderef）不应该解除这个指针的引用(linux内核中)
+    void copy_to_user(void __user *to, const void *from, unsigned long n);
+
+
     bool empty() const {
         return numElems == 0;
     }

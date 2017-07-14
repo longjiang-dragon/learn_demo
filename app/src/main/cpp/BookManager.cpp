@@ -5,6 +5,7 @@
 #include <vector>
 #include <map>
 #include "TemplateDemo.h"
+#include "Test2.h"
 
 //#include <vector>
 //#include <deque>
@@ -67,7 +68,7 @@ void BookManager::start() {
 
     auto first_item_add = bookList.begin();//是一个指向pair地址的引用
     printLog->printMeg(first_item_add->first);
-
+    fun2();
 
 }
 

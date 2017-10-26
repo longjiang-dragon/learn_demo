@@ -48,16 +48,17 @@ public class AidlFragment extends Fragment {
     private ServiceConnection mServiceConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
-            IBookManager _IBookManager = IBookManager.Stub.asInterface(service);
+            IBookManager iBookManager = IBookManager.Stub.asInterface(service);
             try {
-                List<Book> _liBooks = _IBookManager.getBookList();
-                mTextView.setText(_liBooks.toString());
+                List<Book> bookList = iBookManager.getBookList();
+                mTextView.setText(bookList.toString());
                 //添加一本书
                 Book _Book=new Book(10003,"macBook");
-                _IBookManager.addBook(_Book);
-                _liBooks=_IBookManager.getBookList();
+                iBookManager.addBook(_Book);
+
+                bookList=iBookManager.getBookList();
                 mTextView.append("\n");
-                mTextView.append(_liBooks.toString());
+                mTextView.append(bookList.toString());
 
 
             } catch (RemoteException e) {

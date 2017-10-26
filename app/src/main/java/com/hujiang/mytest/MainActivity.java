@@ -10,6 +10,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -36,13 +37,13 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
-    @Bind (R.id.toolbar)
+    @Bind(R.id.toolbar)
     Toolbar mToolbar;
-    @Bind (R.id.dl_main_drawer)
+    @Bind(R.id.dl_main_drawer)
     DrawerLayout mDrawerLayout;
-    @Bind (R.id.viewpager)
+    @Bind(R.id.viewpager)
     ViewPager mViewPager;
-    @Bind (R.id.tabs)
+    @Bind(R.id.tabs)
     TabLayout mTabLayout;
     LinkedHashMap<String, Fragment> mFragments = new LinkedHashMap<>();
 
@@ -54,10 +55,16 @@ public class MainActivity extends AppCompatActivity {
         initActionBar();
         initViewPagerAndTipView();
         setupDrawerContent();
+        Log.i("info", getApplicationContext().getDir("cache", 0).getPath());
+        Log.i("info", getApplicationContext().getCacheDir().getPath());
+        Log.i("info", getApplicationContext().getExternalCacheDir().getPath());
+
+
     }
 
 
     private void initFragment() {
+        mFragments.put("recyclerViewFixHeigth", new FixHeightRecyclerViewFragment());
         mFragments.put("jni", new JNIFragment());
         mFragments.put("Paint 文字居中", new CustomViewDrawTextBaseLineFragment());
         mFragments.put("learnDragHelperView", new LearnViewDragHelperFragment());
@@ -74,8 +81,6 @@ public class MainActivity extends AppCompatActivity {
         mFragments.put("transparentCircle", new TransparentCircleFragment());
         mFragments.put("spannablestring", new SpannableStringFragment());
         mFragments.put("滑动冲突处理", new SlidingConflictsFragment());
-        mFragments.put("recyclerViewFixHeigth", new FixHeightRecyclerViewFragment());
-
 
         mFragments.put("Page Two", new ListFragment());
 

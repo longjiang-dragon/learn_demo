@@ -8,7 +8,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.2'
+        classpath 'com.android.tools.build:gradle:2.3.3'
         classpath 'com.gradle.learn:plugin:1.0.4'
 
         // NOTE: Do not place your application dependencies here; they belong
@@ -21,6 +21,8 @@ allprojects {
         maven {
             url uri('/Users/yuefeng/workSpace/demo/myDemo/repo')
         }
+        maven { url 'https://maven.google.com' }
         jcenter()
     }
+
 }

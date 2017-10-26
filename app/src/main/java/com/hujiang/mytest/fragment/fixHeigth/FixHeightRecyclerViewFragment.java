@@ -80,8 +80,6 @@ public class FixHeightRecyclerViewFragment extends Fragment implements SwipeRefr
             public void dataBind(int pPosition) {
                 mTextView.append("滑动冲突测试item====" + pPosition);
                 mTextView.append("滑动冲突测试item====" + pPosition);
-
-
             }
 
             public ItemHolder(View itemView) {

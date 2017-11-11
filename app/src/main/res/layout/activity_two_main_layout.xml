@@ -6,6 +6,6 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:text="此页面单独显示在一个进程中\n            android:excludeFromRecents='true'可让此页面不出现在最近打开的页面当中"/>
 </LinearLayout>

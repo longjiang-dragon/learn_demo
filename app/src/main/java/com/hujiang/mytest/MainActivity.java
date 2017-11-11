@@ -15,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.hujiang.mytest.fragment.AfterFollowFragment;
+import com.hujiang.mytest.fragment.ConstraintTestFragment;
 import com.hujiang.mytest.fragment.CustomDrawableFragment;
 import com.hujiang.mytest.fragment.CustomViewDrawTextBaseLineFragment;
 import com.hujiang.mytest.fragment.HandlerLearnFragment;
@@ -64,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void initFragment() {
+        mFragments.put("constraint_test", new ConstraintTestFragment());
+
         mFragments.put("recyclerViewFixHeigth", new FixHeightRecyclerViewFragment());
         mFragments.put("jni", new JNIFragment());
         mFragments.put("Paint 文字居中", new CustomViewDrawTextBaseLineFragment());

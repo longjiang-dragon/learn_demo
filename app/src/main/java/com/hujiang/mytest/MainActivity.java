@@ -29,6 +29,8 @@ import com.hujiang.mytest.fragment.aidlFragment.AidlFragment;
 import com.hujiang.mytest.fragment.aidlFragment.R;
 import com.hujiang.mytest.fragment.drag.helper.fragment.LearnViewDragHelperFragment;
 import com.hujiang.mytest.fragment.fixHeigth.FixHeightRecyclerViewFragment;
+import com.hujiang.mytest.fragment.hencoder.draw1.CustomViewFragment1;
+import com.hujiang.mytest.fragment.hencoder.draw2.CustomViewFragment2;
 import com.hujiang.mytest.fragment.open.udid.fragment.OpenUDIDFragment;
 
 import java.util.ArrayList;
@@ -60,11 +62,12 @@ public class MainActivity extends AppCompatActivity {
         Log.i("info", getApplicationContext().getCacheDir().getPath());
         Log.i("info", getApplicationContext().getExternalCacheDir().getPath());
 
-
     }
 
 
     private void initFragment() {
+        mFragments.put("CustomView1_2", new CustomViewFragment2());
+        mFragments.put("CustomView1_1", new CustomViewFragment1());
         mFragments.put("constraint_test", new ConstraintTestFragment());
 
         mFragments.put("recyclerViewFixHeigth", new FixHeightRecyclerViewFragment());

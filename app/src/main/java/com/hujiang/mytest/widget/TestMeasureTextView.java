@@ -20,6 +20,7 @@ public class TestMeasureTextView extends TextView {
 	@Override
 	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
 		Log.i(KEY_lOG,getMeasuredWidth()+"");
+		resolveSize()
 		super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 	}
 }

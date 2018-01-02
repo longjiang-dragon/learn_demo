@@ -30,7 +30,7 @@ public class RoundImageDrawable extends Drawable {
 
     @Override
     public void draw(Canvas canvas) {
-        canvas.drawRoundRect(mRectF,30,30,mPaint);
+        canvas.drawRoundRect(mRectF,20,20,mPaint);
     }
 
     @Override

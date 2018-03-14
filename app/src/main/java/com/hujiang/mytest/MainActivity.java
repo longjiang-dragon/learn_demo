@@ -24,7 +24,9 @@ import com.hujiang.mytest.fragment.JNIFragment;
 import com.hujiang.mytest.fragment.SlidingConflictsFragment;
 import com.hujiang.mytest.fragment.SpannableStringFragment;
 import com.hujiang.mytest.fragment.ThreadLocalFragment;
+import com.hujiang.mytest.fragment.ThreadPoolFragment;
 import com.hujiang.mytest.fragment.TransparentCircleFragment;
+import com.hujiang.mytest.fragment.ViewAnimationFragment;
 import com.hujiang.mytest.fragment.aidlFragment.AidlFragment;
 import com.hujiang.mytest.fragment.aidlFragment.R;
 import com.hujiang.mytest.fragment.drag.helper.fragment.LearnViewDragHelperFragment;
@@ -62,11 +64,12 @@ public class MainActivity extends AppCompatActivity {
         Log.i("info", getApplicationContext().getDir("cache", 0).getPath());
         Log.i("info", getApplicationContext().getCacheDir().getPath());
         Log.i("info", getApplicationContext().getExternalCacheDir().getPath());
-
     }
 
 
     private void initFragment() {
+        mFragments.put("view_animation", new ViewAnimationFragment());
+        mFragments.put("ThreadPool", new ThreadPoolFragment());
         mFragments.put("CustomView1_4", new PracticeDraw4());
 
         mFragments.put("CustomView1_2", new CustomViewFragment2());

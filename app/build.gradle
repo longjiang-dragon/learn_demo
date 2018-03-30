@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
 apply plugin: 'com.gradle.learn'
 
 
@@ -92,7 +93,11 @@ dependencies {
 
     //对rxjava的支持
     compile "android.arch.persistence.room:rxjava2:1.0.0-alpha9"
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 
 
+}
+repositories {
+    mavenCentral()
 }
 

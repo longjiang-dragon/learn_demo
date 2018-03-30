@@ -21,6 +21,7 @@ import com.hujiang.mytest.fragment.CustomViewDrawTextBaseLineFragment;
 import com.hujiang.mytest.fragment.HandlerLearnFragment;
 import com.hujiang.mytest.fragment.HookFragment;
 import com.hujiang.mytest.fragment.JNIFragment;
+import com.hujiang.mytest.fragment.KotlinLearn;
 import com.hujiang.mytest.fragment.SlidingConflictsFragment;
 import com.hujiang.mytest.fragment.SpannableStringFragment;
 import com.hujiang.mytest.fragment.ThreadLocalFragment;
@@ -68,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void initFragment() {
+        mFragments.put("kotlin_learn", new KotlinLearn());
         mFragments.put("view_animation", new ViewAnimationFragment());
         mFragments.put("ThreadPool", new ThreadPoolFragment());
         mFragments.put("CustomView1_4", new PracticeDraw4());

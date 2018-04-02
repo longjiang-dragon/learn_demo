@@ -20,7 +20,7 @@ public class TaskManagerBuild {
     public TaskManagerBuild addChildNode(LibInitiation libInitiation) {
         if (null == libInitiation) return this;
         this.mTempTaskInfo = generateTaskInfo(libInitiation);
-        if (isRootNode()) {
+        if (isAddRootNode()) {
             this.mRootTaskInfo = mTempTaskInfo;
         } else {
             this.mCurrentTaskInfo.addToChildTaskList(mTempTaskInfo);
@@ -32,11 +32,18 @@ public class TaskManagerBuild {
     public TaskManagerBuild addParentNode(LibInitiation libInitiation) {
         if (null == libInitiation) return this;
         this.mTempTaskInfo = generateTaskInfo(libInitiation);
-        if (isRootNode()) {
+        if (isAddRootNode()) {
+            //不存在root节点的情况
+            this.mRootTaskInfo = mTempTaskInfo;
+        } else if (isReplaceRootNode()) {
+            //替换root节点
+            this.mRootTaskInfo.addToParentTaskList(this.mTempTaskInfo);
             this.mRootTaskInfo = mTempTaskInfo;
         } else {
             mCurrentTaskInfo.addToParentTaskList(mTempTaskInfo);
         }
+
+
         this.mCurrentTaskInfo = mTempTaskInfo;
         return this;
     }
@@ -45,7 +52,7 @@ public class TaskManagerBuild {
         return new TaskInfo(libInitiation, mApplication);
     }
 
-    private boolean isRootNode() {
+    private boolean isAddRootNode() {
         return null == mRootTaskInfo;
     }
 
@@ -54,4 +61,7 @@ public class TaskManagerBuild {
     }
 
 
+    public boolean isReplaceRootNode() {
+        return mRootTaskInfo == mCurrentTaskInfo;
+    }
 }

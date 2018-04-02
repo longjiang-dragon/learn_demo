@@ -35,6 +35,7 @@ import com.hujiang.mytest.fragment.fixHeigth.FixHeightRecyclerViewFragment;
 import com.hujiang.mytest.fragment.hencoder.draw1.CustomViewFragment1;
 import com.hujiang.mytest.fragment.hencoder.draw2.CustomViewFragment2;
 import com.hujiang.mytest.fragment.hencoder.draw4.PracticeDraw4;
+import com.hujiang.mytest.fragment.manager.TaskManagerFragment;
 import com.hujiang.mytest.fragment.open.udid.fragment.OpenUDIDFragment;
 
 import java.util.ArrayList;
@@ -69,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void initFragment() {
+        mFragments.put("task_manager", new TaskManagerFragment());
         mFragments.put("kotlin_learn", new KotlinLearn());
         mFragments.put("view_animation", new ViewAnimationFragment());
         mFragments.put("ThreadPool", new ThreadPoolFragment());

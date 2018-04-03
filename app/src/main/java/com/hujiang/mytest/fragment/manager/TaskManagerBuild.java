@@ -2,6 +2,7 @@ package com.hujiang.mytest.fragment.manager;
 
 import android.app.Application;
 import android.text.TextUtils;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -14,7 +15,7 @@ import java.util.List;
 //1、默认添加到root节点
 //2、通过ap
 public class TaskManagerBuild {
-    private TaskInfo<LibInitiation> mRootTaskInfo;
+    private TaskInfo mRootTaskInfo;
     private Application mApplication;
 
     public TaskManagerBuild(Application application) {
@@ -27,8 +28,12 @@ public class TaskManagerBuild {
     }
 
     public TaskManagerBuild addNode(LibInitiation libInitiation, String ParentNodeClassName) {
-        TaskInfo<LibInitiation> tempTaskInfo = generateTaskInfo(libInitiation);
-        TaskInfo<LibInitiation> parentTaskInfo = findParentNodeByClassName(ParentNodeClassName);
+        TaskInfo tempTaskInfo = generateTaskInfo(libInitiation);
+        if (isSameNode(libInitiation)) {
+            Toast.makeText(mApplication, "添加了两个相同的task", Toast.LENGTH_SHORT).show();
+            return this;
+        }
+        TaskInfo parentTaskInfo = findNodeByClassName(ParentNodeClassName);
         if (isAddRootNode()) {
             //不存在root节点的情况
             this.mRootTaskInfo = tempTaskInfo;
@@ -38,28 +43,34 @@ public class TaskManagerBuild {
         return this;
     }
 
+    private boolean isSameNode(LibInitiation libInitiation) {
+        TaskInfo temp = findNodeByClassName(libInitiation.getClass().getSimpleName());
+        if (null == temp) return false;
+        return true;
+    }
 
-    private void addNode(TaskInfo<LibInitiation> newTaskInfo, TaskInfo<LibInitiation> desTaskInfo) {
-        if (null == desTaskInfo) {
+
+    private void addNode(TaskInfo newTaskInfo, TaskInfo parentTaskInfo) {
+        if (null == parentTaskInfo) {
             mRootTaskInfo.addToChildTaskList(newTaskInfo);
         } else {
-            desTaskInfo.addToChildTaskList(newTaskInfo);
+            parentTaskInfo.addToChildTaskList(newTaskInfo);
         }
     }
 
-    private TaskInfo<LibInitiation> findParentNodeByClassName(String parentNodeClassName) {
+    private TaskInfo findNodeByClassName(String parentNodeClassName) {
         if (TextUtils.isEmpty(parentNodeClassName)) return null;
         if (null == mRootTaskInfo) return null;
-        return findParentNodeByClassName(mRootTaskInfo.getChildTaskList(), parentNodeClassName);
+        return findNodeByClassName(mRootTaskInfo.getChildTaskList(), parentNodeClassName);
     }
 
-    private TaskInfo<LibInitiation> findParentNodeByClassName(List<TaskInfo<LibInitiation>> childTaskInfoList, String descClassname) {
-        TaskInfo<LibInitiation> tempTaskInfo;
-        for (TaskInfo<LibInitiation> taskInfo : childTaskInfoList) {
+    private TaskInfo findNodeByClassName(List<TaskInfo> childTaskInfoList, String descClassname) {
+        TaskInfo tempTaskInfo;
+        for (TaskInfo taskInfo : childTaskInfoList) {
             if (taskInfo.equals(descClassname)) {
                 return taskInfo;
             } else {
-                tempTaskInfo = findParentNodeByClassName(taskInfo.getChildTaskList(), descClassname);
+                tempTaskInfo = findNodeByClassName(taskInfo.getChildTaskList(), descClassname);
                 if (null != tempTaskInfo) return tempTaskInfo;
             }
 
@@ -67,8 +78,8 @@ public class TaskManagerBuild {
         return null;
     }
 
-    private TaskInfo<LibInitiation> generateTaskInfo(LibInitiation libInitiation) {
-        return new TaskInfo<>(libInitiation, mApplication);
+    private TaskInfo generateTaskInfo(LibInitiation libInitiation) {
+        return new TaskInfo(libInitiation, mApplication);
     }
 
     private boolean isAddRootNode() {

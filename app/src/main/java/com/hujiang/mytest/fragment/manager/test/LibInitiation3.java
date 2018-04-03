@@ -19,6 +19,6 @@ public class LibInitiation3 implements LibInitiation {
 
     @Override
     public boolean isSyncExecute() {
-        return false;
+        return true;
     }
 }

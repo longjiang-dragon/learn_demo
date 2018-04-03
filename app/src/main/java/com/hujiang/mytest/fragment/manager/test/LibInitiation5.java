@@ -13,12 +13,13 @@ import com.hujiang.mytest.fragment.manager.LibInitiation;
 public class LibInitiation5 implements LibInitiation {
     @Override
     public void libInitiationStart(Application application) {
+
         Log.i("LibInitiation","LibInitiation5");
 
     }
 
     @Override
     public boolean isSyncExecute() {
-        return false;
+        return true;
     }
 }

@@ -4,6 +4,7 @@ import android.app.Application;
 import android.util.Log;
 
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.ExecutorService;
 
 
 /**
@@ -11,21 +12,22 @@ import java.util.concurrent.CopyOnWriteArrayList;
  * @desc
  * @date 2018/3/30
  */
-public class TaskInfo<T extends LibInitiation> {
-    private boolean isCompleted;//当前task是否执行完成
-    private T mLibInitiation;
+public class TaskInfo {
+    private volatile boolean isCompleted;//当前task是否执行完成
+    private volatile boolean isRunning;
+    private LibInitiation mLibInitiation;
     private Application mApplication;
 
-    private CopyOnWriteArrayList<TaskInfo<T>> mParentTaskList;
-    private CopyOnWriteArrayList<TaskInfo<T>> mChildTaskList;
+    private CopyOnWriteArrayList<TaskInfo> mParentTaskList;
+    private CopyOnWriteArrayList<TaskInfo> mChildTaskList;
 
 
-    public TaskInfo(T libInitiation, Application application) {
+    public TaskInfo(LibInitiation libInitiation, Application application) {
         this.mLibInitiation = libInitiation;
         this.mApplication = application;
     }
 
-    public void addToChildTaskList(TaskInfo<T> childTaskInfo) {
+    public void addToChildTaskList(TaskInfo childTaskInfo) {
         if (null == childTaskInfo) return;
         if (null == mChildTaskList) {
             mChildTaskList = new CopyOnWriteArrayList<>();
@@ -34,7 +36,7 @@ public class TaskInfo<T extends LibInitiation> {
         mChildTaskList.add(childTaskInfo);
     }
 
-    public void addToParentTaskList(TaskInfo<T> parentTaskInfo) {
+    public void addToParentTaskList(TaskInfo parentTaskInfo) {
         if (null == parentTaskInfo) return;
         if (null == mParentTaskList) {
             mParentTaskList = new CopyOnWriteArrayList<>();
@@ -45,25 +47,25 @@ public class TaskInfo<T extends LibInitiation> {
 
 
     //将两个node  建立关联
-    private void childAndParentLink(TaskInfo<T> childTask, TaskInfo<T> parentTask) {
+    private void childAndParentLink(TaskInfo childTask, TaskInfo parentTask) {
         if (null == parentTask) return;
         parentTask.getChildTaskList().add(childTask);
         childTask.getParentTaskList().add(parentTask);
     }
 
-    private TaskInfo<T> getFirstParentTask() {
+    private TaskInfo getFirstParentTask() {
         if (null == mParentTaskList || mParentTaskList.isEmpty()) return null;
         return mParentTaskList.get(0);
     }
 
-    private CopyOnWriteArrayList<TaskInfo<T>> getParentTaskList() {
+    private CopyOnWriteArrayList<TaskInfo> getParentTaskList() {
         if (null == mParentTaskList) {
             mParentTaskList = new CopyOnWriteArrayList<>();
         }
         return mParentTaskList;
     }
 
-    public CopyOnWriteArrayList<TaskInfo<T>> getChildTaskList() {
+    public CopyOnWriteArrayList<TaskInfo> getChildTaskList() {
         if (null == mChildTaskList) {
             mChildTaskList = new CopyOnWriteArrayList<>();
         }
@@ -71,14 +73,14 @@ public class TaskInfo<T extends LibInitiation> {
     }
 
 
-
     //开始执行当前任务
-    public void startExecute() {
-        if (!isExecutable()) return;//不能执行
+    public void startExecute(ExecutorService asyncExecutor) {
+        if (!isExecutable() || isCompleted || isRunning) return;//不能执行
+        isRunning = true;
         if (this.mLibInitiation.isSyncExecute()) {
             startSyncExecute();
         } else {
-            startAsyncExecute();
+            startAsyncExecute(asyncExecutor);
         }
 //        printLog();
     }
@@ -93,18 +95,20 @@ public class TaskInfo<T extends LibInitiation> {
             stringBuilder.append("childSize=");
             stringBuilder.append(mChildTaskList.size());
             stringBuilder.append("   ");
-            for (TaskInfo<T> taskInfo : mChildTaskList) {
-                stringBuilder.append(taskInfo.getLibInitiation().getClass().getSimpleName()+"     ");
+            for (TaskInfo taskInfo : mChildTaskList) {
+                stringBuilder.append(taskInfo.getLibInitiation().getClass().getSimpleName() + "     ");
             }
         }
         Log.e("LibInitiation", stringBuilder.toString());
     }
 
-    //异步执行，但现在的异步执行并不是等异步执行完成后，再执行下一个任务
-    private void startAsyncExecute() {
-        // TODO: 2018/3/30 这里待实现
-        this.mLibInitiation.libInitiationStart(mApplication);
-        this.isCompleted = true;
+    private void startAsyncExecute(ExecutorService asyncExecutor) {
+        asyncExecutor.execute(new Runnable() {
+            @Override
+            public void run() {
+                startSyncExecute();
+            }
+        });
     }
 
     //同步执行
@@ -117,7 +121,7 @@ public class TaskInfo<T extends LibInitiation> {
     //判断当前task是否可执行。（一个task可有多个parent，如果parent未执行完成，此task需等待所有的parent执行完成）
     public boolean isExecutable() {
         if (null == mParentTaskList || mParentTaskList.isEmpty()) return true;
-        for (TaskInfo<T> taskInfo : mParentTaskList) {
+        for (TaskInfo taskInfo : mParentTaskList) {
             if (!taskInfo.isCompleted) {
 //                Log.i("LibInitiation", "isExecutable===false");
                 return false;
@@ -126,12 +130,18 @@ public class TaskInfo<T extends LibInitiation> {
         return true;
     }
 
-    public T getLibInitiation() {
+    public LibInitiation getLibInitiation() {
         return mLibInitiation;
+    }
+
+
+    public boolean isCompleted() {
+        return isCompleted;
     }
 
     @Override
     public boolean equals(Object o) {
+        if (null == o) return false;
         if (!(o instanceof String)) return false;
         return mLibInitiation.getClass().getSimpleName().equals(o);
     }

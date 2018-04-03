@@ -18,6 +18,6 @@ public class LibInitiation6 implements LibInitiation {
 
     @Override
     public boolean isSyncExecute() {
-        return true;
+        return false;
     }
 }

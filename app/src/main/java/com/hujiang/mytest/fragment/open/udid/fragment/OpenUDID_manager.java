@@ -170,7 +170,7 @@ public class OpenUDID_manager implements ServiceConnection {
     }
 
     /**
-     * The Method the call at the init of your app
+     * The Method the call at the startInit of your app
      *
      * @param context you current context
      */

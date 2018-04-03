@@ -7,12 +7,6 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 
 /**
- * 如当前节点有两个parent，此时再在当前节点之前添加一个节点，那么新添加这个节点的parent该指定那一个叱？
- * 如果一个task的parent是异步的，怎样保证child在parent之后执行？（现在是异步task启动时，就将此task标记为已完成），而且现在一个task是否能加入到queue中，
- * 是根据这个task是否可执行，这样是否会导致某个task不会被执行到？？？
- */
-
-/**
  * @author jianglong
  * @desc
  * @date 2018/3/30
@@ -31,7 +25,7 @@ public class TaskInfo<T extends LibInitiation> {
         this.mApplication = application;
     }
 
-    public void addToChildTaskList(TaskInfo childTaskInfo) {
+    public void addToChildTaskList(TaskInfo<T> childTaskInfo) {
         if (null == childTaskInfo) return;
         if (null == mChildTaskList) {
             mChildTaskList = new CopyOnWriteArrayList<>();
@@ -40,29 +34,29 @@ public class TaskInfo<T extends LibInitiation> {
         mChildTaskList.add(childTaskInfo);
     }
 
-    public void addToParentTaskList(TaskInfo parentTaskInfo) {
+    public void addToParentTaskList(TaskInfo<T> parentTaskInfo) {
         if (null == parentTaskInfo) return;
         if (null == mParentTaskList) {
             mParentTaskList = new CopyOnWriteArrayList<>();
         }
-        childTaskAndParentTaskLink(parentTaskInfo, getFirstParentTask());
-        childTaskAndParentTaskLink(this, parentTaskInfo);
+        childAndParentLink(parentTaskInfo, getFirstParentTask());
+        childAndParentLink(this, parentTaskInfo);
     }
 
 
     //将两个node  建立关联
-    private void childTaskAndParentTaskLink(TaskInfo childTask, TaskInfo parentTask) {
+    private void childAndParentLink(TaskInfo<T> childTask, TaskInfo<T> parentTask) {
         if (null == parentTask) return;
         parentTask.getChildTaskList().add(childTask);
         childTask.getParentTaskList().add(parentTask);
     }
 
-    private TaskInfo getFirstParentTask() {
+    private TaskInfo<T> getFirstParentTask() {
         if (null == mParentTaskList || mParentTaskList.isEmpty()) return null;
         return mParentTaskList.get(0);
     }
 
-    public CopyOnWriteArrayList<TaskInfo<T>> getParentTaskList() {
+    private CopyOnWriteArrayList<TaskInfo<T>> getParentTaskList() {
         if (null == mParentTaskList) {
             mParentTaskList = new CopyOnWriteArrayList<>();
         }
@@ -76,9 +70,6 @@ public class TaskInfo<T extends LibInitiation> {
         return mChildTaskList;
     }
 
-    public boolean isCompleted() {
-        return isCompleted;
-    }
 
 
     //开始执行当前任务
@@ -101,6 +92,10 @@ public class TaskInfo<T extends LibInitiation> {
         if (null != mChildTaskList) {
             stringBuilder.append("childSize=");
             stringBuilder.append(mChildTaskList.size());
+            stringBuilder.append("   ");
+            for (TaskInfo<T> taskInfo : mChildTaskList) {
+                stringBuilder.append(taskInfo.getLibInitiation().getClass().getSimpleName()+"     ");
+            }
         }
         Log.e("LibInitiation", stringBuilder.toString());
     }
@@ -131,5 +126,14 @@ public class TaskInfo<T extends LibInitiation> {
         return true;
     }
 
+    public T getLibInitiation() {
+        return mLibInitiation;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof String)) return false;
+        return mLibInitiation.getClass().getSimpleName().equals(o);
+    }
 
 }

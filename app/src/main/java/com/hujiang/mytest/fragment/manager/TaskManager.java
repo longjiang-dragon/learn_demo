@@ -10,7 +10,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
  * @date 2018/3/30
  */
 public class TaskManager {
-    Queue<TaskInfo> taskQueue = new LinkedList<>();
+    private Queue<TaskInfo> taskQueue = new LinkedList<>();
 
     public void init(TaskInfo rootTaskInfo) {
         TaskInfo currentTask = null;

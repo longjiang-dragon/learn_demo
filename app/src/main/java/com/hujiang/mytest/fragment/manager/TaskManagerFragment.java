@@ -38,18 +38,12 @@ public class TaskManagerFragment extends Fragment implements View.OnClickListene
     @Override
     public void onClick(View v) {
         new TaskManagerBuild(getActivity().getApplication())
-                .addChildNode(new LibInitiation1())
-                .addParentNode(new LibInitiation6())
-                .addParentNode(new LibInitiation5())
-                .addParentNode(new LibInitiation4())
-                .addChildNode(new LibInitiation2())
-                .addChildNode(new LibInitiation3())
-                .addChildNode(new LibInitiation4())
-                .addChildNode(new LibInitiation5())
-                .addChildNode(new LibInitiation6())
-                .addParentNode(new LibInitiation1())
-                .addParentNode(new LibInitiation2())
-                .addParentNode(new LibInitiation3())
-                .build();
+                .addNode(new LibInitiation1())
+                .addNode(new LibInitiation2())
+                .addNode(new LibInitiation6(),LibInitiation2.class.getSimpleName())
+                .addNode(new LibInitiation3())
+                .addNode(new LibInitiation4(),LibInitiation6.class.getSimpleName())
+                .addNode(new LibInitiation5(),LibInitiation4.class.getSimpleName())
+                .startInit();
     }
 }

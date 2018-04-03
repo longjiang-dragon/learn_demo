@@ -3,6 +3,8 @@ package com.hujiang.mytest.fragment.manager;
 import android.app.Application;
 import android.util.Log;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ExecutorService;
 
@@ -18,8 +20,8 @@ public class TaskInfo {
     private LibInitiation mLibInitiation;
     private Application mApplication;
 
-    private CopyOnWriteArrayList<TaskInfo> mParentTaskList;
-    private CopyOnWriteArrayList<TaskInfo> mChildTaskList;
+    private List<TaskInfo> mParentTaskList;
+    private List<TaskInfo> mChildTaskList;
 
 
     public TaskInfo(LibInitiation libInitiation, Application application) {
@@ -58,16 +60,16 @@ public class TaskInfo {
         return mParentTaskList.get(0);
     }
 
-    private CopyOnWriteArrayList<TaskInfo> getParentTaskList() {
+    private List<TaskInfo> getParentTaskList() {
         if (null == mParentTaskList) {
-            mParentTaskList = new CopyOnWriteArrayList<>();
+            mParentTaskList = new ArrayList<>();
         }
         return mParentTaskList;
     }
 
-    public CopyOnWriteArrayList<TaskInfo> getChildTaskList() {
+    public List<TaskInfo> getChildTaskList() {
         if (null == mChildTaskList) {
-            mChildTaskList = new CopyOnWriteArrayList<>();
+            mChildTaskList = new ArrayList<>();
         }
         return mChildTaskList;
     }

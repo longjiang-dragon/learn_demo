@@ -28,11 +28,11 @@ public class TaskManagerBuild {
     }
 
     public TaskManagerBuild addNode(LibInitiation libInitiation, String ParentNodeClassName) {
-        TaskInfo tempTaskInfo = generateTaskInfo(libInitiation);
-        if (isSameNode(libInitiation)) {
+        if (isAddedNode(libInitiation)) {
             Toast.makeText(mApplication, "添加了两个相同的task", Toast.LENGTH_SHORT).show();
             return this;
         }
+        TaskInfo tempTaskInfo = generateTaskInfo(libInitiation);
         TaskInfo parentTaskInfo = findNodeByClassName(ParentNodeClassName);
         if (isAddRootNode()) {
             //不存在root节点的情况
@@ -43,7 +43,8 @@ public class TaskManagerBuild {
         return this;
     }
 
-    private boolean isSameNode(LibInitiation libInitiation) {
+    //已添加此节点
+    private boolean isAddedNode(LibInitiation libInitiation) {
         TaskInfo temp = findNodeByClassName(libInitiation.getClass().getSimpleName());
         if (null == temp) return false;
         return true;

@@ -4,8 +4,8 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
-import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.ThreadFactory;
@@ -23,7 +23,7 @@ public class TaskManager {
     private Queue<TaskInfo> taskQueue = new LinkedList<>();
 
     static {
-        THREAD_POOL_EXECUTOR = new ThreadPoolExecutor(0, CPU_COUNT, 60L, TimeUnit.SECONDS,
+        THREAD_POOL_EXECUTOR = new ThreadPoolExecutor(0, CPU_COUNT, 10L, TimeUnit.SECONDS,
                 new SynchronousQueue<Runnable>(), new ThreadFactory() {
             @Override
             public Thread newThread(@NonNull Runnable r) {
@@ -54,7 +54,7 @@ public class TaskManager {
 
 
     private void addChildTaskToQueue(TaskInfo currentTask, Queue<TaskInfo> taskQueue) {
-        CopyOnWriteArrayList<TaskInfo> childTaskList = currentTask.getChildTaskList();
+        List<TaskInfo> childTaskList = currentTask.getChildTaskList();
         if (null == childTaskList || childTaskList.isEmpty()) return;
         for (TaskInfo taskInfo : childTaskList) {
             taskQueue.offer(taskInfo);

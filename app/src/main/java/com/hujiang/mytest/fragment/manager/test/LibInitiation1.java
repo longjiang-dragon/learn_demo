@@ -13,7 +13,7 @@ import com.hujiang.mytest.fragment.manager.LibInitiation;
 public class LibInitiation1 implements LibInitiation {
     @Override
     public void libInitiationStart(Application application) {
-        Log.i("LibInitiation","LibInitiation1");
+        Log.i("LibInitiation","LibInitiation1  "+Thread.currentThread().getName());
     }
 
     @Override

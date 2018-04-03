@@ -62,6 +62,7 @@ public class TaskManagerBuild {
     private TaskInfo findNodeByClassName(String parentNodeClassName) {
         if (TextUtils.isEmpty(parentNodeClassName)) return null;
         if (null == mRootTaskInfo) return null;
+        if (mRootTaskInfo.equals(parentNodeClassName)) return mRootTaskInfo;
         return findNodeByClassName(mRootTaskInfo.getChildTaskList(), parentNodeClassName);
     }
 

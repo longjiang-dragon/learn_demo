@@ -1,7 +1,10 @@
-package com.hujiang.mytest.fragment.manager;
+package com.hujiang.mytest.fragment.manager.task;
 
 import android.app.Application;
 import android.util.Log;
+
+import com.hujiang.mytest.fragment.manager.LibInitiation;
+import com.hujiang.mytest.fragment.manager.TaskManager;
 
 import java.util.ArrayList;
 import java.util.List;

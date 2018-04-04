@@ -16,6 +16,7 @@ import com.hujiang.mytest.fragment.manager.test.LibInitiation5;
 import com.hujiang.mytest.fragment.manager.test.LibInitiation6;
 import com.hujiang.mytest.fragment.manager.test.LibInitiation7;
 import com.hujiang.mytest.fragment.manager.test.LibInitiation8;
+import com.hujiang.mytest.fragment.manager.test.LibInitiation9;
 
 /**
  * @author jianglong
@@ -48,7 +49,7 @@ public class TaskManagerFragment extends Fragment implements View.OnClickListene
                 .addNode(new LibInitiation6(),LibInitiation5.class.getSimpleName())
                 .addNode(new LibInitiation7(),LibInitiation6.class.getSimpleName())
                 .addNode(new LibInitiation8(),LibInitiation5.class.getSimpleName())
-
+                .addNode(new LibInitiation9(),LibInitiation3.class.getSimpleName())
 
                 .startInit();
     }

@@ -10,14 +10,14 @@ import com.hujiang.mytest.fragment.manager.LibInitiation;
  * @desc
  * @date 2018/4/2
  */
-public class LibInitiation8 implements LibInitiation {
+public class LibInitiation9 implements LibInitiation {
     @Override
     public void libInitiationStart(Application application) {
-        Log.i("LibInitiation", "LibInitiation8  "+Thread.currentThread().getName());
+        Log.i("LibInitiation", "LibInitiation9  "+Thread.currentThread().getName());
     }
 
     @Override
     public boolean isRunMainThread() {
-        return true;
+        return false;
     }
 }

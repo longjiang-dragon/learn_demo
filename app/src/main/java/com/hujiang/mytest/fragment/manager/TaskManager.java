@@ -3,6 +3,9 @@ package com.hujiang.mytest.fragment.manager;
 import android.os.Looper;
 import android.support.annotation.NonNull;
 
+import com.hujiang.mytest.fragment.manager.Executor.MainThreadExecutor;
+import com.hujiang.mytest.fragment.manager.task.TaskInfo;
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -34,7 +37,7 @@ public class TaskManager {
         MAIN_THREAD_EXECUTOR = new MainThreadExecutor();
     }
 
-
+    //此方法只会在ui线程中调用
     public void init(TaskInfo rootTaskInfo) {
         TaskInfo currentTask;
         taskQueue.offer(rootTaskInfo);
@@ -42,10 +45,9 @@ public class TaskManager {
             currentTask = taskQueue.poll();
             startExecute(currentTask);
             //将子任务添加到队列
-            if (isNeedAddToQueue(currentTask)) {
+            if (isNeedAddChildToSyncQueue(currentTask)) {
                 addChildTaskToQueue(currentTask, taskQueue);
             }
-//            Log.i("queueSize", "init   " + taskQueue.size()  +"  currentTask=="+currentTask.getLibInitiation().getClass().getSimpleName());
         }
     }
 
@@ -54,10 +56,12 @@ public class TaskManager {
             if (currentTask.isRunMainThread()) {
                 currentTask.startExecute();
             } else {
+                //需要先切换线程，再执行初始化
                 THREAD_POOL_EXECUTOR.execute(currentTask);
             }
         } else {
             if (currentTask.isRunMainThread()) {
+                //需要先切换线程，再执行初始化
                 MAIN_THREAD_EXECUTOR.execute(currentTask);
             } else {
                 currentTask.startExecute();
@@ -66,7 +70,7 @@ public class TaskManager {
     }
 
 
-    //非UI线调用
+    //此方法，只会在非UI线程中调用
     public void initAsync(TaskInfo rootTaskInfo) {
         TaskInfo currentTask;
         taskQueue.offer(rootTaskInfo);
@@ -74,15 +78,18 @@ public class TaskManager {
             currentTask = taskQueue.poll();
             startExecute(currentTask);
             //将子任务添加到队列
-            if (!isNeedAddToQueue(currentTask)) {
+            if (isNeedAddChildToAsyncQueue(currentTask)) {
                 addChildTaskToQueue(currentTask, taskQueue);
             }
-//            Log.i("queueSize", "initAsync   " + taskQueue.size()  +"  currentTask=="+currentTask.getLibInitiation().getClass().getSimpleName());
         }
     }
 
-    private boolean isNeedAddToQueue(TaskInfo parentTaskInfo) {
+    private boolean isNeedAddChildToSyncQueue(TaskInfo parentTaskInfo) {
         return parentTaskInfo.isRunMainThread();
+    }
+
+    private boolean isNeedAddChildToAsyncQueue(TaskInfo parentTaskInfo) {
+        return !parentTaskInfo.isRunMainThread();
     }
 
 

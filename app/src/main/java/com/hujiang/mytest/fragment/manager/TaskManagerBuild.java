@@ -4,6 +4,9 @@ import android.app.Application;
 import android.text.TextUtils;
 import android.widget.Toast;
 
+import com.hujiang.mytest.fragment.manager.task.AsyncTaskInfo;
+import com.hujiang.mytest.fragment.manager.task.TaskInfo;
+
 import java.util.List;
 
 /**
@@ -29,7 +32,7 @@ public class TaskManagerBuild {
 
     public TaskManagerBuild addNode(LibInitiation libInitiation, String ParentNodeClassName) {
         if (isAddedNode(libInitiation)) {
-            Toast.makeText(mApplication, "添加了两个相同的task", Toast.LENGTH_SHORT).show();
+            Toast.makeText(mApplication, "添加了两个相同的task="+libInitiation.getClass().getSimpleName(), Toast.LENGTH_SHORT).show();
             return this;
         }
         TaskInfo tempTaskInfo = generateTaskInfo(libInitiation);

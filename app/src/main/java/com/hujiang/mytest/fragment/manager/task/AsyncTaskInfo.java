@@ -1,6 +1,9 @@
-package com.hujiang.mytest.fragment.manager;
+package com.hujiang.mytest.fragment.manager.task;
 
 import android.app.Application;
+
+import com.hujiang.mytest.fragment.manager.LibInitiation;
+import com.hujiang.mytest.fragment.manager.TaskManager;
 
 /**
  * @author jianglong

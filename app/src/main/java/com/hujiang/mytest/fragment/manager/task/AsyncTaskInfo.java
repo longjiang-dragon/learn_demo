@@ -23,7 +23,7 @@ public class AsyncTaskInfo extends TaskInfo {
 
 
     protected void createNewTaskManager() {
-        new TaskManager().initAsync(AsyncTaskInfo.this);
+        new TaskManager().asyncInit(AsyncTaskInfo.this);
     }
 
 }

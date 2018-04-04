@@ -15,8 +15,6 @@ import java.util.List;
  * @date 2018/4/2
  */
 
-//1、默认添加到root节点
-//2、通过ap
 public class TaskManagerBuild {
     private TaskInfo mRootTaskInfo;
     private Application mApplication;
@@ -65,7 +63,7 @@ public class TaskManagerBuild {
     private TaskInfo findNodeByClassName(String parentNodeClassName) {
         if (TextUtils.isEmpty(parentNodeClassName)) return null;
         if (null == mRootTaskInfo) return null;
-        if (mRootTaskInfo.equals(parentNodeClassName)) return mRootTaskInfo;
+        if (mRootTaskInfo.equals(parentNodeClassName)) return mRootTaskInfo;//从根节点开始查找
         return findNodeByClassName(mRootTaskInfo.getChildTaskList(), parentNodeClassName);
     }
 

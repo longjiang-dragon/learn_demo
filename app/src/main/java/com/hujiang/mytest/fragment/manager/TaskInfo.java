@@ -96,7 +96,7 @@ public class TaskInfo implements Runnable {
     }
 
     protected void createNewTaskManager() {
-        new TaskManager().initAsync(TaskInfo.this);
+        new TaskManager().init(TaskInfo.this);
     }
 
     public LibInitiation getLibInitiation() {

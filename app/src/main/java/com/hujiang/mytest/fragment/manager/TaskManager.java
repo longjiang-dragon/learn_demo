@@ -37,7 +37,6 @@ public class TaskManager {
         MAIN_THREAD_EXECUTOR = new MainThreadExecutor();
     }
 
-    //此方法只会在ui线程中调用
     public void init(TaskInfo rootTaskInfo) {
         if (null == rootTaskInfo) return;
         TaskInfo currentTask;
@@ -46,22 +45,7 @@ public class TaskManager {
             currentTask = taskQueue.poll();
             startExecute(currentTask);
             //将子节点添加到队列
-            if (isNeedAddChildToSyncQueue(currentTask)) {
-                addChildTaskToQueue(currentTask, taskQueue);
-            }
-        }
-    }
-
-    //此方法，只会在非UI线程中调用
-    public void asyncInit(TaskInfo rootTaskInfo) {
-        if (null == rootTaskInfo) return;
-        TaskInfo currentTask;
-        taskQueue.offer(rootTaskInfo);
-        while (!taskQueue.isEmpty()) {
-            currentTask = taskQueue.poll();
-            startExecute(currentTask);
-            //将子节点添加到队列
-            if (isNeedAddChildToAsyncQueue(currentTask)) {
+            if (isNeedAddChildToQueue(currentTask)) {
                 addChildTaskToQueue(currentTask, taskQueue);
             }
         }
@@ -86,13 +70,13 @@ public class TaskManager {
         }
     }
 
-
-    private boolean isNeedAddChildToSyncQueue(TaskInfo parentTaskInfo) {
-        return parentTaskInfo.isRunMainThread();
-    }
-
-    private boolean isNeedAddChildToAsyncQueue(TaskInfo parentTaskInfo) {
-        return !parentTaskInfo.isRunMainThread();
+    //只有当 当前线程与当前任务所申明线程相同时，才会把子任务添加到队列中
+    private boolean isNeedAddChildToQueue(TaskInfo parentTaskInfo) {
+        if (Looper.myLooper() == Looper.getMainLooper()) {
+            return parentTaskInfo.isRunMainThread();
+        } else {
+            return !parentTaskInfo.isRunMainThread();
+        }
     }
 
 

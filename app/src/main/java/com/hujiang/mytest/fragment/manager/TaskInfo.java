@@ -6,7 +6,6 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.concurrent.ExecutorService;
 
 
 /**
@@ -14,11 +13,11 @@ import java.util.concurrent.ExecutorService;
  * @desc
  * @date 2018/3/30
  */
-public class TaskInfo {
-    private volatile boolean isCompleted;//当前task是否执行完成
-    private volatile boolean isRunning;
-    private LibInitiation mLibInitiation;
-    private Application mApplication;
+public class TaskInfo implements Runnable {
+    protected volatile boolean isCompleted;//当前task是否执行完成
+    protected volatile boolean isRunning;
+    protected LibInitiation mLibInitiation;
+    protected Application mApplication;
 
     private List<TaskInfo> mParentTaskList;
     private List<TaskInfo> mChildTaskList;
@@ -76,13 +75,11 @@ public class TaskInfo {
 
 
     //开始执行当前任务
-    public void startExecute(ExecutorService asyncExecutor) {
-        if (!isExecutable() || isCompleted || isRunning) return;//不能执行
-        isRunning = true;
-        if (this.mLibInitiation.isSyncExecute()) {
-            startSyncExecute();
-        } else {
-            startAsyncExecute(asyncExecutor);
+    public void startExecute() {
+//        if (!isExecutable() || isCompleted || isRunning) return;//不能执行
+//        isRunning = true;
+        if (this.mLibInitiation.isRunMainThread()) {
+            startMainThreadExecute();
         }
 //        printLog();
     }
@@ -104,17 +101,13 @@ public class TaskInfo {
         Log.e("LibInitiation", stringBuilder.toString());
     }
 
-    private void startAsyncExecute(ExecutorService asyncExecutor) {
-        asyncExecutor.execute(new Runnable() {
-            @Override
-            public void run() {
-                startSyncExecute();
-            }
-        });
+    protected void startAsyncExecute() {
+        this.isCompleted = true;
+        new TaskManager().initAsync(TaskInfo.this);
     }
 
-    //同步执行
-    private void startSyncExecute() {
+    //UI线程中执行
+    protected void startMainThreadExecute() {
         this.mLibInitiation.libInitiationStart(mApplication);
         this.isCompleted = true;
     }
@@ -141,11 +134,25 @@ public class TaskInfo {
         return isCompleted;
     }
 
+    public boolean isRunMainThread() {
+        return mLibInitiation.isRunMainThread();
+    }
+
+    public void setCompleted(boolean completed) {
+        isCompleted = completed;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (null == o) return false;
         if (!(o instanceof String)) return false;
         return mLibInitiation.getClass().getSimpleName().equals(o);
+    }
+
+
+    @Override
+    public void run() {
+        startAsyncExecute();
     }
 
 }

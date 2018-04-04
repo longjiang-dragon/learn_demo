@@ -81,7 +81,11 @@ public class TaskManagerBuild {
     }
 
     private TaskInfo generateTaskInfo(LibInitiation libInitiation) {
-        return new TaskInfo(libInitiation, mApplication);
+        if (libInitiation.isRunMainThread()) {
+            return new TaskInfo(libInitiation, mApplication);
+        } else {
+            return new AsyncTaskInfo(libInitiation, mApplication);
+        }
     }
 
     private boolean isAddRootNode() {

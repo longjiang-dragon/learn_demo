@@ -17,7 +17,7 @@ public class LibInitiation6 implements LibInitiation {
     }
 
     @Override
-    public boolean isSyncExecute() {
+    public boolean isRunMainThread() {
         return false;
     }
 }

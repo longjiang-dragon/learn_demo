@@ -1,5 +1,6 @@
 package com.hujiang.mytest.fragment.manager;
 
+import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
@@ -20,6 +21,7 @@ import java.util.concurrent.TimeUnit;
 public class TaskManager {
     private static final int CPU_COUNT = Runtime.getRuntime().availableProcessors();
     public static final ExecutorService THREAD_POOL_EXECUTOR;
+    public static final MainThreadExecutor MAIN_THREAD_EXECUTOR;
     private Queue<TaskInfo> taskQueue = new LinkedList<>();
 
     static {
@@ -30,6 +32,7 @@ public class TaskManager {
                 return new Thread(r, "lib-initiation");
             }
         }, new ThreadPoolExecutor.CallerRunsPolicy());
+        MAIN_THREAD_EXECUTOR = new MainThreadExecutor();
     }
 
 
@@ -38,19 +41,54 @@ public class TaskManager {
         taskQueue.offer(rootTaskInfo);
         while (!taskQueue.isEmpty()) {
             currentTask = taskQueue.poll();
-            currentTask.startExecute(THREAD_POOL_EXECUTOR);
-            if (currentTask.isCompleted()) {
-                Log.i("queueSize","   "+currentTask.isCompleted());
-                //添加子任务到队列
+            startExecute(currentTask);
+            Log.i("queueSize", "   " + currentTask.isCompleted());
+            //将子任务添加到队列
+            if (isNeedAddToQueue(currentTask)) {
                 addChildTaskToQueue(currentTask, taskQueue);
-            }else {
-                //任务没有执行完成重新加入队列
-                taskQueue.offer(currentTask);
             }
-            Log.i("queueSize","   "+taskQueue.size());
+//            Log.i("queueSize", "init   " + taskQueue.size()  +"  currentTask=="+currentTask.getLibInitiation().getClass().getSimpleName());
         }
     }
 
+    private void startExecute(TaskInfo currentTask) {
+        if (Looper.myLooper() == Looper.getMainLooper()) {
+            if (currentTask.isRunMainThread()) {
+                currentTask.startExecute();
+            } else {
+                currentTask.setCompleted(true);
+                THREAD_POOL_EXECUTOR.execute(currentTask);
+            }
+        } else {
+            if (currentTask.isRunMainThread()) {
+                currentTask.setCompleted(true);
+                MAIN_THREAD_EXECUTOR.execute(currentTask);
+            } else {
+                currentTask.startExecute();
+            }
+        }
+    }
+
+
+    //非UI线调用
+    public void initAsync(TaskInfo rootTaskInfo) {
+        TaskInfo currentTask;
+        taskQueue.offer(rootTaskInfo);
+        while (!taskQueue.isEmpty()) {
+            currentTask = taskQueue.poll();
+            startExecute(currentTask);
+            Log.i("queueSize", "   " + currentTask.isCompleted());
+            //将子任务添加到队列
+            if (!isNeedAddToQueue(currentTask)) {
+                addChildTaskToQueue(currentTask, taskQueue);
+            }
+//            Log.i("queueSize", "initAsync   " + taskQueue.size()  +"  currentTask=="+currentTask.getLibInitiation().getClass().getSimpleName());
+        }
+    }
+
+    private boolean isNeedAddToQueue(TaskInfo parentTaskInfo) {
+        return parentTaskInfo.isRunMainThread();
+    }
 
 
     private void addChildTaskToQueue(TaskInfo currentTask, Queue<TaskInfo> taskQueue) {

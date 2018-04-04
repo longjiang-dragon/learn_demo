@@ -19,7 +19,7 @@ public class LibInitiation5 implements LibInitiation {
     }
 
     @Override
-    public boolean isSyncExecute() {
-        return true;
+    public boolean isRunMainThread() {
+        return false;
     }
 }

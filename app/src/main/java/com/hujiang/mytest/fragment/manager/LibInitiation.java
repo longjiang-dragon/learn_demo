@@ -10,5 +10,5 @@ import android.app.Application;
 public interface LibInitiation {
     void libInitiationStart(Application application);
 
-    boolean isSyncExecute();
+    boolean isRunMainThread();
 }

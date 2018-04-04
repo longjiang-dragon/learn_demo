@@ -1,8 +1,8 @@
 package com.hujiang.mytest.fragment.manager;
 
 import android.os.Looper;
-import android.support.annotation.NonNull;
 
+import com.hujiang.mytest.fragment.manager.Executor.AsyncThreadExecutor;
 import com.hujiang.mytest.fragment.manager.Executor.MainThreadExecutor;
 import com.hujiang.mytest.fragment.manager.task.TaskInfo;
 
@@ -10,10 +10,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.SynchronousQueue;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
 
 /**
  * @author jianglong
@@ -21,19 +17,12 @@ import java.util.concurrent.TimeUnit;
  * @date 2018/3/30
  */
 public class TaskManager {
-    private static final int CPU_COUNT = Runtime.getRuntime().availableProcessors();
-    public static final ExecutorService THREAD_POOL_EXECUTOR;
+    public static final ExecutorService ASYNC_THREAD_EXECUTOR;
     public static final MainThreadExecutor MAIN_THREAD_EXECUTOR;
     private Queue<TaskInfo> taskQueue = new LinkedList<>();
 
     static {
-        THREAD_POOL_EXECUTOR = new ThreadPoolExecutor(0, CPU_COUNT, 10L, TimeUnit.SECONDS,
-                new SynchronousQueue<Runnable>(), new ThreadFactory() {
-            @Override
-            public Thread newThread(@NonNull Runnable r) {
-                return new Thread(r, "lib-initiation");
-            }
-        }, new ThreadPoolExecutor.CallerRunsPolicy());
+        ASYNC_THREAD_EXECUTOR = new AsyncThreadExecutor();
         MAIN_THREAD_EXECUTOR = new MainThreadExecutor();
     }
 
@@ -58,7 +47,7 @@ public class TaskManager {
                 currentTask.startExecute();
             } else {
                 //需要先切换线程，再执行初始化
-                THREAD_POOL_EXECUTOR.execute(currentTask);
+                ASYNC_THREAD_EXECUTOR.execute(currentTask);
             }
         } else {
             if (currentTask.isRunMainThread()) {

@@ -13,7 +13,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * @author jianglong
- * @desc
+ * @desc  需要在主线中执行的任务
  * @date 2018/3/30
  */
 public class TaskInfo implements Runnable {
@@ -98,7 +98,7 @@ public class TaskInfo implements Runnable {
         Log.e("LibInitiation", stringBuilder.toString());
     }
 
-    protected void createNewTaskManager() {
+    private void createNewTaskManager() {
         new TaskManager().init(TaskInfo.this);
     }
 

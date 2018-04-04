@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * @author jianglong
- * @desc
+ * @desc 1、如当前任务与所在线程与任务申明的线程不相同时（当前任务的child也不会加入到当前队列），在目标线程中新创建一个taskManager,再执行当前任务
  * @date 2018/3/30
  */
 public class TaskManager {

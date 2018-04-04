@@ -4,7 +4,6 @@ import android.app.Application;
 import android.text.TextUtils;
 import android.widget.Toast;
 
-import com.hujiang.mytest.fragment.manager.task.AsyncTaskInfo;
 import com.hujiang.mytest.fragment.manager.task.TaskInfo;
 
 import java.util.List;
@@ -82,11 +81,11 @@ public class TaskManagerBuild {
     }
 
     private TaskInfo generateTaskInfo(LibInitiation libInitiation) {
-        if (libInitiation.isRunMainThread()) {
+//        if (libInitiation.isRunMainThread()) {
             return new TaskInfo(libInitiation, mApplication);
-        } else {
-            return new AsyncTaskInfo(libInitiation, mApplication);
-        }
+//        } else {
+//            return new AsyncMainThreadTaskInfo(libInitiation, mApplication);
+//        }
     }
 
     private boolean isAddRootNode() {

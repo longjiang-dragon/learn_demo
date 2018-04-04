@@ -49,7 +49,7 @@ public class TaskManagerFragment extends Fragment implements View.OnClickListene
                 .addNode(new LibInitiation6(),LibInitiation5.class.getSimpleName())
                 .addNode(new LibInitiation7(),LibInitiation6.class.getSimpleName())
                 .addNode(new LibInitiation8(),LibInitiation5.class.getSimpleName())
-                .addNode(new LibInitiation9(),LibInitiation3.class.getSimpleName())
+                .addNode(new LibInitiation9())
 
                 .startInit();
     }

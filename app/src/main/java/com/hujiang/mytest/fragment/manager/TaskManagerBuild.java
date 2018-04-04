@@ -23,13 +23,21 @@ public class TaskManagerBuild {
     }
 
 
+    /**
+     * 添加一个任务，默认放在根节点下,如根节点不存，就以当前节点为根节点
+     */
     public TaskManagerBuild addNode(LibInitiation libInitiation) {
         return addNode(libInitiation, null);
     }
 
+    /**
+     * 添加一个任务，可能存在下面两类情况：
+     * 1、未找到节点ParentNodeClassName，刚添加到根节点下
+     * 2、找到节点ParentNodeClassName，放在目标节点下
+     */
     public TaskManagerBuild addNode(LibInitiation libInitiation, String ParentNodeClassName) {
         if (isAddedNode(libInitiation)) {
-            Toast.makeText(mApplication, "添加了两个相同的task="+libInitiation.getClass().getSimpleName(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(mApplication, "添加了两个相同的task=" + libInitiation.getClass().getSimpleName(), Toast.LENGTH_SHORT).show();
             return this;
         }
         TaskInfo tempTaskInfo = generateTaskInfo(libInitiation);
@@ -82,7 +90,7 @@ public class TaskManagerBuild {
 
     private TaskInfo generateTaskInfo(LibInitiation libInitiation) {
 //        if (libInitiation.isRunMainThread()) {
-            return new TaskInfo(libInitiation, mApplication);
+        return new TaskInfo(libInitiation, mApplication);
 //        } else {
 //            return new AsyncMainThreadTaskInfo(libInitiation, mApplication);
 //        }

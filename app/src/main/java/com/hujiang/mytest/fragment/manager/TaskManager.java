@@ -2,7 +2,6 @@ package com.hujiang.mytest.fragment.manager;
 
 import android.os.Looper;
 import android.support.annotation.NonNull;
-import android.util.Log;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -42,7 +41,6 @@ public class TaskManager {
         while (!taskQueue.isEmpty()) {
             currentTask = taskQueue.poll();
             startExecute(currentTask);
-            Log.i("queueSize", "   " + currentTask.isCompleted());
             //将子任务添加到队列
             if (isNeedAddToQueue(currentTask)) {
                 addChildTaskToQueue(currentTask, taskQueue);
@@ -56,12 +54,10 @@ public class TaskManager {
             if (currentTask.isRunMainThread()) {
                 currentTask.startExecute();
             } else {
-                currentTask.setCompleted(true);
                 THREAD_POOL_EXECUTOR.execute(currentTask);
             }
         } else {
             if (currentTask.isRunMainThread()) {
-                currentTask.setCompleted(true);
                 MAIN_THREAD_EXECUTOR.execute(currentTask);
             } else {
                 currentTask.startExecute();
@@ -77,7 +73,6 @@ public class TaskManager {
         while (!taskQueue.isEmpty()) {
             currentTask = taskQueue.poll();
             startExecute(currentTask);
-            Log.i("queueSize", "   " + currentTask.isCompleted());
             //将子任务添加到队列
             if (!isNeedAddToQueue(currentTask)) {
                 addChildTaskToQueue(currentTask, taskQueue);

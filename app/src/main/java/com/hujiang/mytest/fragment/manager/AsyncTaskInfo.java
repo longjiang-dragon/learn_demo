@@ -15,23 +15,12 @@ public class AsyncTaskInfo extends TaskInfo {
 
     //开始执行当前任务
     public void startExecute() {
-        startAsyncExecute();
-    }
-
-
-    protected void startAsyncExecute() {
         this.mLibInitiation.libInitiationStart(mApplication);
-        this.isCompleted = true;
-
     }
 
-    //UI线程中执行
-    protected void startMainThreadExecute() {
+
+    protected void createNewTaskManager() {
         new TaskManager().initAsync(AsyncTaskInfo.this);
     }
 
-    @Override
-    public void run() {
-        startMainThreadExecute();
-    }
 }

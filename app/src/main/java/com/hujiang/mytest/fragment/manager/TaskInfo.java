@@ -14,8 +14,6 @@ import java.util.concurrent.CopyOnWriteArrayList;
  * @date 2018/3/30
  */
 public class TaskInfo implements Runnable {
-    protected volatile boolean isCompleted;//当前task是否执行完成
-    protected volatile boolean isRunning;
     protected LibInitiation mLibInitiation;
     protected Application mApplication;
 
@@ -76,11 +74,7 @@ public class TaskInfo implements Runnable {
 
     //开始执行当前任务
     public void startExecute() {
-//        if (!isExecutable() || isCompleted || isRunning) return;//不能执行
-//        isRunning = true;
-        if (this.mLibInitiation.isRunMainThread()) {
-            startMainThreadExecute();
-        }
+        this.mLibInitiation.libInitiationStart(mApplication);
 //        printLog();
     }
 
@@ -101,28 +95,8 @@ public class TaskInfo implements Runnable {
         Log.e("LibInitiation", stringBuilder.toString());
     }
 
-    protected void startAsyncExecute() {
-        this.isCompleted = true;
+    protected void createNewTaskManager() {
         new TaskManager().initAsync(TaskInfo.this);
-    }
-
-    //UI线程中执行
-    protected void startMainThreadExecute() {
-        this.mLibInitiation.libInitiationStart(mApplication);
-        this.isCompleted = true;
-    }
-
-
-    //判断当前task是否可执行。（一个task可有多个parent，如果parent未执行完成，此task需等待所有的parent执行完成）
-    public boolean isExecutable() {
-        if (null == mParentTaskList || mParentTaskList.isEmpty()) return true;
-        for (TaskInfo taskInfo : mParentTaskList) {
-            if (!taskInfo.isCompleted) {
-//                Log.i("LibInitiation", "isExecutable===false");
-                return false;
-            }
-        }
-        return true;
     }
 
     public LibInitiation getLibInitiation() {
@@ -130,17 +104,10 @@ public class TaskInfo implements Runnable {
     }
 
 
-    public boolean isCompleted() {
-        return isCompleted;
-    }
-
     public boolean isRunMainThread() {
         return mLibInitiation.isRunMainThread();
     }
 
-    public void setCompleted(boolean completed) {
-        isCompleted = completed;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -149,10 +116,9 @@ public class TaskInfo implements Runnable {
         return mLibInitiation.getClass().getSimpleName().equals(o);
     }
 
-
     @Override
     public void run() {
-        startAsyncExecute();
+        createNewTaskManager();
     }
 
 }

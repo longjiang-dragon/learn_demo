@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  * @author jianglong
- * @desc
+ * @desc  用于task依赖关系构建
  * @date 2018/4/2
  */
 

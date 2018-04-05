@@ -42,15 +42,14 @@ public class TaskManagerFragment extends Fragment implements View.OnClickListene
     public void onClick(View v) {
         new TaskManagerBuild(getActivity().getApplication())
                 .addNode(new LibInitiation1())
-                .addNode(new LibInitiation2(),LibInitiation1.class.getSimpleName())
-                .addNode(new LibInitiation3(),LibInitiation1.class.getSimpleName())
-                .addNode(new LibInitiation4(),LibInitiation3.class.getSimpleName())
-                .addNode(new LibInitiation5(),LibInitiation3.class.getSimpleName())
-                .addNode(new LibInitiation6(),LibInitiation5.class.getSimpleName())
-                .addNode(new LibInitiation7(),LibInitiation6.class.getSimpleName())
-                .addNode(new LibInitiation8(),LibInitiation5.class.getSimpleName())
-                .addNode(new LibInitiation9())
-
+                .addNodeToParent(new LibInitiation2(),LibInitiation8.class.getSimpleName())
+                .addNode(new LibInitiation3())
+                .addNode(new LibInitiation4())
+                .addNode(new LibInitiation5())
+                .addNode(new LibInitiation6())
+                .addNode(new LibInitiation7())
+                .addNodeToParent(new LibInitiation8(), LibInitiation4.class.getSimpleName(), LibInitiation2.class.getSimpleName(), LibInitiation3.class.getSimpleName())
+                .addNodeToParent(new LibInitiation9(),LibInitiation8.class.getSimpleName())
                 .startInit();
     }
 }

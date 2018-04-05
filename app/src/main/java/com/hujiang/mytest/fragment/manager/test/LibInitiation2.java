@@ -19,6 +19,6 @@ public class LibInitiation2 implements LibInitiation {
 
     @Override
     public boolean isRunMainThread() {
-        return true;
+        return false;
     }
 }

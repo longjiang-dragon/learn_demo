@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  * @author jianglong
- * @desc  用于task依赖关系构建
+ * @desc 用于task依赖关系构建
  * @date 2018/4/2
  */
 
@@ -27,7 +27,7 @@ public class TaskManagerBuild {
      * 添加一个任务，默认放在根节点下,如根节点不存，就以当前节点为根节点
      */
     public TaskManagerBuild addNode(LibInitiation libInitiation) {
-        return addNode(libInitiation, null);
+        return addNodeToParent(libInitiation);
     }
 
     /**
@@ -35,20 +35,39 @@ public class TaskManagerBuild {
      * 1、未找到节点ParentNodeClassName，刚添加到根节点下
      * 2、找到节点ParentNodeClassName，放在目标节点下
      */
-    public TaskManagerBuild addNode(LibInitiation libInitiation, String ParentNodeClassName) {
+    public TaskManagerBuild addNodeToParent(LibInitiation libInitiation, String... parentNodeClassName) {
         if (isAddedNode(libInitiation)) {
             Toast.makeText(mApplication, "添加了两个相同的task=" + libInitiation.getClass().getSimpleName(), Toast.LENGTH_SHORT).show();
             return this;
         }
         TaskInfo tempTaskInfo = generateTaskInfo(libInitiation);
-        TaskInfo parentTaskInfo = findNodeByClassName(ParentNodeClassName);
         if (isAddRootNode()) {
             //不存在root节点的情况
             this.mRootTaskInfo = tempTaskInfo;
         } else {
-            addNode(tempTaskInfo, parentTaskInfo);
+            addNode(tempTaskInfo, parentNodeClassName);
         }
         return this;
+    }
+
+    private void addNode(TaskInfo childNode, String... parentNodeClassNameList) {
+        addNodeToRoot(childNode);//所以子接点都是root的子接点
+        TaskInfo parentTaskInfo;
+        for (String parentNodeClassName : parentNodeClassNameList) {
+            parentTaskInfo = findNodeByClassName(parentNodeClassName);
+            childAndParentLink(childNode, parentTaskInfo);
+        }
+    }
+
+    private void addNodeToRoot(TaskInfo childNode) {
+        childAndParentLink(childNode, mRootTaskInfo);
+    }
+
+    //将两个node  建立关联
+    private void childAndParentLink(TaskInfo childTask, TaskInfo parentTask) {
+        if (null == parentTask) return;
+        parentTask.getChildTaskList().add(childTask);
+        childTask.getParentTaskList().add(parentTask);
     }
 
     //已添加此节点
@@ -56,15 +75,6 @@ public class TaskManagerBuild {
         TaskInfo temp = findNodeByClassName(libInitiation.getClass().getSimpleName());
         if (null == temp) return false;
         return true;
-    }
-
-
-    private void addNode(TaskInfo newTaskInfo, TaskInfo parentTaskInfo) {
-        if (null == parentTaskInfo) {
-            mRootTaskInfo.addToChildTaskList(newTaskInfo);
-        } else {
-            parentTaskInfo.addToChildTaskList(newTaskInfo);
-        }
     }
 
     private TaskInfo findNodeByClassName(String parentNodeClassName) {

@@ -8,17 +8,18 @@ import com.hujiang.mytest.fragment.manager.TaskManager;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 
 /**
  * @author jianglong
- * @desc  需要在主线中执行的任务
+ * @desc 需要在主线中执行的任务
  * @date 2018/3/30
  */
 public class TaskInfo implements Runnable {
-    protected LibInitiation mLibInitiation;
-    protected Application mApplication;
+    private volatile boolean isCompleted;//当前task是否执行完成
+    private volatile boolean isRunning;
+    private LibInitiation mLibInitiation;
+    private Application mApplication;
 
     private List<TaskInfo> mParentTaskList;
     private List<TaskInfo> mChildTaskList;
@@ -29,38 +30,7 @@ public class TaskInfo implements Runnable {
         this.mApplication = application;
     }
 
-    public void addToChildTaskList(TaskInfo childTaskInfo) {
-        if (null == childTaskInfo) return;
-        if (null == mChildTaskList) {
-            mChildTaskList = new CopyOnWriteArrayList<>();
-        }
-        childTaskInfo.getParentTaskList().add(this);
-        mChildTaskList.add(childTaskInfo);
-    }
-
-    public void addToParentTaskList(TaskInfo parentTaskInfo) {
-        if (null == parentTaskInfo) return;
-        if (null == mParentTaskList) {
-            mParentTaskList = new CopyOnWriteArrayList<>();
-        }
-        childAndParentLink(parentTaskInfo, getFirstParentTask());
-        childAndParentLink(this, parentTaskInfo);
-    }
-
-
-    //将两个node  建立关联
-    private void childAndParentLink(TaskInfo childTask, TaskInfo parentTask) {
-        if (null == parentTask) return;
-        parentTask.getChildTaskList().add(childTask);
-        childTask.getParentTaskList().add(parentTask);
-    }
-
-    private TaskInfo getFirstParentTask() {
-        if (null == mParentTaskList || mParentTaskList.isEmpty()) return null;
-        return mParentTaskList.get(0);
-    }
-
-    private List<TaskInfo> getParentTaskList() {
+    public List<TaskInfo> getParentTaskList() {
         if (null == mParentTaskList) {
             mParentTaskList = new ArrayList<>();
         }
@@ -77,8 +47,24 @@ public class TaskInfo implements Runnable {
 
     //开始执行当前任务
     public void startExecute() {
+        if (!isExecutable() || isCompleted || isRunning) return;//不能执行
+        this.isRunning = true;
         this.mLibInitiation.libInitiationStart(mApplication);
-//        printLog();
+        this.isCompleted=true;
+        printLog();
+    }
+
+
+    //判断当前task是否可执行。（一个task可有多个parent，如果parent未执行完成，此task需等待所有的parent执行完成）
+    public boolean isExecutable() {
+        if (null == mParentTaskList || mParentTaskList.isEmpty()) return true;
+        for (TaskInfo taskInfo : mParentTaskList) {
+            if (!taskInfo.isCompleted) {
+//                Log.i("LibInitiation", "isExecutable===false");
+                return false;
+            }
+        }
+        return true;
     }
 
     private void printLog() {

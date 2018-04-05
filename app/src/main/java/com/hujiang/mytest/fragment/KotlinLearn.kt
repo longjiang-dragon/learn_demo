@@ -79,18 +79,19 @@ class KotlinLearn : Fragment() {
 
     private fun rangeSample() {
         val i = 0;
-        for (i in 1..10 step 2 ) {
+        for (i in 1..10 step 2) {
             printLog(i);
         }
         printLog("-------------------")
 
-        for (i in 1 until 10 ) {
+        for (i in 1 until 10) {
 
             printLog(i);
         }
     }
-    private fun collectionFilter(){
-        val fruits= listOf("banana","avocado","apple","kiwifruit")
+
+    private fun collectionFilter() {
+        val fruits = listOf("banana", "avocado", "apple", "kiwifruit")
         fruits.filter { it.startsWith("a") }
                 .sortedBy { it }
                 .map { it.toUpperCase() }
@@ -102,5 +103,10 @@ class KotlinLearn : Fragment() {
 
     private fun printLog(msg: Any) {
         Log.i("kotlin_msg", msg.toString())
+    }
+
+    class Person public constructor(name: String) {
+        constructor(name: String, parent: Person) : this(name) {
+        }
     }
 }

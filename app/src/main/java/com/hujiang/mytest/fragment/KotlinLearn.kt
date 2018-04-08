@@ -105,8 +105,25 @@ class KotlinLearn : Fragment() {
         Log.i("kotlin_msg", msg.toString())
     }
 
+
     class Person public constructor(name: String) {
         constructor(name: String, parent: Person) : this(name) {
         }
+    }
+
+    interface MyInterface {
+        //接口中的属性要么是提象的，要么是提借访问器实现的
+        val prop: Int  //抽象的
+        val propertyWithImplementation: String
+            get() = "aaa"
+
+        fun foo() {
+            //接口中可以有方法的实现,这java是不能有的
+        }
+
+    }
+
+    class Child : MyInterface {
+        override val prop: Int = 29 //所以这里需要有实现
     }
 }

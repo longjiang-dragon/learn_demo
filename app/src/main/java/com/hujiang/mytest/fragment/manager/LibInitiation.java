@@ -12,7 +12,6 @@ public interface LibInitiation {
      * 执行具体的任务
      */
     void libInitiationStart(Application application);
-
     /**
      * 此任务是否需要在主线程中执行
      */

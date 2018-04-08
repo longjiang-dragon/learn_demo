@@ -60,7 +60,6 @@ public class TaskInfo implements Runnable {
         if (null == mParentTaskList || mParentTaskList.isEmpty()) return true;
         for (TaskInfo taskInfo : mParentTaskList) {
             if (!taskInfo.isCompleted) {
-//                Log.i("LibInitiation", "isExecutable===false");
                 return false;
             }
         }

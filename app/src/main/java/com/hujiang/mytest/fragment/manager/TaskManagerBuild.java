@@ -35,8 +35,8 @@ public class TaskManagerBuild {
      * 1、未找到节点ParentNodeClassName，刚添加到根节点下
      * 2、找到节点ParentNodeClassName，放在目标节点下
      */
-    public TaskManagerBuild addNodeToParent(LibInitiation libInitiation, String... parentNodeClassName) {
-        if (!judgeNodeCanAdd(libInitiation, parentNodeClassName)) {
+    public TaskManagerBuild addNodeToParent(LibInitiation libInitiation, String... parentNodeClassNames) {
+        if (!judgeNodeCanAdd(libInitiation, parentNodeClassNames)) {
             Toast.makeText(mApplication, "添加了两个相同的task=" + libInitiation.getClass().getSimpleName(), Toast.LENGTH_SHORT).show();
             return this;
         }
@@ -45,16 +45,16 @@ public class TaskManagerBuild {
             //不存在root节点的情况
             this.mRootTaskInfo = tempTaskInfo;
         } else {
-            addNode(tempTaskInfo, parentNodeClassName);
+            addNode(tempTaskInfo, parentNodeClassNames);
         }
         return this;
     }
 
-    private void addNode(TaskInfo childNode, String... parentNodeClassNameList) {
+    private void addNode(TaskInfo childNode, String... parentNodeClassNames) {
         addNodeToRoot(childNode);//所以子接点都是root的子接点
-        if (null == parentNodeClassNameList) return;
+        if (null == parentNodeClassNames) return;
         TaskInfo parentTaskInfo;
-        for (String parentNodeClassName : parentNodeClassNameList) {
+        for (String parentNodeClassName : parentNodeClassNames) {
             parentTaskInfo = findNodeByClassName(parentNodeClassName);
             childAndParentLink(childNode, parentTaskInfo);
         }

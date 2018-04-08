@@ -40,17 +40,20 @@ public class TaskManagerFragment extends Fragment implements View.OnClickListene
 
     @Override
     public void onClick(View v) {
+        test1();
+    }
+
+    private void test1() {
         new TaskManagerBuild(getActivity().getApplication())
                 .addNode(new LibInitiation1())
-                .addNodeToParent(new LibInitiation2(), LibInitiation8.class.getSimpleName())
+                .addNode(new LibInitiation2(), LibInitiation8.class.getSimpleName())//测试添加不存的父节点
                 .addNode(new LibInitiation3())
                 .addNode(new LibInitiation4())
                 .addNode(new LibInitiation5())
-                .addNodeToParent(new LibInitiation6())
+                .addNode(new LibInitiation6())
                 .addNode(new LibInitiation7())
-                .addNode(new LibInitiation7())
-                .addNodeToParent(new LibInitiation8(), LibInitiation4.class.getSimpleName(), LibInitiation2.class.getSimpleName(), LibInitiation3.class.getSimpleName())
-                .addNodeToParent(new LibInitiation9(), LibInitiation8.class.getSimpleName())
+                .addNode(new LibInitiation8(), LibInitiation7.class.getSimpleName(), LibInitiation2.class.getSimpleName(), LibInitiation3.class.getSimpleName())
+                .addNode(new LibInitiation9(), LibInitiation4.class.getSimpleName(),LibInitiation1.class.getSimpleName())
                 .startInit();
     }
 }

@@ -23,6 +23,6 @@ public class LibInitiation3 implements LibInitiation {
 
     @Override
     public boolean isRunMainThread() {
-        return false;
+        return true;
     }
 }

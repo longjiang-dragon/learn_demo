@@ -18,6 +18,6 @@ public class LibInitiation8 implements LibInitiation {
 
     @Override
     public boolean isRunMainThread() {
-        return true;
+        return false;
     }
 }

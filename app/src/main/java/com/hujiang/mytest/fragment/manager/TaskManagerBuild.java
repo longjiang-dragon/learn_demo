@@ -22,20 +22,12 @@ public class TaskManagerBuild {
         this.mApplication = application;
     }
 
-
-    /**
-     * 添加一个任务，默认放在根节点下,如根节点不存，就以当前节点为根节点
-     */
-    public TaskManagerBuild addNode(LibInitiation libInitiation) {
-        return addNodeToParent(libInitiation);
-    }
-
     /**
      * 添加一个任务，可能存在下面两类情况：
      * 1、未找到节点ParentNodeClassName，则添加到root节点下
      * 2、找到节点ParentNodeClassName，放在目标节点下,同时也添加到root节点下
      */
-    public TaskManagerBuild addNodeToParent(LibInitiation libInitiation, String... parentNodeClassNames) {
+    public TaskManagerBuild addNode(LibInitiation libInitiation, String... parentNodeClassNames) {
         if (!judgeNodeCanAdd(libInitiation, parentNodeClassNames)) return this;
         TaskInfo tempTaskInfo = generateTaskInfo(libInitiation);
         if (isAddRootNode()) {
@@ -70,10 +62,10 @@ public class TaskManagerBuild {
 
     //判断此节点是否能被添加
     private boolean judgeNodeCanAdd(LibInitiation libInitiation, String... parentNodeClassNameList) {
-        if (isAddedNode(libInitiation)) {
-            Toast.makeText(mApplication, "添加了两个相同的task=" + libInitiation.getClass().getSimpleName(), Toast.LENGTH_SHORT).show();
-            return false;
-        }
+//        if (isAddedNode(libInitiation)) {
+//            Toast.makeText(mApplication, "添加了两个相同的task=" + libInitiation.getClass().getSimpleName(), Toast.LENGTH_SHORT).show();
+//            return false;
+//        }
         if (null == parentNodeClassNameList || parentNodeClassNameList.length == 0) return true;
         for (String parentNodeClassName : parentNodeClassNameList) {
             //这里判断child和parent不能是同一个

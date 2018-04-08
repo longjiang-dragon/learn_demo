@@ -8,15 +8,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.hujiang.mytest.fragment.aidlFragment.R;
-import com.hujiang.mytest.fragment.manager.test.LibInitiation1;
+import com.hujiang.mytest.fragment.manager.test.LibInitiationMain1;
 import com.hujiang.mytest.fragment.manager.test.LibInitiation2;
-import com.hujiang.mytest.fragment.manager.test.LibInitiation3;
+import com.hujiang.mytest.fragment.manager.test.LibInitiationMain3;
 import com.hujiang.mytest.fragment.manager.test.LibInitiation4;
-import com.hujiang.mytest.fragment.manager.test.LibInitiation5;
+import com.hujiang.mytest.fragment.manager.test.LibInitiationMain5;
 import com.hujiang.mytest.fragment.manager.test.LibInitiation6;
-import com.hujiang.mytest.fragment.manager.test.LibInitiation7;
+import com.hujiang.mytest.fragment.manager.test.LibInitiationMain7;
 import com.hujiang.mytest.fragment.manager.test.LibInitiation8;
-import com.hujiang.mytest.fragment.manager.test.LibInitiation9;
+import com.hujiang.mytest.fragment.manager.test.LibInitiationMain9;
 
 /**
  * @author jianglong
@@ -40,21 +40,26 @@ public class TaskManagerFragment extends Fragment implements View.OnClickListene
 
     @Override
     public void onClick(View v) {
-//        test1();
-        test2();
+        test1();
+//        test2();
     }
+
+    /**
+     *1、    一个任务添加多个依赖
+     * 2、异常
+     */
 
     private void test1() {
         new TaskManagerBuild(getActivity().getApplication())
-                .addLib(new LibInitiation1())
+                .addLib(new LibInitiationMain1())
                 .addLib(new LibInitiation2(), LibInitiation8.class.getSimpleName())//测试添加不存的父节点
-                .addLib(new LibInitiation3())
+                .addLib(new LibInitiationMain3())
                 .addLib(new LibInitiation4())
-                .addLib(new LibInitiation5())
+                .addLib(new LibInitiationMain5(), LibInitiation4.class.getSimpleName(), LibInitiationMain3.class.getSimpleName())
                 .addLib(new LibInitiation6())
-                .addLib(new LibInitiation7())
-                .addLib(new LibInitiation8(), LibInitiation7.class.getSimpleName(), LibInitiation2.class.getSimpleName(), LibInitiation3.class.getSimpleName())
-                .addLib(new LibInitiation9(), LibInitiation4.class.getSimpleName(), LibInitiation1.class.getSimpleName())
+                .addLib(new LibInitiationMain7())
+                .addLib(new LibInitiation8(),LibInitiation2.class.getSimpleName())
+                .addLib(new LibInitiationMain9(), LibInitiation2.class.getSimpleName())
                 .startInit();
     }
 
@@ -62,15 +67,15 @@ public class TaskManagerFragment extends Fragment implements View.OnClickListene
     //测试添加多个相同的任务
     private void test2() {
         new TaskManagerBuild(getActivity().getApplication())
-                .addLib(new LibInitiation1())
-                .addLib(new LibInitiation1())
-                .addLib(new LibInitiation1())
-                .addLib(new LibInitiation1())
+                .addLib(new LibInitiationMain1())
+                .addLib(new LibInitiationMain1())
+                .addLib(new LibInitiationMain1())
+                .addLib(new LibInitiationMain1())
                 .addLib(new LibInitiation2())
-                .addLib(new LibInitiation3(),LibInitiation1.class.getSimpleName())
+                .addLib(new LibInitiationMain3(), LibInitiationMain1.class.getSimpleName())
                 .addLib(new LibInitiation2())
-                .addLib(new LibInitiation5())
-                .addLib(new LibInitiation5())
+                .addLib(new LibInitiationMain5())
+                .addLib(new LibInitiationMain5())
                 .startInit();
     }
 }

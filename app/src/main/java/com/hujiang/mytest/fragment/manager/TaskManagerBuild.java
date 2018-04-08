@@ -32,8 +32,8 @@ public class TaskManagerBuild {
 
     /**
      * 添加一个任务，可能存在下面两类情况：
-     * 1、未找到节点ParentNodeClassName，刚添加到根节点下
-     * 2、找到节点ParentNodeClassName，放在目标节点下
+     * 1、未找到节点ParentNodeClassName，则添加到root节点下
+     * 2、找到节点ParentNodeClassName，放在目标节点下,同时也添加到root节点下
      */
     public TaskManagerBuild addNodeToParent(LibInitiation libInitiation, String... parentNodeClassNames) {
         if (!judgeNodeCanAdd(libInitiation, parentNodeClassNames)) return this;

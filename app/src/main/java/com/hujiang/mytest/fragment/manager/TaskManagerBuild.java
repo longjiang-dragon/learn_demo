@@ -36,10 +36,7 @@ public class TaskManagerBuild {
      * 2、找到节点ParentNodeClassName，放在目标节点下
      */
     public TaskManagerBuild addNodeToParent(LibInitiation libInitiation, String... parentNodeClassNames) {
-        if (!judgeNodeCanAdd(libInitiation, parentNodeClassNames)) {
-            Toast.makeText(mApplication, "添加了两个相同的task=" + libInitiation.getClass().getSimpleName(), Toast.LENGTH_SHORT).show();
-            return this;
-        }
+        if (!judgeNodeCanAdd(libInitiation, parentNodeClassNames)) return this;
         TaskInfo tempTaskInfo = generateTaskInfo(libInitiation);
         if (isAddRootNode()) {
             //不存在root节点的情况
@@ -73,10 +70,17 @@ public class TaskManagerBuild {
 
     //判断此节点是否能被添加
     private boolean judgeNodeCanAdd(LibInitiation libInitiation, String... parentNodeClassNameList) {
-        if (isAddedNode(libInitiation)) return false;
+        if (isAddedNode(libInitiation)) {
+            Toast.makeText(mApplication, "添加了两个相同的task=" + libInitiation.getClass().getSimpleName(), Toast.LENGTH_SHORT).show();
+            return false;
+        }
         if (null == parentNodeClassNameList || parentNodeClassNameList.length == 0) return true;
         for (String parentNodeClassName : parentNodeClassNameList) {
-            if (parentNodeClassName.equals(libInitiation.getClass().getSimpleName())) return false;
+            //这里判断child和parent不能是同一个
+            if (parentNodeClassName.equals(libInitiation.getClass().getSimpleName())) {
+                Toast.makeText(mApplication, "父节点指向错误=" + libInitiation.getClass().getSimpleName(), Toast.LENGTH_SHORT).show();
+                return false;
+            }
         }
         return true;
     }

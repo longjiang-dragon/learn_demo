@@ -24,22 +24,22 @@ public class TaskManagerBuild {
 
     /**
      * 添加一个任务，可能存在下面两类情况：
-     * 1、未找到节点ParentNodeClassName，则添加到root节点下
-     * 2、找到节点ParentNodeClassName，放在目标节点下,同时也添加到root节点下
+     * 1、未找到节点parentLibClassNames，则添加到root节点下
+     * 2、找到节点parentLibClassNames，放在目标节点下,同时也添加到root节点下
      */
-    public TaskManagerBuild addNode(LibInitiation libInitiation, String... parentNodeClassNames) {
-        if (!judgeNodeCanAdd(libInitiation, parentNodeClassNames)) return this;
+    public TaskManagerBuild addLib(LibInitiation libInitiation, String... parentLibClassNames) {
+        if (!judgeNodeCanAdd(libInitiation, parentLibClassNames)) return this;
         TaskInfo tempTaskInfo = generateTaskInfo(libInitiation);
         if (isAddRootNode()) {
             //不存在root节点的情况
             this.mRootTaskInfo = tempTaskInfo;
         } else {
-            addNode(tempTaskInfo, parentNodeClassNames);
+            addLib(tempTaskInfo, parentLibClassNames);
         }
         return this;
     }
 
-    private void addNode(TaskInfo childNode, String... parentNodeClassNames) {
+    private void addLib(TaskInfo childNode, String... parentNodeClassNames) {
         addNodeToRoot(childNode);//所以子接点都是root的子接点
         if (null == parentNodeClassNames) return;
         TaskInfo parentTaskInfo;

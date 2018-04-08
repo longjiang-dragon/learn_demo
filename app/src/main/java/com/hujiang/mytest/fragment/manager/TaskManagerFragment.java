@@ -40,20 +40,37 @@ public class TaskManagerFragment extends Fragment implements View.OnClickListene
 
     @Override
     public void onClick(View v) {
-        test1();
+//        test1();
+        test2();
     }
 
     private void test1() {
         new TaskManagerBuild(getActivity().getApplication())
-                .addNode(new LibInitiation1())
-                .addNode(new LibInitiation2(), LibInitiation8.class.getSimpleName())//测试添加不存的父节点
-                .addNode(new LibInitiation3())
-                .addNode(new LibInitiation4())
-                .addNode(new LibInitiation5())
-                .addNode(new LibInitiation6())
-                .addNode(new LibInitiation7())
-                .addNode(new LibInitiation8(), LibInitiation7.class.getSimpleName(), LibInitiation2.class.getSimpleName(), LibInitiation3.class.getSimpleName())
-                .addNode(new LibInitiation9(), LibInitiation4.class.getSimpleName(),LibInitiation1.class.getSimpleName())
+                .addLib(new LibInitiation1())
+                .addLib(new LibInitiation2(), LibInitiation8.class.getSimpleName())//测试添加不存的父节点
+                .addLib(new LibInitiation3())
+                .addLib(new LibInitiation4())
+                .addLib(new LibInitiation5())
+                .addLib(new LibInitiation6())
+                .addLib(new LibInitiation7())
+                .addLib(new LibInitiation8(), LibInitiation7.class.getSimpleName(), LibInitiation2.class.getSimpleName(), LibInitiation3.class.getSimpleName())
+                .addLib(new LibInitiation9(), LibInitiation4.class.getSimpleName(), LibInitiation1.class.getSimpleName())
+                .startInit();
+    }
+
+
+    //测试添加多个相同的任务
+    private void test2() {
+        new TaskManagerBuild(getActivity().getApplication())
+                .addLib(new LibInitiation1())
+                .addLib(new LibInitiation1())
+                .addLib(new LibInitiation1())
+                .addLib(new LibInitiation1())
+                .addLib(new LibInitiation2())
+                .addLib(new LibInitiation3(),LibInitiation1.class.getSimpleName())
+                .addLib(new LibInitiation2())
+                .addLib(new LibInitiation5())
+                .addLib(new LibInitiation5())
                 .startInit();
     }
 }

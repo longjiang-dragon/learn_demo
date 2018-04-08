@@ -13,7 +13,7 @@ import java.util.concurrent.ExecutorService;
 
 /**
  * @author jianglong
- * @desc 1、如当前任务与所在线程与任务申明的线程不相同时（当前任务的child也不会加入到当前队列），在目标线程中新创建一个taskManager,再执行当前任务
+ * @desc 如当前任务与所在线程与任务申明的线程不相同时（当前任务的child也不会加入到当前队列），在目标线程中新创建一个taskManager,再执行当前任务
  * @date 2018/3/30
  */
 public class TaskManager {
@@ -42,7 +42,7 @@ public class TaskManager {
 
 
     private void startExecute(TaskInfo currentTask) {
-        if (Looper.myLooper() == Looper.getMainLooper()) {
+        if (isOnMainThread()) {
             if (currentTask.isRunMainThread()) {
                 currentTask.startExecute();
             } else {
@@ -61,11 +61,15 @@ public class TaskManager {
 
     //只有当 当前线程与当前任务所申明线程相同时，才会把子任务添加到队列中
     private boolean isNeedAddChildToQueue(TaskInfo parentTaskInfo) {
-        if (Looper.myLooper() == Looper.getMainLooper()) {
+        if (isOnMainThread()) {
             return parentTaskInfo.isRunMainThread();
         } else {
             return !parentTaskInfo.isRunMainThread();
         }
+    }
+
+    private boolean isOnMainThread() {
+        return Looper.myLooper() == Looper.getMainLooper();
     }
 
 

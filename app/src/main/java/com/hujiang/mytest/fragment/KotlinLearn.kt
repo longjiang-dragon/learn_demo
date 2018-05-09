@@ -126,4 +126,32 @@ class KotlinLearn : Fragment() {
     class Child : MyInterface {
         override val prop: Int = 29 //所以这里需要有实现
     }
+
+    ///////////////扩展声明为成员///////////////
+    open class D {
+    }
+
+    class D1 : D() {}
+    open class C {
+        open fun D.foo() {
+            println("D.foo in C")
+        }
+
+        open fun D1.foo() {}
+        fun caller(d: D) {
+            println("D1.foo in C")
+        }
+    }
+
+    class C1 : C() {
+        override fun D.foo() {
+            println("D.foo in c1")
+        }
+
+        override fun D1.foo() {
+          println("D1.foo in c1")
+        }
+    }
+    fun testCode1 (){
+    }
 }

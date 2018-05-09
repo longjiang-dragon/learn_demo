@@ -45,7 +45,7 @@ public class TaskManagerFragment extends Fragment implements View.OnClickListene
     }
 
     /**
-     *1、    一个任务添加多个依赖
+     * 1、    一个任务添加多个依赖
      * 2、异常
      */
 
@@ -57,8 +57,8 @@ public class TaskManagerFragment extends Fragment implements View.OnClickListene
                 .addLib(new LibInitiation4())
                 .addLib(new LibInitiationMain5(), LibInitiation4.class.getSimpleName(), LibInitiationMain3.class.getSimpleName())
                 .addLib(new LibInitiation6())
-                .addLib(new LibInitiationMain7())
-                .addLib(new LibInitiation8(),LibInitiation2.class.getSimpleName())
+                .addLib(new LibInitiationMain7(), LibInitiationMain3.class.getSimpleName())
+                .addLib(new LibInitiation8(), LibInitiation2.class.getSimpleName())
                 .addLib(new LibInitiationMain9(), LibInitiation2.class.getSimpleName())
                 .startInit();
     }

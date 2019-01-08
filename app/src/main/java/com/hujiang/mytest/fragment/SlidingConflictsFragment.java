@@ -3,10 +3,6 @@ package com.hujiang.mytest.fragment;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +11,11 @@ import android.widget.TextView;
 
 import com.hujiang.mytest.fragment.aidlFragment.R;
 
-import butterknife.Bind;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -25,9 +25,9 @@ import butterknife.ButterKnife;
  * @date 16/3/25
  */
 public class SlidingConflictsFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
-	@Bind(R.id.recycler_view)
+	@BindView (R.id.recycler_view)
 	public RecyclerView mRecyclerView;
-	@Bind(R.id.swipe_refresh_layout)
+	@BindView(R.id.swipe_refresh_layout)
 	public SwipeRefreshLayout mSwipeRefreshLayout;
 
 	@Nullable
@@ -69,7 +69,6 @@ public class SlidingConflictsFragment extends Fragment implements SwipeRefreshLa
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
-		ButterKnife.unbind(this);
 	}
 
 	@Override

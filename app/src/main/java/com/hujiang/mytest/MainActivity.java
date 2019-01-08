@@ -1,19 +1,12 @@
 package com.hujiang.mytest;
 
 import android.os.Bundle;
-import android.support.design.widget.NavigationView;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.view.ViewPager;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.tabs.TabLayout;
 import com.hujiang.mytest.fragment.AfterFollowFragment;
 import com.hujiang.mytest.fragment.ConstraintTestFragment;
 import com.hujiang.mytest.fragment.CustomDrawableFragment;
@@ -21,13 +14,11 @@ import com.hujiang.mytest.fragment.CustomViewDrawTextBaseLineFragment;
 import com.hujiang.mytest.fragment.HandlerLearnFragment;
 import com.hujiang.mytest.fragment.HookFragment;
 import com.hujiang.mytest.fragment.JNIFragment;
-import com.hujiang.mytest.fragment.KotlinLearn;
 import com.hujiang.mytest.fragment.SlidingConflictsFragment;
 import com.hujiang.mytest.fragment.SpannableStringFragment;
 import com.hujiang.mytest.fragment.ThreadLocalFragment;
 import com.hujiang.mytest.fragment.ThreadPoolFragment;
 import com.hujiang.mytest.fragment.TransparentCircleFragment;
-import com.hujiang.mytest.fragment.ViewAnimationFragment;
 import com.hujiang.mytest.fragment.aidlFragment.AidlFragment;
 import com.hujiang.mytest.fragment.aidlFragment.R;
 import com.hujiang.mytest.fragment.drag.helper.fragment.LearnViewDragHelperFragment;
@@ -41,17 +32,24 @@ import com.hujiang.mytest.fragment.open.udid.fragment.OpenUDIDFragment;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
-import butterknife.Bind;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
-    @Bind(R.id.toolbar)
+    @BindView (R.id.toolbar)
     Toolbar mToolbar;
-    @Bind(R.id.dl_main_drawer)
+    @BindView(R.id.dl_main_drawer)
     DrawerLayout mDrawerLayout;
-    @Bind(R.id.viewpager)
+    @BindView(R.id.viewpager)
     ViewPager mViewPager;
-    @Bind(R.id.tabs)
+    @BindView(R.id.tabs)
     TabLayout mTabLayout;
     LinkedHashMap<String, Fragment> mFragments = new LinkedHashMap<>();
 
@@ -71,8 +69,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void initFragment() {
         mFragments.put("task_manager", new TaskManagerFragment());
-        mFragments.put("kotlin_learn", new KotlinLearn());
-        mFragments.put("view_animation", new ViewAnimationFragment());
+//        mFragments.put("kotlin_learn", new KotlinLearn());
+//        mFragments.put("view_animation", new ViewAnimationFragment());
         mFragments.put("ThreadPool", new ThreadPoolFragment());
         mFragments.put("CustomView1_4", new PracticeDraw4());
 

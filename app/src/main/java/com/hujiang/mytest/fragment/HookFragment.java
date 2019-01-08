@@ -2,7 +2,6 @@ package com.hujiang.mytest.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +9,8 @@ import android.webkit.WebView;
 
 import com.hujiang.mytest.fragment.aidlFragment.R;
 
-import butterknife.Bind;
+import androidx.fragment.app.Fragment;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -21,7 +21,7 @@ import butterknife.ButterKnife;
  */
 public class HookFragment extends Fragment {
 
-	@Bind(R.id.webview)
+	@BindView (R.id.webview)
 	public WebView mWebView;
 
 	@Override

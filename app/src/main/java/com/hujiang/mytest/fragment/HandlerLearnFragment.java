@@ -5,7 +5,6 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +14,8 @@ import android.widget.Toast;
 
 import com.hujiang.mytest.fragment.aidlFragment.R;
 
-import butterknife.Bind;
+import androidx.fragment.app.Fragment;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -26,7 +26,7 @@ import butterknife.OnClick;
  */
 public class HandlerLearnFragment extends Fragment {
 
-    @Bind(R.id.tv)
+    @BindView (R.id.tv)
     TextView mTv;
     private Handler mHandler;
 
@@ -66,7 +66,6 @@ public class HandlerLearnFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        ButterKnife.unbind(this);
     }
 
     @OnClick(R.id.button)

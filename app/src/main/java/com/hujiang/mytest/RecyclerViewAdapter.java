@@ -6,7 +6,6 @@ import android.animation.ObjectAnimator;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +13,8 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.hujiang.mytest.fragment.aidlFragment.R;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
@@ -66,7 +67,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             String url = "";
             Glide.with(mView.getContext())
                     .load(url)
-                    .error(R.drawable.cheese_3)
+//                    .error(R.drawable.cheese_3)
                     .into(mImageView);
         }
 

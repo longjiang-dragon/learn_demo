@@ -3,9 +3,6 @@ package com.hujiang.mytest.fragment;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +14,10 @@ import com.hujiang.mytest.fragment.aidlFragment.R;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -29,7 +29,7 @@ import butterknife.ButterKnife;
 public class AfterFollowFragment extends Fragment {
 	private static int mScreenWidth = Resources.getSystem().getDisplayMetrics().widthPixels;
 
-	@Bind(R.id.recycler_view)
+	@BindView (R.id.recycler_view)
 	public RecyclerView mRecyclerView;
 
 	@Nullable
@@ -50,7 +50,6 @@ public class AfterFollowFragment extends Fragment {
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
-		ButterKnife.unbind(this);
 	}
 
 	public class AfterFollowAdapter extends RecyclerView.Adapter<AfterFollowAdapter.Item> {

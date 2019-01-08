@@ -2,21 +2,22 @@ package com.hujiang.mytest.fragment.manager;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.hujiang.mytest.fragment.aidlFragment.R;
-import com.hujiang.mytest.fragment.manager.test.LibInitiationMain1;
 import com.hujiang.mytest.fragment.manager.test.LibInitiation2;
-import com.hujiang.mytest.fragment.manager.test.LibInitiationMain3;
 import com.hujiang.mytest.fragment.manager.test.LibInitiation4;
-import com.hujiang.mytest.fragment.manager.test.LibInitiationMain5;
 import com.hujiang.mytest.fragment.manager.test.LibInitiation6;
-import com.hujiang.mytest.fragment.manager.test.LibInitiationMain7;
 import com.hujiang.mytest.fragment.manager.test.LibInitiation8;
+import com.hujiang.mytest.fragment.manager.test.LibInitiationMain1;
+import com.hujiang.mytest.fragment.manager.test.LibInitiationMain3;
+import com.hujiang.mytest.fragment.manager.test.LibInitiationMain5;
+import com.hujiang.mytest.fragment.manager.test.LibInitiationMain7;
 import com.hujiang.mytest.fragment.manager.test.LibInitiationMain9;
+
+import androidx.fragment.app.Fragment;
 
 /**
  * @author jianglong

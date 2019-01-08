@@ -2,7 +2,6 @@ package com.hujiang.mytest.fragment.open.udid.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +10,8 @@ import android.widget.TextView;
 
 import com.hujiang.mytest.fragment.aidlFragment.R;
 
-import butterknife.Bind;
+import androidx.fragment.app.Fragment;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -22,7 +22,7 @@ import butterknife.OnClick;
  * @date 2017/2/15
  */
 public class OpenUDIDFragment extends Fragment {
-    @Bind(R.id.tv_get_udid)
+    @BindView (R.id.tv_get_udid)
     TextView mTextView;
 
     @Nullable

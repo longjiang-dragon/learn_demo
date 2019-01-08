@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.os.RemoteException;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +15,8 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import butterknife.Bind;
+import androidx.fragment.app.Fragment;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -26,7 +26,7 @@ import butterknife.ButterKnife;
  */
 public class AidlFragment extends Fragment {
 
-    @Bind(R.id.tv)
+    @BindView (R.id.tv)
     TextView mTextView;
 
     @Nullable
@@ -75,6 +75,5 @@ public class AidlFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        ButterKnife.unbind(this);
     }
 }

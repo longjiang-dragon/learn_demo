@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +11,8 @@ import android.widget.TextView;
 
 import com.hujiang.mytest.fragment.aidlFragment.R;
 
-import butterknife.Bind;
+import androidx.fragment.app.Fragment;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -22,7 +22,7 @@ import butterknife.ButterKnife;
  */
 public class ThreadLocalFragment extends Fragment {
     private static final String RESULT = "REsult";
-    @Bind(R.id.tv)
+    @BindView (R.id.tv)
     TextView mTv;
     private ThreadLocal<Integer> mIntegerThreadLocal = new InheritableThreadLocal<Integer>() {
         @Override
@@ -80,6 +80,5 @@ public class ThreadLocalFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        ButterKnife.unbind(this);
     }
 }

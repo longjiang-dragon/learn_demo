@@ -4,7 +4,6 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.text.Html;
 import android.text.Spannable;
 import android.text.SpannableString;
@@ -33,7 +32,8 @@ import android.widget.Toast;
 
 import com.hujiang.mytest.fragment.aidlFragment.R;
 
-import butterknife.Bind;
+import androidx.fragment.app.Fragment;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -43,9 +43,9 @@ import butterknife.ButterKnife;
  * @date 16/3/24
  */
 public class SpannableStringFragment extends Fragment {
-    @Bind(R.id.tv_content)
+    @BindView (R.id.tv_content)
     public TextView mTextViewContext;
-    @Bind(R.id.tv_content_two)
+    @BindView(R.id.tv_content_two)
     public TextView mTextViewContextTwo;
     private static final String TEST_STR = "字体测试字体大小一半两倍前景色背景色正常粗体斜体粗斜体下划线删除线x1x2电话邮件网站短信彩信地图X轴综合点击事件";
 

@@ -4,7 +4,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +13,8 @@ import com.hujiang.mytest.fragment.aidlFragment.R;
 import com.hujiang.mytest.widget.CircleImageExtendsDrawable;
 import com.hujiang.mytest.widget.RoundImageDrawable;
 
-import butterknife.Bind;
+import androidx.fragment.app.Fragment;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -23,9 +23,9 @@ import butterknife.ButterKnife;
  * @date 15/12/26
  */
 public class CustomDrawableFragment extends Fragment {
-    @Bind(R.id.iv)
+    @BindView(R.id.iv)
     ImageView mIv;
-    @Bind(R.id.iv_two)
+    @BindView (R.id.iv_two)
     ImageView mIvTwo;
 
     @Nullable
@@ -47,6 +47,5 @@ public class CustomDrawableFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        ButterKnife.unbind(this);
     }
 }

@@ -3,10 +3,10 @@ package com.hujiang.mytest;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 
 import com.hujiang.mytest.fragment.aidlFragment.R;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 /**

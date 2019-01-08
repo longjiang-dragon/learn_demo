@@ -1,12 +1,13 @@
 package com.hujiang.mytest.fragment.drag.helper.fragment;
 
 import android.content.Context;
-import android.support.v4.widget.ViewDragHelper;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
+
+import androidx.customview.widget.ViewDragHelper;
 
 /**
  * @author yuefeng

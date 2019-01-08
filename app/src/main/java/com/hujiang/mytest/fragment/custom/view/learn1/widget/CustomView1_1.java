@@ -4,8 +4,6 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Path;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -22,7 +20,7 @@ public class CustomView1_1 extends View {
         super(context);
     }
 
-    public CustomView1_1(Context context, @Nullable AttributeSet attrs) {
+    public CustomView1_1(Context context,  AttributeSet attrs) {
         super(context, attrs);
     }
 

@@ -5,12 +5,13 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Camera;
 import android.graphics.Canvas;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 
 import com.hujiang.mytest.fragment.aidlFragment.R;
 import com.hujiang.mytest.widget.ExtendsView;
+
+import androidx.annotation.Nullable;
 
 /**
  * @author jianglong

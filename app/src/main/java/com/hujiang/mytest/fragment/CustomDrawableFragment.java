@@ -3,7 +3,6 @@ package com.hujiang.mytest.fragment;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,7 +27,6 @@ public class CustomDrawableFragment extends Fragment {
     @BindView (R.id.iv_two)
     ImageView mIvTwo;
 
-    @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.custom_drawable_fragment, container, false);
@@ -37,7 +35,7 @@ public class CustomDrawableFragment extends Fragment {
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+    public void onActivityCreated( Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         Bitmap _bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.eye);
         mIv.setImageDrawable(new RoundImageDrawable(_bitmap));

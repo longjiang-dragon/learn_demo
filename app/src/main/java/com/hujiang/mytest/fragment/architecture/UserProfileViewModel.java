@@ -1,7 +1,8 @@
 package com.hujiang.mytest.fragment.architecture;
 
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.ViewModel;
+
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.ViewModel;
 
 /**
  * @author yuefeng

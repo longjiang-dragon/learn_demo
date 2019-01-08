@@ -11,12 +11,13 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PorterDuff;
 import android.graphics.Shader;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 
 import com.hujiang.mytest.fragment.aidlFragment.R;
 import com.hujiang.mytest.widget.ExtendsView;
+
+import androidx.annotation.Nullable;
 
 /**
  * @author jianglong

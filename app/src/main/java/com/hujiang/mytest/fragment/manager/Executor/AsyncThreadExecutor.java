@@ -1,11 +1,11 @@
 package com.hujiang.mytest.fragment.manager.Executor;
 
-import android.support.annotation.NonNull;
-
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
+
+import androidx.annotation.NonNull;
 
 /**
  * @author jianglong

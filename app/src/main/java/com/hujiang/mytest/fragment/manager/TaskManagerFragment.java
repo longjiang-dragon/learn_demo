@@ -1,7 +1,6 @@
 package com.hujiang.mytest.fragment.manager;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +16,7 @@ import com.hujiang.mytest.fragment.manager.test.LibInitiationMain5;
 import com.hujiang.mytest.fragment.manager.test.LibInitiationMain7;
 import com.hujiang.mytest.fragment.manager.test.LibInitiationMain9;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 /**

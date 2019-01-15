@@ -1,6 +1,8 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'com.jakewharton.butterknife'
+apply plugin: 'kotlin-android-extensions'
+
 //apply plugin: 'com.gradle.learn'
 
 
@@ -96,8 +98,12 @@ dependencies {
 
     //对rxjava的支持
     implementation "androidx.room:room-rxjava2:2.0.0-rc01"
+
+
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
+
+    implementation 'com.android.support:support-dynamic-animation:28.0.0'
 
 }
 repositories {

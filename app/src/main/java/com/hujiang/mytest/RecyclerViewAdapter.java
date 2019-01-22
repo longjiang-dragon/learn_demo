@@ -64,10 +64,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             mView = view;
             mImageView = (ImageView) view.findViewById(R.id.iv);
             mImageView.setOnClickListener(this);
-            String url = "";
             Glide.with(mView.getContext())
-                    .load(url)
-//                    .error(R.drawable.cheese_3)
+                    .load(R.drawable.cheese_3)
                     .into(mImageView);
         }
 

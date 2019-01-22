@@ -1,5 +1,6 @@
-package com.hujiang.mytest.fragment
+package com.hujiang.mytest.fragment.test.kotlin
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,22 +14,68 @@ import com.hujiang.mytest.fragment.aidlFragment.R
  * @desc
  * @date 2018/3/29
  */
-class KotlinLearn : Fragment() {
+class KotlinLearnFragment @SuppressLint("ValidFragment")
+private constructor() : Fragment() {
+    val title: String? = null
+
+
+    companion object {
+        private val ARG_PARAM = "extra_key"
+        public fun newInstance(name: String): KotlinLearnFragment {
+            val fragment = KotlinLearnFragment()
+            val args = Bundle()
+            args.putString(ARG_PARAM, name)
+            fragment.arguments = args
+            return fragment
+        }
+    }
+
+    init {
+
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-                return inflater!!.inflate(R.layout.fragment_kotlin_layout, container, false)
+        return inflater!!.inflate(R.layout.fragment_kotlin_layout, container, false)
     }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        printLog(describe(this))
-        rangeSample()
-        collectionFilter()
+//        printLog(describe(this))
+//        rangeSample()
+//        collectionFilter()
+        lambdaCode()
+        nullSafe();
+    }
+
+    private fun nullSafe() {
+        //?:如果左侧表达式非空，则返回左则表达式值，否则返回右侧表达式值
+        val b=title?.length?:-1;
+    }
+
+    fun <T, R> Collection<T>.fold(
+            initial: R,
+            combine: (acc: R, nextElement: T) -> R
+    ): R {
+        var accumulator: R = initial
+        for (element: T in this) {
+            accumulator = combine(accumulator, element)
+        }
+        return accumulator
+    }
+
+
+    private fun lambdaCode() {
+        val items = listOf(1, 2, 4, 45, 4)
+        items.fold(0, { acc: Int, i: Int ->
+            val resut = acc + i
+            resut
+        })
+
     }
 
     fun parseInt(str: String): Int? {
-        //?表示可以返回空值
+        //?:表示可以返回空值
         return str.toIntOrNull()
     }
 
@@ -151,9 +198,12 @@ class KotlinLearn : Fragment() {
         }
 
         override fun D1.foo() {
-          println("D1.foo in c1")
+            println("D1.foo in c1")
         }
     }
-    fun testCode1 (){
+
+    fun testCode1() {
     }
+
+
 }

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/begin"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="默认动画"/>
+
+        <Button
+            android:id="@+id/reset"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="reset"/>
+
+        <Button
+            android:id="@+id/AddTarget"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="AddTarget"/>
+
+        <Button
+            android:id="@+id/custom_transition"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="custom"/>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/rootView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include layout="@layout/scene1"/>
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/view_custom"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="#fff12345"
+        android:orientation="horizontal"/>
+</LinearLayout>

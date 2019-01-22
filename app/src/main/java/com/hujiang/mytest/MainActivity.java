@@ -14,7 +14,6 @@ import com.hujiang.mytest.fragment.CustomViewDrawTextBaseLineFragment;
 import com.hujiang.mytest.fragment.HandlerLearnFragment;
 import com.hujiang.mytest.fragment.HookFragment;
 import com.hujiang.mytest.fragment.JNIFragment;
-import com.hujiang.mytest.fragment.KotlinLearn;
 import com.hujiang.mytest.fragment.SlidingConflictsFragment;
 import com.hujiang.mytest.fragment.SpannableStringFragment;
 import com.hujiang.mytest.fragment.ThreadLocalFragment;
@@ -24,12 +23,16 @@ import com.hujiang.mytest.fragment.ViewAnimationFragment;
 import com.hujiang.mytest.fragment.aidlFragment.AidlFragment;
 import com.hujiang.mytest.fragment.aidlFragment.R;
 import com.hujiang.mytest.fragment.drag.helper.fragment.LearnViewDragHelperFragment;
+import com.hujiang.mytest.fragment.dynamic.animation.DynamicAnimationFragment;
 import com.hujiang.mytest.fragment.fixHeigth.FixHeightRecyclerViewFragment;
 import com.hujiang.mytest.fragment.hencoder.draw1.CustomViewFragment1;
 import com.hujiang.mytest.fragment.hencoder.draw2.CustomViewFragment2;
 import com.hujiang.mytest.fragment.hencoder.draw4.PracticeDraw4;
+import com.hujiang.mytest.fragment.jet.pack.JetPackTestFragment;
 import com.hujiang.mytest.fragment.manager.TaskManagerFragment;
 import com.hujiang.mytest.fragment.open.udid.fragment.OpenUDIDFragment;
+import com.hujiang.mytest.fragment.test.kotlin.KotlinLearnFragment;
+import com.hujiang.mytest.fragment.transition.TransitionFragment;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -70,8 +73,11 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void initFragment() {
+        mFragments.put("transitionFragment", new TransitionFragment());
+        mFragments.put("DynamicAnimation", new DynamicAnimationFragment());
+        mFragments.put("jetPack", new JetPackTestFragment());
         mFragments.put("task_manager", new TaskManagerFragment());
-        mFragments.put("kotlin_learn", new KotlinLearn());
+        mFragments.put("kotlin_learn",  KotlinLearnFragment.Companion.newInstance("kotlin"));
         mFragments.put("view_animation", new ViewAnimationFragment());
         mFragments.put("ThreadPool", new ThreadPoolFragment());
         mFragments.put("CustomView1_4", new PracticeDraw4());

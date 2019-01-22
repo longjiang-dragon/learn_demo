@@ -1,15 +1,17 @@
 package com.hujiang.mytest;
 
+import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.hujiang.mytest.fragment.aidlFragment.R;
 
 import androidx.annotation.Nullable;
-import androidx.fragment.app.FragmentActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * @author jianglong
@@ -17,20 +19,21 @@ import androidx.fragment.app.FragmentActivity;
  * @desc
  * @date 2017/10/30
  */
-public class BigImageActivity extends FragmentActivity {
+public class BigImageActivity extends AppCompatActivity {
     public static void launch(Context pContext) {
         Intent starter = new Intent(pContext, BigImageActivity.class);
-        pContext.startActivity(starter);
+        ((Activity)pContext).startActivity(starter,ActivityOptions.makeSceneTransitionAnimation((Activity)pContext).toBundle());
     }
 
     private static final String IMAGE_URL = "http://pic1.win4000.com/wallpaper/f/541f9b4dce419.jpg";
     private ImageView mImageView;
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_big_image);
         mImageView = (ImageView) findViewById(R.id.iv);
-//        Glide.with(this).load(IMAGE_URL).into(mImageView);
+        Glide.with(this).load(IMAGE_URL).into(mImageView);
     }
+
 }

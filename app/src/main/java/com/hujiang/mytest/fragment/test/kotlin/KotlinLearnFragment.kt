@@ -45,12 +45,24 @@ private constructor() : Fragment() {
 //        rangeSample()
 //        collectionFilter()
         lambdaCode()
+        lambdaCode2()
         nullSafe();
+    }
+
+    private fun lambdaCode2() {
+        val lambdaFun = { left: Int, right: Int ->
+            {
+                left + right
+            }
+        }
+        lambdaFun(0, 1)
+        //可简写
+        lambdaFun.invoke(0, 1)
     }
 
     private fun nullSafe() {
         //?:如果左侧表达式非空，则返回左则表达式值，否则返回右侧表达式值
-        val b=title?.length?:-1;
+        val b = title?.length ?: -1;
     }
 
     fun <T, R> Collection<T>.fold(
@@ -67,10 +79,10 @@ private constructor() : Fragment() {
 
     private fun lambdaCode() {
         val items = listOf(1, 2, 4, 45, 4)
-        items.fold(0, { acc: Int, i: Int ->
+        items.fold(0) { acc: Int, i: Int ->
             val resut = acc + i
             resut
-        })
+        }
 
     }
 

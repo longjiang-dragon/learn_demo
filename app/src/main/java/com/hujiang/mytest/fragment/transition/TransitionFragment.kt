@@ -7,7 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.transition.*
+import androidx.transition.ChangeBounds
+import androidx.transition.Scene
+import androidx.transition.TransitionManager
+import androidx.transition.TransitionSet
 import com.hujiang.mytest.fragment.aidlFragment.R
 import kotlinx.android.synthetic.main.fragment_basic_transitions.*
 
@@ -33,7 +36,7 @@ class TransitionFragment : Fragment(), View.OnClickListener {
         when {
             v!!.id == R.id.begin -> {
                 val scene = Scene.getSceneForLayout(rootView, R.layout.scene2, this.context!!);
-                TransitionManager.go(scene, ChangeScroll())
+                TransitionManager.go(scene, ChangeBounds())
             }
             v.id == R.id.reset -> {
                 val scene2 = Scene.getSceneForLayout(rootView, R.layout.scene1, this.context!!);

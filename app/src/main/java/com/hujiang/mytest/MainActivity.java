@@ -50,13 +50,14 @@ import butterknife.ButterKnife;
 public class MainActivity extends AppCompatActivity {
     @BindView (R.id.toolbar)
     Toolbar mToolbar;
-    @BindView(R.id.dl_main_drawer)
+    @BindView (R.id.dl_main_drawer)
     DrawerLayout mDrawerLayout;
-    @BindView(R.id.viewpager)
+    @BindView (R.id.viewpager)
     ViewPager mViewPager;
-    @BindView(R.id.tabs)
+    @BindView (R.id.tabs)
     TabLayout mTabLayout;
     LinkedHashMap<String, Fragment> mFragments = new LinkedHashMap<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
         mFragments.put("DynamicAnimation", new DynamicAnimationFragment());
         mFragments.put("jetPack", new JetPackTestFragment());
         mFragments.put("task_manager", new TaskManagerFragment());
-        mFragments.put("kotlin_learn",  KotlinLearnFragment.Companion.newInstance("kotlin"));
+        mFragments.put("kotlin_learn", KotlinLearnFragment.Companion.newInstance("kotlin"));
         mFragments.put("view_animation", new ViewAnimationFragment());
         mFragments.put("ThreadPool", new ThreadPoolFragment());
         mFragments.put("CustomView1_4", new PracticeDraw4());

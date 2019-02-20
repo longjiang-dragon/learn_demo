@@ -47,7 +47,15 @@ private constructor() : Fragment() {
         lambdaCode()
         lambdaCode2()
         nullSafe();
+      initTestCode();
+
     }
+
+    private fun initTestCode() {
+        val (name,age)=1 to ""
+
+    }
+
 
     private fun lambdaCode2() {
         val lambdaFun = { left: Int, right: Int ->
@@ -79,6 +87,7 @@ private constructor() : Fragment() {
 
     private fun lambdaCode() {
         val items = listOf(1, 2, 4, 45, 4)
+        items.last()
         items.fold(0) { acc: Int, i: Int ->
             val resut = acc + i
             resut
@@ -186,6 +195,7 @@ private constructor() : Fragment() {
 
     class Child : MyInterface {
         override val prop: Int = 29 //所以这里需要有实现
+
     }
 
     ///////////////扩展声明为成员///////////////
@@ -215,6 +225,9 @@ private constructor() : Fragment() {
     }
 
     fun testCode1() {
+        //kotlin中处理了java中把参加当作一个正则表达式处理的问题
+        "".split(".","-")//可同时指定多个分隔符
+        "".split(".".toRegex())
     }
 
 

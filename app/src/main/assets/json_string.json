@@ -1,0 +1,13 @@
+{
+  "appVersion": "3.0.0",
+  "netType": "wifi",
+  "dataList": [
+    "aaaaa",
+    "bbbb"
+  ],
+  "man": {
+    "name": null,
+    "age": 1000,
+    "test_boolean": "false"
+  }
+}

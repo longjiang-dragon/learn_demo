@@ -3,6 +3,7 @@ package com.hujiang.mytest.fragment;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 
 import com.hujiang.mytest.fragment.aidlFragment.R;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import butterknife.BindView;
@@ -46,12 +48,13 @@ public class ThreadLocalFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.thread_local_fragment, container, false);
         ButterKnife.bind(this, view);
+
         return view;
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         Runnable _runnable = new Runnable() {
             @Override
             public void run() {
@@ -60,19 +63,20 @@ public class ThreadLocalFragment extends Fragment {
                     _temp++;
                 }
                 result.append(_temp).append("    ").append(Thread.currentThread().getName()).append("\n");
-                Bundle _bundle=new Bundle();
+                Bundle _bundle = new Bundle();
                 _bundle.putString(RESULT, result.toString());
-                Message _message=Message.obtain(mHandler);
+                Log.i("info", result.toString());
+                Message _message = Message.obtain(mHandler);
                 _message.setData(_bundle);
                 _message.sendToTarget();
             }
         };
 
-        new Thread(_runnable,"Thread_1").start();
-        new Thread(_runnable,"Thread_2").start();
-        new Thread(_runnable,"Thread_3").start();
-        new Thread(_runnable,"Thread_4").start();
-        new Thread(_runnable,"Thread_5").start();
+        new Thread(_runnable, "Thread_1").start();
+        new Thread(_runnable, "Thread_2").start();
+        new Thread(_runnable, "Thread_3").start();
+        new Thread(_runnable, "Thread_4").start();
+        new Thread(_runnable, "Thread_5").start();
 
 
     }

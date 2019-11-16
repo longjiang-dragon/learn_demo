@@ -117,6 +117,8 @@ dependencies {
     // Optional, if you use support library fragments:
     debugImplementation 'com.squareup.leakcanary:leakcanary-support-fragment:1.6.3'
 
+    implementation 'com.google.code.gson:gson:2.8.5'
+
 }
 repositories {
     mavenCentral()

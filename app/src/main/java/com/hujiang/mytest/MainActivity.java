@@ -11,6 +11,7 @@ import com.hujiang.mytest.fragment.AfterFollowFragment;
 import com.hujiang.mytest.fragment.ConstraintTestFragment;
 import com.hujiang.mytest.fragment.CustomDrawableFragment;
 import com.hujiang.mytest.fragment.CustomViewDrawTextBaseLineFragment;
+import com.hujiang.mytest.fragment.GSONLearnFragment;
 import com.hujiang.mytest.fragment.HandlerLearnFragment;
 import com.hujiang.mytest.fragment.HookFragment;
 import com.hujiang.mytest.fragment.JNIFragment;
@@ -74,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void initFragment() {
+        mFragments.put("gson 源码debug", new GSONLearnFragment());
         mFragments.put("transitionFragment", new TransitionFragment());
         mFragments.put("DynamicAnimation", new DynamicAnimationFragment());
         mFragments.put("jetPack", new JetPackTestFragment());

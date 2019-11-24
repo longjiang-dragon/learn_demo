@@ -9,9 +9,9 @@ import android.view.ViewGroup;
 
 import com.hujiang.mytest.fragment.aidlFragment.R;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * @author yuefeng
@@ -26,10 +26,10 @@ public class TransparentCircleFragment extends Fragment {
     }
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        RecyclerView view = null;
-        view.setOnTouchListener(new View.OnTouchListener() {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        View circle = view.findViewById(R.id.transparent_circle);
+        circle.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 GestureDetector detector = new GestureDetector(getContext(), new GestureDetector.SimpleOnGestureListener() {
@@ -44,6 +44,7 @@ public class TransparentCircleFragment extends Fragment {
             }
         });
     }
+
 
     private void init() {
     }

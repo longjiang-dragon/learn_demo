@@ -32,6 +32,7 @@ import com.hujiang.mytest.fragment.hencoder.draw4.PracticeDraw4;
 import com.hujiang.mytest.fragment.jet.pack.JetPackTestFragment;
 import com.hujiang.mytest.fragment.manager.TaskManagerFragment;
 import com.hujiang.mytest.fragment.open.udid.fragment.OpenUDIDFragment;
+import com.hujiang.mytest.fragment.reflect.ReflectTestFragment;
 import com.hujiang.mytest.fragment.test.kotlin.KotlinLearnFragment;
 import com.hujiang.mytest.fragment.transition.TransitionFragment;
 
@@ -75,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void initFragment() {
+        mFragments.put("JAVA 反射", new ReflectTestFragment());
         mFragments.put("gson 源码debug", new GSONLearnFragment());
         mFragments.put("transitionFragment", new TransitionFragment());
         mFragments.put("DynamicAnimation", new DynamicAnimationFragment());

@@ -30,6 +30,7 @@ import com.hujiang.mytest.fragment.hencoder.draw1.CustomViewFragment1;
 import com.hujiang.mytest.fragment.hencoder.draw2.CustomViewFragment2;
 import com.hujiang.mytest.fragment.hencoder.draw4.PracticeDraw4;
 import com.hujiang.mytest.fragment.jet.pack.JetPackTestFragment;
+import com.hujiang.mytest.fragment.lock.JavaLockFragment;
 import com.hujiang.mytest.fragment.manager.TaskManagerFragment;
 import com.hujiang.mytest.fragment.open.udid.fragment.OpenUDIDFragment;
 import com.hujiang.mytest.fragment.reflect.ReflectTestFragment;
@@ -76,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void initFragment() {
+        mFragments.put("java Lock", new JavaLockFragment());
         mFragments.put("JAVA 反射", new ReflectTestFragment());
         mFragments.put("gson 源码debug", new GSONLearnFragment());
         mFragments.put("transitionFragment", new TransitionFragment());

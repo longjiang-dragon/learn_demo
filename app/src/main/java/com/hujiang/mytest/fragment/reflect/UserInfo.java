@@ -8,4 +8,11 @@ package com.hujiang.mytest.fragment.reflect;
  * MISSION
  */
 public class UserInfo {
+    private String mBookName;
+    public int mPageCount;
+
+    private String getBookName(int index) {
+        return "getBookName 调用";
+    }
+
 }

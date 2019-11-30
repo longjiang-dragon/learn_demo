@@ -1,11 +1,11 @@
 package com.hujiang.mytest.fragment.reflect;
 
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.hujiang.mytest.fragment.aidlFragment.R;
 
@@ -39,7 +39,22 @@ public class ReflectTestFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 //        parseField();
-        parseMethod();
+//        parseMethod();
+        invokeMethod();
+    }
+
+    private void invokeMethod() {
+        Class<?> classBook = null;
+        try {
+            classBook = Class.forName("com.hujiang.mytest.fragment.reflect.UserInfo");
+            Method methodBook = classBook.getDeclaredMethod("getBookName", int.class);
+            methodBook.setAccessible(true);
+            Object objectBook = classBook.newInstance();
+            String string = (String) methodBook.invoke(objectBook, 0);
+            Toast.makeText(getContext(), string, Toast.LENGTH_LONG).show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void parseMethod() {

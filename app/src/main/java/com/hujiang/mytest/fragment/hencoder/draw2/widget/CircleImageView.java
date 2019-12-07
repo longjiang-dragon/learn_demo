@@ -45,6 +45,8 @@ public class CircleImageView extends ExtendsView {
         Shader shader = new BitmapShader(bitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
         mPaint.setShader(shader);
         canvas.drawCircle(100, 100, 100, mPaint);
+        //带圆角矩形
+        canvas.drawRoundRect(800,10,900,100,10,10,mPaint);
 
         plantA(canvas);
         ComposeShaderTest(canvas);

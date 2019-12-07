@@ -76,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+
     private void initFragment() {
         mFragments.put("java Lock", new JavaLockFragment());
         mFragments.put("JAVA 反射", new ReflectTestFragment());

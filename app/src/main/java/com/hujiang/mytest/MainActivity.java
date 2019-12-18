@@ -8,6 +8,8 @@ import android.view.MenuItem;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 import com.hujiang.mytest.fragment.AfterFollowFragment;
+import com.hujiang.mytest.fragment.BubbleSortFragment;
+import com.hujiang.mytest.fragment.ClassLoaderFragment;
 import com.hujiang.mytest.fragment.ConstraintTestFragment;
 import com.hujiang.mytest.fragment.CustomDrawableFragment;
 import com.hujiang.mytest.fragment.CustomViewDrawTextBaseLineFragment;
@@ -78,6 +80,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void initFragment() {
+        mFragments.put("class loader", new ClassLoaderFragment());
+        mFragments.put("bubble sort", new BubbleSortFragment());
         mFragments.put("java Lock", new JavaLockFragment());
         mFragments.put("JAVA 反射", new ReflectTestFragment());
         mFragments.put("gson 源码debug", new GSONLearnFragment());

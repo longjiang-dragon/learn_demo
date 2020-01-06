@@ -32,6 +32,7 @@ import com.hujiang.mytest.fragment.hencoder.draw1.CustomViewFragment1;
 import com.hujiang.mytest.fragment.hencoder.draw2.CustomViewFragment2;
 import com.hujiang.mytest.fragment.hencoder.draw4.PracticeDraw4;
 import com.hujiang.mytest.fragment.jet.pack.JetPackTestFragment;
+import com.hujiang.mytest.fragment.layout.ViewLayoutFragment;
 import com.hujiang.mytest.fragment.lock.JavaLockFragment;
 import com.hujiang.mytest.fragment.manager.TaskManagerFragment;
 import com.hujiang.mytest.fragment.open.udid.fragment.OpenUDIDFragment;
@@ -80,9 +81,10 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void initFragment() {
+        mFragments.put("java Lock", new JavaLockFragment());
+        mFragments.put("view layout三步曲", new ViewLayoutFragment());
         mFragments.put("class loader", new ClassLoaderFragment());
         mFragments.put("bubble sort", new BubbleSortFragment());
-        mFragments.put("java Lock", new JavaLockFragment());
         mFragments.put("JAVA 反射", new ReflectTestFragment());
         mFragments.put("gson 源码debug", new GSONLearnFragment());
         mFragments.put("transitionFragment", new TransitionFragment());

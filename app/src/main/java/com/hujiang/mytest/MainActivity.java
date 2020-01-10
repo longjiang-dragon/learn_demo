@@ -25,6 +25,7 @@ import com.hujiang.mytest.fragment.TransparentCircleFragment;
 import com.hujiang.mytest.fragment.ViewAnimationFragment;
 import com.hujiang.mytest.fragment.aidlFragment.AidlFragment;
 import com.hujiang.mytest.fragment.aidlFragment.R;
+import com.hujiang.mytest.fragment.algorithm.AlgorithmFragment;
 import com.hujiang.mytest.fragment.drag.helper.fragment.LearnViewDragHelperFragment;
 import com.hujiang.mytest.fragment.dynamic.animation.DynamicAnimationFragment;
 import com.hujiang.mytest.fragment.fixHeigth.FixHeightRecyclerViewFragment;
@@ -81,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void initFragment() {
+        mFragments.put("algorithm", new AlgorithmFragment());
         mFragments.put("java Lock", new JavaLockFragment());
         mFragments.put("view layout三步曲", new ViewLayoutFragment());
         mFragments.put("class loader", new ClassLoaderFragment());

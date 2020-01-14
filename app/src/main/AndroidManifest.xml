@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest
-    package="com.hujiang.mytest.fragment.aidlFragment"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.hujiang.mytest.fragment.aidlFragment">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:name="com.hujiang.mytest.MyApplication"
@@ -19,36 +18,38 @@
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
 
             </intent-filter>
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
                 <data
                     android:host="scheme"
-                    android:scheme="test"/>
+                    android:scheme="test" />
             </intent-filter>
         </activity>
         <activity
             android:name="com.hujiang.mytest.MainTwoActivity"
             android:launchMode="singleTask"
             android:taskAffinity="com.hujiang.mytest.MainTwoActivity"
-            android:theme="@style/Main.Two.Theme"/>
+            android:theme="@style/Main.Two.Theme" />
+
+        <activity android:name="com.hujiang.mytest.fragment.mvvm.google.reddit.ui.MVVMMainActivity" />
 
         <service
             android:name=".MessengerService"
-            android:process=":messengerRemote"/>
+            android:process=":messengerRemote" />
 
         <service android:name="com.hujiang.mytest.fragment.open.udid.fragment.OpenUDID_service">
             <intent-filter>
-                <action android:name="org.openudid.GETUDID"/>
+                <action android:name="org.openudid.GETUDID" />
             </intent-filter>
         </service>
 
-        <activity android:name="com.hujiang.mytest.BigImageActivity"/>
+        <activity android:name="com.hujiang.mytest.BigImageActivity" />
 
     </application>
 

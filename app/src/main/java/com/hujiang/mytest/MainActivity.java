@@ -36,6 +36,7 @@ import com.hujiang.mytest.fragment.jet.pack.JetPackTestFragment;
 import com.hujiang.mytest.fragment.layout.ViewLayoutFragment;
 import com.hujiang.mytest.fragment.lock.JavaLockFragment;
 import com.hujiang.mytest.fragment.manager.TaskManagerFragment;
+import com.hujiang.mytest.fragment.mvvm.MVVMFragment;
 import com.hujiang.mytest.fragment.open.udid.fragment.OpenUDIDFragment;
 import com.hujiang.mytest.fragment.reflect.ReflectTestFragment;
 import com.hujiang.mytest.fragment.test.kotlin.KotlinLearnFragment;
@@ -82,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void initFragment() {
+        mFragments.put("mvvm", new MVVMFragment());
         mFragments.put("algorithm", new AlgorithmFragment());
         mFragments.put("java Lock", new JavaLockFragment());
         mFragments.put("view layout三步曲", new ViewLayoutFragment());

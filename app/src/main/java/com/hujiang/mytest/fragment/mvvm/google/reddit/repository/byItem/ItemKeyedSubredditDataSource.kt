@@ -33,6 +33,7 @@ import java.util.concurrent.Executor
  * alternative implementation which might be more suitable for your backend.
  * see PageKeyedSubredditDataSource for the other sample.
  */
+//这里负责请求及liveData数据set
 class ItemKeyedSubredditDataSource(
         private val redditApi: RedditApi,
         private val subredditName: String,

@@ -1,8 +1,8 @@
 # ninja log v5
-1	157	0	CMakeFiles/jni_first_test.dir/Book.cpp.o	b3a27f7679b0aefa
-1	192	0	CMakeFiles/jni_first_test.dir/jni_first_test.cpp.o	40ad65441eb297d8
-2	227	0	CMakeFiles/jni_first_test.dir/Test1.cpp.o	95f461986a45f303
-1	233	0	CMakeFiles/jni_first_test.dir/PrintLog.cpp.o	25cd49f75633e401
-2	236	0	CMakeFiles/jni_first_test.dir/Test2.cpp.o	508f2f0af6a25762
-1	273	0	CMakeFiles/jni_first_test.dir/BookManager.cpp.o	8236dc76eed8cf44
-273	554	0	/Users/yuefeng/workSpace/demo/myDemo/app/build/intermediates/cmake/debug/obj/armeabi/libjni_first_test.so	99b7d87d720f8dab
+0	148	0	CMakeFiles/jni_first_test.dir/Book.cpp.o	b3a27f7679b0aefa
+0	196	0	CMakeFiles/jni_first_test.dir/jni_first_test.cpp.o	40ad65441eb297d8
+1	224	0	CMakeFiles/jni_first_test.dir/Test1.cpp.o	95f461986a45f303
+1	234	0	CMakeFiles/jni_first_test.dir/Test2.cpp.o	508f2f0af6a25762
+0	239	0	CMakeFiles/jni_first_test.dir/PrintLog.cpp.o	25cd49f75633e401
+1	268	0	CMakeFiles/jni_first_test.dir/BookManager.cpp.o	8236dc76eed8cf44
+268	536	0	/Users/yuefeng/workSpace/demo/myDemo/app/build/intermediates/cmake/debug/obj/armeabi/libjni_first_test.so	99b7d87d720f8dab

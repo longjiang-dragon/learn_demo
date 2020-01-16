@@ -26,7 +26,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.android.example.paging.pagingwithnetwork.reddit.vo.RedditPost
 import com.hujiang.mytest.fragment.aidlFragment.R
-import com.hujiang.mytest.fragment.mvvm.google.reddit.GlideRequests
+import com.jiangjiang.common.image.GlideRequests
 
 /**
  * A RecyclerView ViewHolder that displays a reddit post.

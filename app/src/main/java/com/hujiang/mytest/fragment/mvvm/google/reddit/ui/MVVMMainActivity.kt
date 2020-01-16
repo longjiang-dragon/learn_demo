@@ -13,10 +13,10 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.paging.PagedList
 import com.android.example.paging.pagingwithnetwork.reddit.vo.RedditPost
 import com.hujiang.mytest.fragment.aidlFragment.R
-import com.hujiang.mytest.fragment.mvvm.google.reddit.GlideApp
 import com.hujiang.mytest.fragment.mvvm.google.reddit.ServiceLocator
 import com.hujiang.mytest.fragment.mvvm.google.reddit.repository.NetworkState
 import com.hujiang.mytest.fragment.mvvm.google.reddit.repository.RedditPostRepository
+import com.jiangjiang.common.image.GlideApp
 import kotlinx.android.synthetic.main.activity_mvvm_layout.*
 
 

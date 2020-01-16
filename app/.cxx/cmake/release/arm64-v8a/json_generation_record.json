@@ -13,15 +13,11 @@
   },
   {
     "level": "INFO",
-    "message": "- expected json /Users/yuefeng/workSpace/demo/myDemo/app/.cxx/cmake/release/arm64-v8a/android_gradle_build.json file is not present, will remove stale json folder"
+    "message": "- force flag, will remove stale json folder"
   },
   {
     "level": "INFO",
-    "message": "- missing previous command file /Users/yuefeng/workSpace/demo/myDemo/app/.cxx/cmake/release/arm64-v8a/build_command.txt, will remove stale json folder"
-  },
-  {
-    "level": "INFO",
-    "message": "- command changed from previous, will remove stale json folder"
+    "message": "removing stale contents from \u0027/Users/yuefeng/workSpace/demo/myDemo/app/.cxx/cmake/release/arm64-v8a\u0027"
   },
   {
     "level": "INFO",

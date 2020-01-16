@@ -83,43 +83,35 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.google.android.material:material:1.1.0-alpha02'
-
-
-
+    implementation deps.support.design
 
     //room
-    annotationProcessor "androidx.room:room-compiler:2.1.0-alpha03"
-    implementation "androidx.room:room-runtime:2.1.0-alpha03"
+    annotationProcessor deps.room.compiler
+    implementation deps.room.runtime
     //对rxjava的支持
-    implementation "androidx.room:room-rxjava2:2.0.0-rc01"
+    implementation deps.room.rxjava2
+
 
     //butterknife
-    implementation 'com.jakewharton:butterknife:10.0.0'
-    kapt 'com.jakewharton:butterknife-compiler:10.0.0'
+    implementation deps.butter_knife.runtime
+    kapt deps.butter_knife.compiler
 
 
-
-
-
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation deps.kotlin.stdlib
 
     //noinspection GradleCompatible
-    implementation 'com.android.support:support-dynamic-animation:28.0.0'
+    implementation deps.support_dynamic_animation
 
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.3'
-    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.3'
-    // Optional, if you use support library fragments:
-    debugImplementation 'com.squareup.leakcanary:leakcanary-support-fragment:1.6.3'
+    debugImplementation deps.leak_canary.debug
+    releaseImplementation deps.leak_canary.release
 
-    implementation 'com.google.code.gson:gson:2.8.5'
-    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
-    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+    implementation deps.retrofit.runtime
+    implementation deps.retrofit.adapter_rxjava
+    implementation deps.retrofit.converter_gson
+
     implementation project(path: ':common')
-
-
 }
+
 repositories {
     mavenCentral()
 }

@@ -78,6 +78,4 @@ void BookManager::testStack() {
     bookStack1.push(*myBook2);
     bookStack1.push(*myBook3);
     printLog->printMeg(bookStack1.top().getBookName());
-
-
 }

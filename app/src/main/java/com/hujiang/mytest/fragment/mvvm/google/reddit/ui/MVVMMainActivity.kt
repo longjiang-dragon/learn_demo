@@ -51,6 +51,7 @@ class MVVMMainActivity : AppCompatActivity() {
         initSearch()
         val subreddit = savedInstanceState?.getString(KEY_SUBREDDIT) ?: DEFAULT_SUBREDDIT
         model.showSubreddit(subreddit)
+        supportFragmentManager.beginTransaction().add(R.id.list, TestFragmentViewModelStore()).commit()
     }
 
     private fun getViewModel(): SubRedditViewModel {
@@ -62,7 +63,7 @@ class MVVMMainActivity : AppCompatActivity() {
                 val repo = ServiceLocator.instance(this@MVVMMainActivity)
                         .getRepository(repoType)
                 @Suppress("UNCHECKED_CAST")
-                return  SubRedditViewModel(repo) as T
+                return SubRedditViewModel(repo) as T
             }
         }).get(SubRedditViewModel::class.java);
     }

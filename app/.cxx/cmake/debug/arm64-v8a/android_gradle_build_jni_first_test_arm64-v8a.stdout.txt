@@ -1,0 +1,17 @@
+[1/7] Building CXX object CMakeFiles/jni_first_test.dir/jni_first_test.cpp.o
+[2/7] Building CXX object CMakeFiles/jni_first_test.dir/PrintLog.cpp.o
+[3/7] Building CXX object CMakeFiles/jni_first_test.dir/Book.cpp.o
+[4/7] Building CXX object CMakeFiles/jni_first_test.dir/BookManager.cpp.o
+[5/7] Building CXX object CMakeFiles/jni_first_test.dir/Test1.cpp.o
+[6/7] Building CXX object CMakeFiles/jni_first_test.dir/Test2.cpp.o
+/Users/yuefeng/workSpace/demo/myDemo/app/src/main/cpp/BookManager.cpp:51:16: warning: 'auto' type specifier is a C++11 extension [-Wc++11-extensions]
+    for (const auto &des :bookList) {
+               ^
+/Users/yuefeng/workSpace/demo/myDemo/app/src/main/cpp/BookManager.cpp:51:26: warning: range-based for loop is a C++11 extension [-Wc++11-extensions]
+    for (const auto &des :bookList) {
+                         ^
+/Users/yuefeng/workSpace/demo/myDemo/app/src/main/cpp/BookManager.cpp:69:5: warning: 'auto' type specifier is a C++11 extension [-Wc++11-extensions]
+    auto first_item_add = bookList.begin();//是一个指向pair地址的引用
+    ^
+3 warnings generated.
+[7/7] Linking CXX shared library /Users/yuefeng/workSpace/demo/myDemo/app/build/intermediates/cmake/debug/obj/arm64-v8a/libjni_first_test.so

@@ -1,0 +1,192 @@
+The target system is: Android - 24 - i686
+The host system is: Darwin - 18.7.0 - x86_64
+Determining if the C compiler works passed with the following output:
+Change Dir: /Users/yuefeng/workSpace/demo/myDemo/app/.cxx/cmake/debug/x86/CMakeFiles/CMakeTmp
+
+Run Build Command:"/Users/yuefeng/tools/Android/sdk/cmake/3.6.4111459/bin/ninja" "cmTC_aba3c"
+[1/2] Building C object CMakeFiles/cmTC_aba3c.dir/testCCompiler.c.o
+[2/2] Linking C executable cmTC_aba3c
+
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: /Users/yuefeng/workSpace/demo/myDemo/app/.cxx/cmake/debug/x86/CMakeFiles/CMakeTmp
+
+Run Build Command:"/Users/yuefeng/tools/Android/sdk/cmake/3.6.4111459/bin/ninja" "cmTC_80cd5"
+[1/2] Building C object CMakeFiles/cmTC_80cd5.dir/CMakeCCompilerABI.c.o
+[2/2] Linking C executable cmTC_80cd5
+Android clang version 3.8.256229  (based on LLVM 3.8.256229)
+Target: i686-none-linux-android
+Thread model: posix
+InstalledDir: /Users/yuefeng/tools/Android/android-ndk-r13b/toolchains/llvm/prebuilt/darwin-x86_64/bin
+Found candidate GCC installation: /Users/yuefeng/tools/Android/android-ndk-r13b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x
+Selected GCC installation: /Users/yuefeng/tools/Android/android-ndk-r13b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x
+Candidate multilib: .;@m32
+Selected multilib: .;@m32
+ "/Users/yuefeng/tools/Android/android-ndk-r13b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/bin/ld" --sysroot=/Users/yuefeng/tools/Android/android-ndk-r13b/platforms/android-24/arch-x86 -pie --eh-frame-hdr -m elf_i386 -dynamic-linker /system/bin/linker -o cmTC_80cd5 /Users/yuefeng/tools/Android/android-ndk-r13b/platforms/android-24/arch-x86/usr/lib/crtbegin_dynamic.o -L/Users/yuefeng/tools/Android/android-ndk-r13b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x -L/Users/yuefeng/tools/Android/android-ndk-r13b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/lib -L/Users/yuefeng/tools/Android/android-ndk-r13b/platforms/android-24/arch-x86/usr/lib --build-id --warn-shared-textrel --fatal-warnings --no-undefined -z noexecstack -z relro -z now --gc-sections -z nocopyreloc --build-id --warn-shared-textrel --fatal-warnings --no-undefined -z noexecstack -z relro -z now --gc-sections -z nocopyreloc CMakeFiles/cmTC_80cd5.dir/CMakeCCompilerABI.c.o -lgcc -ldl -lc -lgcc -ldl /Users/yuefeng/tools/Android/android-ndk-r13b/platforms/android-24/arch-x86/usr/lib/crtend_android.o
+
+
+Parsed C implicit link information from above output:
+  link line regex: [^( *|.*[/\])(i686-linux-android-ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /Users/yuefeng/workSpace/demo/myDemo/app/.cxx/cmake/debug/x86/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command:"/Users/yuefeng/tools/Android/sdk/cmake/3.6.4111459/bin/ninja" "cmTC_80cd5"]
+  ignore line: [[1/2] Building C object CMakeFiles/cmTC_80cd5.dir/CMakeCCompilerABI.c.o]
+  ignore line: [[2/2] Linking C executable cmTC_80cd5]
+  ignore line: [Android clang version 3.8.256229  (based on LLVM 3.8.256229)]
+  ignore line: [Target: i686-none-linux-android]
+  ignore line: [Thread model: posix]
+  ignore line: [InstalledDir: /Users/yuefeng/tools/Android/android-ndk-r13b/toolchains/llvm/prebuilt/darwin-x86_64/bin]
+  ignore line: [Found candidate GCC installation: /Users/yuefeng/tools/Android/android-ndk-r13b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x]
+  ignore line: [Selected GCC installation: /Users/yuefeng/tools/Android/android-ndk-r13b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x]
+  ignore line: [Candidate multilib: .]
+  ignore line: [@m32]
+  ignore line: [Selected multilib: .]
+  ignore line: [@m32]
+  link line: [ "/Users/yuefeng/tools/Android/android-ndk-r13b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/bin/ld" --sysroot=/Users/yuefeng/tools/Android/android-ndk-r13b/platforms/android-24/arch-x86 -pie --eh-frame-hdr -m elf_i386 -dynamic-linker /system/bin/linker -o cmTC_80cd5 /Users/yuefeng/tools/Android/android-ndk-r13b/platforms/android-24/arch-x86/usr/lib/crtbegin_dynamic.o -L/Users/yuefeng/tools/Android/android-ndk-r13b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x -L/Users/yuefeng/tools/Android/android-ndk-r13b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/lib -L/Users/yuefeng/tools/Android/android-ndk-r13b/platforms/android-24/arch-x86/usr/lib --build-id --warn-shared-textrel --fatal-warnings --no-undefined -z noexecstack -z relro -z now --gc-sections -z nocopyreloc --build-id --warn-shared-textrel --fatal-warnings --no-undefined -z noexecstack -z relro -z now --gc-sections -z nocopyreloc CMakeFiles/cmTC_80cd5.dir/CMakeCCompilerABI.c.o -lgcc -ldl -lc -lgcc -ldl /Users/yuefeng/tools/Android/android-ndk-r13b/platforms/android-24/arch-x86/usr/lib/crtend_android.o]
+    arg [/Users/yuefeng/tools/Android/android-ndk-r13b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/bin/ld] ==> ignore
+    arg [--sysroot=/Users/yuefeng/tools/Android/android-ndk-r13b/platforms/android-24/arch-x86] ==> ignore
+    arg [-pie] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [-m] ==> ignore
+    arg [elf_i386] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/system/bin/linker] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_80cd5] ==> ignore
+    arg [/Users/yuefeng/tools/Android/android-ndk-r13b/platforms/android-24/arch-x86/usr/lib/crtbegin_dynamic.o] ==> ignore
+    arg [-L/Users/yuefeng/tools/Android/android-ndk-r13b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x] ==> dir [/Users/yuefeng/tools/Android/android-ndk-r13b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x]
+    arg [-L/Users/yuefeng/tools/Android/android-ndk-r13b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/lib] ==> dir [/Users/yuefeng/tools/Android/android-ndk-r13b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/lib]
+    arg [-L/Users/yuefeng/tools/Android/android-ndk-r13b/platforms/android-24/arch-x86/usr/lib] ==> dir [/Users/yuefeng/tools/Android/android-ndk-r13b/platforms/android-24/arch-x86/usr/lib]
+    arg [--build-id] ==> ignore
+    arg [--warn-shared-textrel] ==> ignore
+    arg [--fatal-warnings] ==> ignore
+    arg [--no-undefined] ==> ignore
+    arg [-znoexecstack] ==> ignore
+    arg [-zrelro] ==> ignore
+    arg [-znow] ==> ignore
+    arg [--gc-sections] ==> ignore
+    arg [-znocopyreloc] ==> ignore
+    arg [--build-id] ==> ignore
+    arg [--warn-shared-textrel] ==> ignore
+    arg [--fatal-warnings] ==> ignore
+    arg [--no-undefined] ==> ignore
+    arg [-znoexecstack] ==> ignore
+    arg [-zrelro] ==> ignore
+    arg [-znow] ==> ignore
+    arg [--gc-sections] ==> ignore
+    arg [-znocopyreloc] ==> ignore
+    arg [CMakeFiles/cmTC_80cd5.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [-lgcc] ==> lib [gcc]
+    arg [-ldl] ==> lib [dl]
+    arg [-lc] ==> lib [c]
+    arg [-lgcc] ==> lib [gcc]
+    arg [-ldl] ==> lib [dl]
+    arg [/Users/yuefeng/tools/Android/android-ndk-r13b/platforms/android-24/arch-x86/usr/lib/crtend_android.o] ==> ignore
+  remove lib [gcc]
+  remove lib [gcc]
+  collapse library dir [/Users/yuefeng/tools/Android/android-ndk-r13b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x] ==> [/Users/yuefeng/tools/Android/android-ndk-r13b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x]
+  collapse library dir [/Users/yuefeng/tools/Android/android-ndk-r13b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/lib] ==> [/Users/yuefeng/tools/Android/android-ndk-r13b/toolchains/x86-4.9/prebuilt/darwin-x86_64/i686-linux-android/lib]
+  collapse library dir [/Users/yuefeng/tools/Android/android-ndk-r13b/platforms/android-24/arch-x86/usr/lib] ==> [/Users/yuefeng/tools/Android/android-ndk-r13b/platforms/android-24/arch-x86/usr/lib]
+  implicit libs: [dl;c;dl]
+  implicit dirs: [/Users/yuefeng/tools/Android/android-ndk-r13b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x;/Users/yuefeng/tools/Android/android-ndk-r13b/toolchains/x86-4.9/prebuilt/darwin-x86_64/i686-linux-android/lib;/Users/yuefeng/tools/Android/android-ndk-r13b/platforms/android-24/arch-x86/usr/lib]
+  implicit fwks: []
+
+
+Determining if the CXX compiler works passed with the following output:
+Change Dir: /Users/yuefeng/workSpace/demo/myDemo/app/.cxx/cmake/debug/x86/CMakeFiles/CMakeTmp
+
+Run Build Command:"/Users/yuefeng/tools/Android/sdk/cmake/3.6.4111459/bin/ninja" "cmTC_775ba"
+[1/2] Building CXX object CMakeFiles/cmTC_775ba.dir/testCXXCompiler.cxx.o
+[2/2] Linking CXX executable cmTC_775ba
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: /Users/yuefeng/workSpace/demo/myDemo/app/.cxx/cmake/debug/x86/CMakeFiles/CMakeTmp
+
+Run Build Command:"/Users/yuefeng/tools/Android/sdk/cmake/3.6.4111459/bin/ninja" "cmTC_1a542"
+[1/2] Building CXX object CMakeFiles/cmTC_1a542.dir/CMakeCXXCompilerABI.cpp.o
+[2/2] Linking CXX executable cmTC_1a542
+Android clang version 3.8.256229  (based on LLVM 3.8.256229)
+Target: i686-none-linux-android
+Thread model: posix
+InstalledDir: /Users/yuefeng/tools/Android/android-ndk-r13b/toolchains/llvm/prebuilt/darwin-x86_64/bin
+Found candidate GCC installation: /Users/yuefeng/tools/Android/android-ndk-r13b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x
+Selected GCC installation: /Users/yuefeng/tools/Android/android-ndk-r13b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x
+Candidate multilib: .;@m32
+Selected multilib: .;@m32
+ "/Users/yuefeng/tools/Android/android-ndk-r13b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/bin/ld" --sysroot=/Users/yuefeng/tools/Android/android-ndk-r13b/platforms/android-24/arch-x86 -pie --eh-frame-hdr -m elf_i386 -dynamic-linker /system/bin/linker -o cmTC_1a542 /Users/yuefeng/tools/Android/android-ndk-r13b/platforms/android-24/arch-x86/usr/lib/crtbegin_dynamic.o -L/Users/yuefeng/tools/Android/android-ndk-r13b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x -L/Users/yuefeng/tools/Android/android-ndk-r13b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/lib -L/Users/yuefeng/tools/Android/android-ndk-r13b/platforms/android-24/arch-x86/usr/lib --build-id --warn-shared-textrel --fatal-warnings --no-undefined -z noexecstack -z relro -z now --gc-sections -z nocopyreloc --build-id --warn-shared-textrel --fatal-warnings --no-undefined -z noexecstack -z relro -z now --gc-sections -z nocopyreloc CMakeFiles/cmTC_1a542.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc -lgcc -ldl -lc -lgcc -lgcc -ldl /Users/yuefeng/tools/Android/android-ndk-r13b/platforms/android-24/arch-x86/usr/lib/crtend_android.o
+
+
+Parsed CXX implicit link information from above output:
+  link line regex: [^( *|.*[/\])(i686-linux-android-ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /Users/yuefeng/workSpace/demo/myDemo/app/.cxx/cmake/debug/x86/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command:"/Users/yuefeng/tools/Android/sdk/cmake/3.6.4111459/bin/ninja" "cmTC_1a542"]
+  ignore line: [[1/2] Building CXX object CMakeFiles/cmTC_1a542.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [[2/2] Linking CXX executable cmTC_1a542]
+  ignore line: [Android clang version 3.8.256229  (based on LLVM 3.8.256229)]
+  ignore line: [Target: i686-none-linux-android]
+  ignore line: [Thread model: posix]
+  ignore line: [InstalledDir: /Users/yuefeng/tools/Android/android-ndk-r13b/toolchains/llvm/prebuilt/darwin-x86_64/bin]
+  ignore line: [Found candidate GCC installation: /Users/yuefeng/tools/Android/android-ndk-r13b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x]
+  ignore line: [Selected GCC installation: /Users/yuefeng/tools/Android/android-ndk-r13b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x]
+  ignore line: [Candidate multilib: .]
+  ignore line: [@m32]
+  ignore line: [Selected multilib: .]
+  ignore line: [@m32]
+  link line: [ "/Users/yuefeng/tools/Android/android-ndk-r13b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/bin/ld" --sysroot=/Users/yuefeng/tools/Android/android-ndk-r13b/platforms/android-24/arch-x86 -pie --eh-frame-hdr -m elf_i386 -dynamic-linker /system/bin/linker -o cmTC_1a542 /Users/yuefeng/tools/Android/android-ndk-r13b/platforms/android-24/arch-x86/usr/lib/crtbegin_dynamic.o -L/Users/yuefeng/tools/Android/android-ndk-r13b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x -L/Users/yuefeng/tools/Android/android-ndk-r13b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/lib -L/Users/yuefeng/tools/Android/android-ndk-r13b/platforms/android-24/arch-x86/usr/lib --build-id --warn-shared-textrel --fatal-warnings --no-undefined -z noexecstack -z relro -z now --gc-sections -z nocopyreloc --build-id --warn-shared-textrel --fatal-warnings --no-undefined -z noexecstack -z relro -z now --gc-sections -z nocopyreloc CMakeFiles/cmTC_1a542.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc -lgcc -ldl -lc -lgcc -lgcc -ldl /Users/yuefeng/tools/Android/android-ndk-r13b/platforms/android-24/arch-x86/usr/lib/crtend_android.o]
+    arg [/Users/yuefeng/tools/Android/android-ndk-r13b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/bin/ld] ==> ignore
+    arg [--sysroot=/Users/yuefeng/tools/Android/android-ndk-r13b/platforms/android-24/arch-x86] ==> ignore
+    arg [-pie] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [-m] ==> ignore
+    arg [elf_i386] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/system/bin/linker] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_1a542] ==> ignore
+    arg [/Users/yuefeng/tools/Android/android-ndk-r13b/platforms/android-24/arch-x86/usr/lib/crtbegin_dynamic.o] ==> ignore
+    arg [-L/Users/yuefeng/tools/Android/android-ndk-r13b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x] ==> dir [/Users/yuefeng/tools/Android/android-ndk-r13b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x]
+    arg [-L/Users/yuefeng/tools/Android/android-ndk-r13b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/lib] ==> dir [/Users/yuefeng/tools/Android/android-ndk-r13b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/lib]
+    arg [-L/Users/yuefeng/tools/Android/android-ndk-r13b/platforms/android-24/arch-x86/usr/lib] ==> dir [/Users/yuefeng/tools/Android/android-ndk-r13b/platforms/android-24/arch-x86/usr/lib]
+    arg [--build-id] ==> ignore
+    arg [--warn-shared-textrel] ==> ignore
+    arg [--fatal-warnings] ==> ignore
+    arg [--no-undefined] ==> ignore
+    arg [-znoexecstack] ==> ignore
+    arg [-zrelro] ==> ignore
+    arg [-znow] ==> ignore
+    arg [--gc-sections] ==> ignore
+    arg [-znocopyreloc] ==> ignore
+    arg [--build-id] ==> ignore
+    arg [--warn-shared-textrel] ==> ignore
+    arg [--fatal-warnings] ==> ignore
+    arg [--no-undefined] ==> ignore
+    arg [-znoexecstack] ==> ignore
+    arg [-zrelro] ==> ignore
+    arg [-znow] ==> ignore
+    arg [--gc-sections] ==> ignore
+    arg [-znocopyreloc] ==> ignore
+    arg [CMakeFiles/cmTC_1a542.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [-lstdc++] ==> lib [stdc++]
+    arg [-lm] ==> lib [m]
+    arg [-lgcc] ==> lib [gcc]
+    arg [-lgcc] ==> lib [gcc]
+    arg [-ldl] ==> lib [dl]
+    arg [-lc] ==> lib [c]
+    arg [-lgcc] ==> lib [gcc]
+    arg [-lgcc] ==> lib [gcc]
+    arg [-ldl] ==> lib [dl]
+    arg [/Users/yuefeng/tools/Android/android-ndk-r13b/platforms/android-24/arch-x86/usr/lib/crtend_android.o] ==> ignore
+  remove lib [gcc]
+  remove lib [gcc]
+  remove lib [gcc]
+  remove lib [gcc]
+  collapse library dir [/Users/yuefeng/tools/Android/android-ndk-r13b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x] ==> [/Users/yuefeng/tools/Android/android-ndk-r13b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x]
+  collapse library dir [/Users/yuefeng/tools/Android/android-ndk-r13b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x/../../../../i686-linux-android/lib] ==> [/Users/yuefeng/tools/Android/android-ndk-r13b/toolchains/x86-4.9/prebuilt/darwin-x86_64/i686-linux-android/lib]
+  collapse library dir [/Users/yuefeng/tools/Android/android-ndk-r13b/platforms/android-24/arch-x86/usr/lib] ==> [/Users/yuefeng/tools/Android/android-ndk-r13b/platforms/android-24/arch-x86/usr/lib]
+  implicit libs: [stdc++;m;dl;c;dl]
+  implicit dirs: [/Users/yuefeng/tools/Android/android-ndk-r13b/toolchains/x86-4.9/prebuilt/darwin-x86_64/lib/gcc/i686-linux-android/4.9.x;/Users/yuefeng/tools/Android/android-ndk-r13b/toolchains/x86-4.9/prebuilt/darwin-x86_64/i686-linux-android/lib;/Users/yuefeng/tools/Android/android-ndk-r13b/platforms/android-24/arch-x86/usr/lib]
+  implicit fwks: []
+
+

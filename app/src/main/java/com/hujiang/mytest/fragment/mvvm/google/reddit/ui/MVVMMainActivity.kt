@@ -69,7 +69,6 @@ class MVVMMainActivity : AppCompatActivity() {
     }
 
     private fun initAdapter() {
-        //测试代码
         val glide = GlideApp.with(this)
         val adapter = PostsAdapter(glide) {
             model.retry()

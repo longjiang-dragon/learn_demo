@@ -1,7 +1,7 @@
 package com.jiangjiang.common.widget;
 
+import android.app.Activity;
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
@@ -34,11 +34,6 @@ public class CommonTitleLayout extends ConstraintLayout {
     private View mShadowView;
 
     private int titleColor;
-    private int attributeLeftIcon;
-    private String attributeTitle;
-    private Drawable attributeRightFirstIcon;
-    private Drawable attributeRightSecondIcon;
-    private String attributeRightText;
 
 
     public CommonTitleLayout(Context context) {
@@ -46,46 +41,31 @@ public class CommonTitleLayout extends ConstraintLayout {
     }
 
     public CommonTitleLayout(Context context, AttributeSet attrs) {
-        this(context, attrs, R.attr.u51_ui_titleLayoutStyle);
+        super(context, attrs);
     }
 
-    public CommonTitleLayout(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-        init(context, attrs);
-    }
-
-    private void init(Context context, AttributeSet attrs) {
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.U51_UI_TitleLayout, R.attr.u51_ui_titleLayoutStyle, 0);
-        attributeLeftIcon = a.getResourceId(R.styleable.U51_UI_TitleLayout_u51_ui_title_left_icon, R.drawable.u51_ui_icon_title_back);
-        attributeTitle = a.getString(R.styleable.U51_UI_TitleLayout_u51_ui_title);
-        titleColor = a.getColor(R.styleable.U51_UI_TitleLayout_u51_ui_title_color, Color.BLACK);
-        attributeRightFirstIcon = a.getDrawable(R.styleable.U51_UI_TitleLayout_u51_ui_title_right_first_icon);
-        attributeRightSecondIcon = a.getDrawable(R.styleable.U51_UI_TitleLayout_u51_ui_title_right_second_icon);
-        attributeRightText = a.getString(R.styleable.U51_UI_TitleLayout_u51_ui_title_right_text);
-        a.recycle();
-
-    }
 
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
         initView();
-        setTitle(attributeTitle);
         setTitleColor(titleColor);
         refreshIconColor();
-        setLeftIcon(attributeLeftIcon);
-        setRightFirstIcon(attributeRightFirstIcon);
-        setRightSecondIcon(attributeRightSecondIcon);
-        setRightText(attributeRightText);
         setRightTextColor(titleColor);
         initShadow();
 
     }
 
+    private String getActivityTitleStr() {
+        if (getContext() instanceof Activity) {
+            return (String) ((Activity) getContext()).getTitle();
+        }
+        return "";
+    }
+
     private void initShadow() {
         GradientDrawable shadow = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[]{0x44333333, Color.TRANSPARENT});
         mShadowView.setBackgroundDrawable(shadow);
-
         setShadowVisible(true);
     }
 
@@ -98,6 +78,8 @@ public class CommonTitleLayout extends ConstraintLayout {
         mRightFirstIcon = findViewById(R.id.iv_right_first_icon);
         mRightSecondIcon = findViewById(R.id.iv_right_second_icon);
         mShadowView = findViewById(R.id.TitleLayout_Shadow);
+        setTitle(getActivityTitleStr());
+
     }
 
 

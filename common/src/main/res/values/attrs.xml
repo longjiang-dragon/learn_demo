@@ -7,27 +7,4 @@
         </attr>
     </declare-styleable>
 
-    <declare-styleable name="U51_UI_TitleLayout">
-        <attr name="u51_ui_title_bg" format="color|reference" />
-        <attr name="u51_ui_title" format="string|reference" />
-        <attr name="u51_ui_title_gravity" format="integer" />
-        <attr name="u51_ui_title_color" format="color|reference" />
-        <attr name="u51_ui_title_left_icon" format="reference" />
-        <attr name="u51_ui_title_right_text" format="string|reference" />
-        <attr name="u51_ui_title_right_first_icon" format="reference" />
-        <attr name="u51_ui_title_right_second_icon" format="reference" />
-        <attr name="u51_ui_title_point_color" format="color|reference" />
-        <attr name="u51_ui_title_shadow_show" format="boolean" />
-    </declare-styleable>
-
-
-    <declare-styleable name="U51_UI_APP">
-        <attr name="u51_ui_editTextStyle" format="reference"/>
-        <attr name="u51_ui_buttonStyle" format="reference"/>
-        <attr name="u51_ui_bottomBarStyle" format="reference"/>
-        <attr name="u51_ui_tabLayoutStyle" format="reference"/>
-        <attr name="u51_ui_titleLayoutStyle" format="reference"/>
-        <attr name="u51_ui_loading_lottie" format="string"/>
-    </declare-styleable>
-
 </resources>

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">common</string>
+    <string name="default_loading_message">加载中...</string>
 </resources>

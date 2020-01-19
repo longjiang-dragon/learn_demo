@@ -1,8 +1,9 @@
-package com.jiangjiang.common.ui;
+package com.jiangjiang.common.ui.activity;
 
 import android.os.Bundle;
 
 import com.jiangjiang.common.R;
+import com.jiangjiang.common.ui.BaseViewModel;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;

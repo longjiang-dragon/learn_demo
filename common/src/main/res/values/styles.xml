@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Common.Theme.Light.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="u51_ui_titleLayoutStyle">@style/U51APP.Theme.TitleLayout</item>
+    </style>
+
+    <style name="U51APP"/>
+    <style name="U51APP.Theme"/>
+    <style name="U51APP.Theme.TitleLayout">
+        <item name="u51_ui_title_bg">@android:color/white</item>
+        <item name="u51_ui_title_color">#333333</item>
+    </style>
+
+
+</resources>

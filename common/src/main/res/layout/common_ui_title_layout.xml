@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.jiangjiang.common.widget.CommonTitleLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/RelativeLayout_Title"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/ui_navigation_bar_height"
+    android:gravity="center_vertical"
+    android:orientation="vertical">
+
+
+    <com.jiangjiang.common.widget.U51CropImageView
+        android:id="@+id/title_layout_bg"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="matrix"
+        app:matrixType="bottomCenter" />
+
+
+    <!-- 导航栏Content -->
+    <ImageView
+        android:id="@+id/iv_left_icon"
+        android:layout_width="@dimen/title_layout_icon_size"
+        android:layout_height="@dimen/title_layout_icon_size"
+        android:layout_gravity="start|center"
+        android:layout_marginLeft="16dp"
+        android:background="?selectableItemBackgroundBorderless"
+        android:scaleType="fitCenter"
+        android:src="@drawable/u51_ui_icon_title_back"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
+
+
+    <!-- 主标题 & 副标题 -->
+
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="@dimen/title_layout_title_margin"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:textSize="17dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/tv_sub_title"
+        app:layout_constraintLeft_toRightOf="@+id/iv_left_icon"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="主标题"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/tv_sub_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/title_layout_title_margin"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:textSize="11dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="@+id/tv_title"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title"
+        tools:text="副标题"
+        tools:visibility="visible" />
+
+
+    <!--右侧icon布局  icon1 & icon2 -->
+
+
+    <!--右边图标-->
+    <ImageView
+        android:id="@+id/iv_right_first_icon"
+        android:layout_width="@dimen/title_layout_icon_size"
+        android:layout_height="@dimen/title_layout_icon_size"
+        android:layout_gravity="start|center"
+        android:layout_marginRight="16dp"
+        android:background="?selectableItemBackgroundBorderless"
+        android:scaleType="fitCenter"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
+
+    <ImageView
+        android:id="@+id/iv_right_second_icon"
+        android:layout_width="@dimen/title_layout_icon_size"
+        android:layout_height="@dimen/title_layout_icon_size"
+        android:layout_gravity="start|center"
+        android:background="?selectableItemBackgroundBorderless"
+        android:scaleType="fitCenter"
+        android:visibility="gone"
+        app:layout_constraintRight_toLeftOf="@+id/iv_right_first_icon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
+
+
+    <!-- 右侧文字 -->
+
+    <TextView
+        android:id="@+id/tv_right_text"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:background="?selectableItemBackgroundBorderless"
+        android:gravity="center_vertical"
+        android:paddingRight="16dp"
+        android:textSize="15dp"
+        android:visibility="gone"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:text="右则文字"
+        tools:visibility="visible" />
+
+
+    <!-- 导航栏分割线 -->
+
+    <View
+        android:id="@+id/TitleLayout_Shadow"
+        android:layout_width="0dp"
+        android:layout_height="1px"
+        android:layout_alignParentBottom="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+</com.jiangjiang.common.widget.CommonTitleLayout>

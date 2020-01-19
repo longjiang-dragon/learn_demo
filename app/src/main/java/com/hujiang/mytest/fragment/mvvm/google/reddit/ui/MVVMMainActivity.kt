@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.KeyEvent
 import android.view.inputmethod.EditorInfo
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -17,6 +16,7 @@ import com.hujiang.mytest.fragment.mvvm.google.reddit.ServiceLocator
 import com.hujiang.mytest.fragment.mvvm.google.reddit.repository.NetworkState
 import com.hujiang.mytest.fragment.mvvm.google.reddit.repository.RedditPostRepository
 import com.jiangjiang.common.image.GlideApp
+import com.jiangjiang.common.ui.activity.BaseListActivity
 import kotlinx.android.synthetic.main.activity_mvvm_layout.*
 
 
@@ -27,7 +27,8 @@ import kotlinx.android.synthetic.main.activity_mvvm_layout.*
  * -----------------------------
  * MISSION
  */
-class MVVMMainActivity : AppCompatActivity() {
+class MVVMMainActivity : BaseListActivity() {
+
     companion object {
         const val KEY_SUBREDDIT = "subreddit"
         const val DEFAULT_SUBREDDIT = "androiddev"
@@ -44,7 +45,6 @@ class MVVMMainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_mvvm_layout)
         model = getViewModel()
         initAdapter()
         initSwipeToRefresh()
@@ -53,6 +53,11 @@ class MVVMMainActivity : AppCompatActivity() {
         model.showSubreddit(subreddit)
         supportFragmentManager.beginTransaction().add(R.id.list, TestFragmentViewModelStore()).commit()
     }
+
+    override fun getLayoutRes(): Int {
+        return R.layout.activity_mvvm_layout;
+    }
+
 
     private fun getViewModel(): SubRedditViewModel {
         return ViewModelProviders.of(this, object : ViewModelProvider.Factory {

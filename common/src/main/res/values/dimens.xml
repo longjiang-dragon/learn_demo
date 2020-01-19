@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="ui_navigation_bar_height">56dp</dimen>
+    <dimen name="title_layout_title_margin">104dp</dimen>
+    <dimen name="title_layout_icon_size">24dp</dimen>
+
+</resources>

@@ -2,6 +2,5 @@
     package="com.jiangjiang.common">
 
     <application>
-        <activity android:name=".ui.BaseActivity" />
     </application>
 </manifest>

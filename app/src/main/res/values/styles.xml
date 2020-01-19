@@ -6,7 +6,7 @@
     <style name="Theme.DesignDemo" parent="Base.Theme.DesignDemo"/>
    <style name="Main.Two.Theme" parent="Theme.AppCompat.Light.Dialog">
    </style>
-    <style name="Base.Theme.DesignDemo" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="Base.Theme.DesignDemo" parent="Common.Theme.Light.NoActionBar">
         <item name="colorPrimary">#0fb73d</item>
         <item name="colorPrimaryDark">#0ba823</item>
         <item name="colorAccent">#FF4081</item>

@@ -43,7 +43,8 @@ class InMemoryByItemRepository(
                 // we use Config Kotlin ext. function here, could also use PagedList.Config.Builder
                 config = Config(
                         pageSize = pageSize,
-                        enablePlaceholders = false,
+                        prefetchDistance = 10,//提前几个加载
+                        enablePlaceholders = true,
                         initialLoadSizeHint = pageSize * 2),
                 // provide custom executor for network requests, otherwise it will default to
                 // Arch Components' IO pool which is also used for disk access

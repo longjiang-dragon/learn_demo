@@ -1,0 +1,79 @@
+{
+  "variant": {
+    "module": {
+      "rootBuildGradleFolder": "/Users/yuefeng/workSpace/demo/myDemo",
+      "sdkFolder": "/Users/yuefeng/tools/Android/sdk",
+      "isNativeCompilerSettingsCacheEnabled": false,
+      "isBuildOnlyTargetAbiEnabled": true,
+      "splitsAbiFilterSet": [],
+      "intermediatesFolder": "/Users/yuefeng/workSpace/demo/myDemo/app/build/intermediates",
+      "gradleModulePathName": ":app",
+      "moduleRootFolder": "/Users/yuefeng/workSpace/demo/myDemo/app",
+      "makeFile": "/Users/yuefeng/workSpace/demo/myDemo/app/src/main/cpp/CMakeLists.txt",
+      "buildSystem": "CMAKE",
+      "compilerSettingsCacheFolder": "/Users/yuefeng/workSpace/demo/myDemo/.cxx",
+      "cxxFolder": "/Users/yuefeng/workSpace/demo/myDemo/app/.cxx",
+      "ndkFolder": "/Users/yuefeng/tools/Android/android-ndk-r13b",
+      "ndkVersion": "13.1.3345770",
+      "ndkSupportedAbiList": [
+        "ARMEABI",
+        "ARMEABI_V7A",
+        "ARM64_V8A",
+        "X86",
+        "X86_64",
+        "MIPS",
+        "MIPS64"
+      ],
+      "ndkDefaultAbiList": [
+        "ARMEABI",
+        "ARMEABI_V7A",
+        "ARM64_V8A",
+        "X86",
+        "X86_64",
+        "MIPS",
+        "MIPS64"
+      ],
+      "cmakeToolchainFile": "."
+    },
+    "buildSystemArgumentList": [
+      "-DANDROID_TOOLCHAIN\u003dclang"
+    ],
+    "cFlagList": [],
+    "cppFlagsList": [],
+    "variantName": "debug",
+    "soFolder": "/Users/yuefeng/workSpace/demo/myDemo/app/build/intermediates/cmake/debug/lib",
+    "objFolder": "/Users/yuefeng/workSpace/demo/myDemo/app/build/intermediates/cmake/debug/obj",
+    "jsonFolder": "/Users/yuefeng/workSpace/demo/myDemo/app/.cxx/cmake/debug",
+    "gradleBuildOutputFolder": "/Users/yuefeng/workSpace/demo/myDemo/app/.cxx/cxx/debug",
+    "isDebuggableEnabled": true,
+    "validAbiList": [
+      "ARMEABI",
+      "ARMEABI_V7A",
+      "ARM64_V8A",
+      "X86",
+      "X86_64"
+    ],
+    "buildTargetSet": []
+  },
+  "abi": "ARMEABI",
+  "abiPlatformVersion": 24,
+  "cxxBuildFolder": "/Users/yuefeng/workSpace/demo/myDemo/app/.cxx/cmake/debug/armeabi",
+  "jsonFile": "/Users/yuefeng/workSpace/demo/myDemo/app/.cxx/cmake/debug/armeabi/android_gradle_build.json",
+  "gradleBuildOutputFolder": "/Users/yuefeng/workSpace/demo/myDemo/app/.cxx/cxx/debug/armeabi",
+  "objFolder": "/Users/yuefeng/workSpace/demo/myDemo/app/build/intermediates/cmake/debug/obj/armeabi",
+  "buildCommandFile": "/Users/yuefeng/workSpace/demo/myDemo/app/.cxx/cmake/debug/armeabi/build_command.txt",
+  "buildOutputFile": "/Users/yuefeng/workSpace/demo/myDemo/app/.cxx/cmake/debug/armeabi/build_output.txt",
+  "modelOutputFile": "/Users/yuefeng/workSpace/demo/myDemo/app/.cxx/cmake/debug/armeabi/build_model.json",
+  "cmake": {
+    "cmakeListsWrapperFile": "/Users/yuefeng/workSpace/demo/myDemo/app/.cxx/cxx/debug/armeabi/CMakeLists.txt",
+    "toolchainWrapperFile": "/Users/yuefeng/workSpace/demo/myDemo/app/.cxx/cxx/debug/armeabi/android_gradle_build.toolchain.cmake",
+    "buildGenerationStateFile": "/Users/yuefeng/workSpace/demo/myDemo/app/.cxx/cxx/debug/armeabi/build_generation_state.json",
+    "cacheKeyFile": "/Users/yuefeng/workSpace/demo/myDemo/app/.cxx/cxx/debug/armeabi/compiler_cache_key.json",
+    "compilerCacheUseFile": "/Users/yuefeng/workSpace/demo/myDemo/app/.cxx/cxx/debug/armeabi/compiler_cache_use.json",
+    "compilerCacheWriteFile": "/Users/yuefeng/workSpace/demo/myDemo/app/.cxx/cxx/debug/armeabi/compiler_cache_write.json",
+    "toolchainSettingsFromCacheFile": "/Users/yuefeng/workSpace/demo/myDemo/app/.cxx/cxx/debug/armeabi/compiler_settings_cache.cmake",
+    "cmakeWrappingBaseFolder": "."
+  },
+  "jsonGenerationLoggingRecordFile": "/Users/yuefeng/workSpace/demo/myDemo/app/.cxx/cmake/debug/armeabi/json_generation_record.json",
+  "compileCommandsJsonFile": "/Users/yuefeng/workSpace/demo/myDemo/app/.cxx/cmake/debug/armeabi/compile_commands.json"
+}

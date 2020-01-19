@@ -74,7 +74,7 @@ class MVVMMainActivity : AppCompatActivity() {
             model.retry()
         }
         list.adapter = adapter
-        //添加观察者
+        //添加观察者(每当数据源发生改变，Adapter就会自动将 新的数据 动态反映在UI上。)
         model.posts.observe(this, Observer<PagedList<RedditPost>> {
             adapter.submitList(it)
         })

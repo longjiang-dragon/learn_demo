@@ -24,6 +24,12 @@
         android:layout_height="50dp"
         android:gravity="center"
         android:text="AVLTree" />
+    <TextView
+        android:id="@+id/avl_print"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="回形打印二维数组" />
 
 
 </LinearLayout>

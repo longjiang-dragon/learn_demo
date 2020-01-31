@@ -1,0 +1,3 @@
+/Users/yuefeng/workSpace/demo/myDemo/app/.cxx/cmake/release/x86_64/CMakeFiles/edit_cache.dir
+/Users/yuefeng/workSpace/demo/myDemo/app/.cxx/cmake/release/x86_64/CMakeFiles/rebuild_cache.dir
+/Users/yuefeng/workSpace/demo/myDemo/app/.cxx/cmake/release/x86_64/CMakeFiles/jni_first_test.dir

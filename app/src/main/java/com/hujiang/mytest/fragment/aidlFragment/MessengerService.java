@@ -4,6 +4,7 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
+import android.os.RemoteCallbackList;
 import android.os.RemoteException;
 
 import java.util.List;
@@ -28,14 +29,48 @@ public class MessengerService extends Service {
 
     private Binder mBinder = new IBookManager.Stub() {
 
+        private RemoteCallbackList<IAddBookResultAidlInterface> callbackS = new RemoteCallbackList<>();
+
         @Override
         public void addBook(Book book) throws RemoteException {
-            mBookList.add(book);
+            if (null == book) return;
+            if (!mBookList.contains(book)) {
+                mBookList.add(book);
+                notifyCallback(true, book.getBookName());
+            } else {
+                notifyCallback(false, book.getBookName());
+            }
+        }
+
+        private void notifyCallback(boolean isAddSuccess, String bookName) throws RemoteException {
+            int count = callbackS.beginBroadcast();
+            for (int i = 0; i < count; i++) {
+                if (isAddSuccess) {
+                    callbackS.getBroadcastItem(i).addBookSuccess(bookName);
+                } else {
+                    callbackS.getBroadcastItem(i).addBookFailed(bookName);
+                }
+
+            }
+            //成对使用
+            callbackS.finishBroadcast();
         }
 
         @Override
         public List<Book> getBookList() throws RemoteException {
             return mBookList;
+        }
+
+        @Override
+        public void registerListener(IAddBookResultAidlInterface callBack) throws RemoteException {
+            callbackS.register(callBack);
+        }
+
+        @Override
+        public void unregisterListener(IAddBookResultAidlInterface callBack) throws RemoteException {
+            if (null != callBack) {
+                callbackS.unregister(callBack);
+            }
         }
     };
 

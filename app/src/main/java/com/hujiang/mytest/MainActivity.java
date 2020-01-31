@@ -83,6 +83,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void initFragment() {
+        //进程间通信
+        mFragments.put("aidl", new AidlFragment());
         mFragments.put("mvvm", new MVVMFragment());
         mFragments.put("algorithm", new AlgorithmFragment());
         mFragments.put("java Lock", new JavaLockFragment());
@@ -117,7 +119,6 @@ public class MainActivity extends AppCompatActivity {
         mFragments.put("handler", new HandlerLearnFragment());
         mFragments.put("thread_local", new ThreadLocalFragment());
         mFragments.put("custom_drawable", new CustomDrawableFragment());
-        mFragments.put("aidl", new AidlFragment());
         mFragments.put("transparentCircle", new TransparentCircleFragment());
         mFragments.put("spannablestring", new SpannableStringFragment());
         mFragments.put("滑动冲突处理", new SlidingConflictsFragment());

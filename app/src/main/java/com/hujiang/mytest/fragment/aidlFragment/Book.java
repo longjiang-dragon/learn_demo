@@ -3,6 +3,8 @@ package com.hujiang.mytest.fragment.aidlFragment;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.Objects;
+
 /**
  * @author yuefeng
  * @version 3.3.1
@@ -22,6 +24,23 @@ public class Book implements Parcelable {
         mBookName = in.readString();
     }
 
+
+    public String getBookName() {
+        return mBookName;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        return mBookId == book.mBookId;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(mBookId);
+    }
 
     public static final Creator<Book> CREATOR = new Creator<Book>() {
         @Override

@@ -41,7 +41,7 @@ public class AidlFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent _Intent = new Intent(getActivity(), MessengerService.class);
-        getActivity().bindService(_Intent,mServiceConnection, Context.BIND_AUTO_CREATE);
+        getActivity().bindService(_Intent, mServiceConnection, Context.BIND_AUTO_CREATE);
 
     }
 
@@ -50,17 +50,13 @@ public class AidlFragment extends Fragment {
         public void onServiceConnected(ComponentName name, IBinder service) {
             IBookManager iBookManager = IBookManager.Stub.asInterface(service);
             try {
-                List<Book> bookList = iBookManager.getBookList();
-                mTextView.setText(bookList.toString());
                 //添加一本书
-                Book _Book=new Book(10003,"macBook");
+                Book _Book = new Book(10003, "macBook");
                 iBookManager.addBook(_Book);
 
-                bookList=iBookManager.getBookList();
+                List<Book> bookList = iBookManager.getBookList();
                 mTextView.append("\n");
                 mTextView.append(bookList.toString());
-
-
             } catch (RemoteException e) {
                 e.printStackTrace();
             }

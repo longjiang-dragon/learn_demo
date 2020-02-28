@@ -7,6 +7,7 @@ import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.ComposeShader;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PorterDuff;
@@ -40,22 +41,34 @@ public class CircleImageView extends ExtendsView {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         canvas.drawColor(Color.BLUE);
-        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.eye);
-        //Shader.TileMode.CLAMP 在图片比所绘图形小时，以最边缘的象素，填充不足部份
-        Shader shader = new BitmapShader(bitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
-        mPaint.setShader(shader);
-        canvas.drawCircle(100, 100, 100, mPaint);
+        drawCirclePic(canvas);
         //带圆角矩形
-        canvas.drawRoundRect(800,10,900,100,10,10,mPaint);
+        canvas.drawRoundRect(800, 10, 900, 100, 10, 10, mPaint);
 
         plantA(canvas);
         ComposeShaderTest(canvas);
 
     }
 
+    private void drawCirclePic(Canvas canvas) {
+        int radius = 100;
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.eye);
+        //Shader.TileMode.CLAMP 在图片比所绘图形小时，以最边缘的象素，填充不足部份
+        Shader shader = new BitmapShader(bitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+
+        //计算缩放比例
+        float mScale = (radius * 2.0f) / Math.max(bitmap.getHeight(), bitmap.getWidth());
+        Matrix matrix = new Matrix();
+        matrix.setScale(mScale, mScale);
+        shader.setLocalMatrix(matrix);
+
+        mPaint.setShader(shader);
+        canvas.drawCircle(radius, radius, radius, mPaint);
+    }
+
     private void ComposeShaderTest(Canvas canvas) {
         canvas.save();
-        canvas.translate(0,200);
+        canvas.translate(0, 200);
 
         Bitmap bitmap1 = BitmapFactory.decodeResource(getResources(), R.drawable.batman);
         Shader shader1 = new BitmapShader(bitmap1, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);

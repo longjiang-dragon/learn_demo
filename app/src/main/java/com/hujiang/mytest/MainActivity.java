@@ -1,9 +1,11 @@
 package com.hujiang.mytest;
 
 import android.os.Bundle;
+import android.os.Looper;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
@@ -73,6 +75,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         initActionBar();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Looper.prepare();
+                Toast.makeText(MainActivity.this,"fdffdfd",Toast.LENGTH_SHORT).show();
+            }
+        }).start();
         initViewPagerAndTipView();
         setupDrawerContent();
         Log.i("info", getApplicationContext().getDir("cache", 0).getPath());

@@ -1,8 +1,0 @@
-# ninja log v5
-1	225	0	CMakeFiles/jni_first_test.dir/Book.cpp.o	a50434159a5a0d23
-0	226	0	CMakeFiles/jni_first_test.dir/jni_first_test.cpp.o	3ad6c5bc8bf238d2
-2	277	0	CMakeFiles/jni_first_test.dir/Test1.cpp.o	be4b2ceb2385a8be
-2	278	0	CMakeFiles/jni_first_test.dir/Test2.cpp.o	c68ae613b1fa33f1
-1	279	0	CMakeFiles/jni_first_test.dir/PrintLog.cpp.o	7677758745b285ce
-1	289	0	CMakeFiles/jni_first_test.dir/BookManager.cpp.o	23707d7f37f87b0f
-289	604	0	/Users/yuefeng/workSpace/demo/myDemo/app/build/intermediates/cmake/debug/obj/x86_64/libjni_first_test.so	edd597d1c25d5e02

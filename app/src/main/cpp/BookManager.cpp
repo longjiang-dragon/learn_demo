@@ -44,7 +44,7 @@ void BookManager::start() {
 
     bookList.insert(pair<string, Book>(myBook1->getBookName(), *myBook1));
     bookList.insert(map<string, Book>::value_type(myBook2->getBookName(), *myBook2));
-    bookList.insert(make_pair<string, Book>(myBook3->getBookName(), *myBook3));
+//    bookList.insert((myBook3->getBookName(), *myBook3));
     printLog->printMeg(bookList.size());
 
 
